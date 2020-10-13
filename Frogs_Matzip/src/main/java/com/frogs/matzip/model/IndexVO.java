@@ -1,6 +1,9 @@
-package com.frogs.matzip.user.model;
+package com.frogs.matzip.model;
 
-public class UserPARAM {
+import org.apache.ibatis.type.Alias;
+
+@Alias("IndexVO")
+public class IndexVO {
 	private int i_user;
 	private String user_id;
 	private String user_pw;
@@ -58,5 +61,4 @@ public class UserPARAM {
 	public void setM_dt(String m_dt) {
 		this.m_dt = m_dt;
 	}
-	
 }
