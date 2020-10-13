@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<insert id="ajaxJoin" parameterType="IndexVO">
+<insert id="insUser" parameterType="IndexVO">
 	INSERT INTO t_user
 		(user_id, user_pw, salt, nm)
 		VALUES

@@ -6,5 +6,5 @@ import com.frogs.matzip.model.IndexVO;
 
 @Mapper
 public interface IndexMapper {
-	int ajaxJoin(IndexVO param);
+	int insUser(IndexVO param);
 }

@@ -11,6 +11,13 @@ public class IndexService {
 	private IndexMapper mapper;
 	
 	public int ajaxJoin(IndexVO param) {
-		return mapper.ajaxJoin(param);
+		String pw = param.getUser_pw();
+		String salt = SecurityUtils.generateSalt();
+		String cryptPw = SecurityUtils.getEncrypt(pw, salt);
+		
+		param.setSalt(salt);
+		param.setUser_pw(cryptPw);
+		
+		return mapper.insUser(param);
 	}
 }
