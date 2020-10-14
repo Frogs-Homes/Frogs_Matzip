@@ -38,20 +38,10 @@ public class IndexController {
 	
 	@RequestMapping(value="/ajaxJoin", method = RequestMethod.POST)
 	@ResponseBody
-	public String ajaxJoin(@RequestBody IndexVO param) {
-		int result = service.ajaxJoin(param);
-		
-		
-		if(result == 1) {
-			return "redirect:/index";
-		}
-//		if(result != 1) {
-//			// 메시지 session에 박아야만 하는지 아니면 다른데에 박을 수 있는지 ajax라서 잘 모르겠음 다시 확인 요망
-//			hs.setAttribute(Const.MSG, "문제가 발생했습니다.");
-//		}
-		return "redirect:/index";
+
+	public int ajaxJoin(IndexVO param) {
+		return service.ajaxJoin(param);
 	}
-	
 	
 	@RequestMapping(value="/ajaxCheckId", method = RequestMethod.POST)
 	@ResponseBody
@@ -59,10 +49,4 @@ public class IndexController {
 		int result = service.login(param);
 		return String.valueOf(result);
 	}
-		
-	
-	
-	
-	
-	
 }
