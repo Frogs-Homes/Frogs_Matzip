@@ -35,6 +35,7 @@ h2 {display: inline;}
 #modal_login_wrap {
     display: none;
     width: 480px;
+    height: 510px;
     position: absolute;
     top:50%;
     left: 50%;
@@ -44,24 +45,34 @@ h2 {display: inline;}
     z-index: 10;
 }
 #modal_login { width: 100%; margin-top: 100px; margin-bottom: 20px; text-align: center;}
-#modal_login h3 {font-size: 2rem;}
+#modal_join { width: 100%; margin-top: 50px; margin-bottom: 20px; text-align: center;}
+h3 {font-size: 2rem;}
 #modal_ctnt {width: 100%; margin-top: 20px; text-align: center;}
-#modal_value {width: 100%; margin-top: 50px;}
-#modal_value .input_id { width:300px; height: 40px; border-radius: 7px; border: #eee;}
-#modal_value .input_pw { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
-#modal_value .login_btn { width:305px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
+#modal_value {width: 100%; margin-top: 50px; position: absolute;}
+#modal_value .login_id { width:300px; height: 40px; border-radius: 7px; border: #eee;}
+#modal_value .login_pw { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
+#modal_value .login_btn, .input_nm { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
+
 #modal_value .join {text-align: center; margin-bottom: 60px;}
-#modal_value form { height: 180px;}
-#modal_value #join_btn {font-weight: bolder; color: #f07a2c;}
+#modal_value .join_id { width:200px; height: 40px; border-radius: 7px; border: #eee; position: absolute; top: -20px; left: 90px;}
+#modal_value .check_id{ width:91px; height: 40px; border-radius: 7px; border: #eee; background-color: white; position: absolute; top: -20px; left: 298px;}
+#modal_value .join_pw { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
+#modal_value .join_btn, .join_nm { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
+#modal_value #login_form { height: 180px;}
+#modal_value #join_form { height: 270px;}
+#modal_value .join .join_click {font-weight: bolder; color: #f07a2c;}
+#modal_value .join_btn { width: 305px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee; color: #fff; background-color: #f07a2c; font-weight: bold;}
+#modal_value #idChkResult { text-align: center; margin-top: 75px; color: rgb(245, 106, 106);}
 
 #modal_join_wrap {
     display: none;
-    width: 500px;
-    height: 500px;
+    width: 480px;
+    height: 470px;
     position: absolute;
     top:50%;
     left: 50%;
-    margin: -250px 0 0 -250px;
+    margin: -250px 0 0 -240px;
+    border-radius: 12px;
     background:#eee;
     z-index: 10;
 }
@@ -87,7 +98,7 @@ h2 {display: inline;}
     font-weight: bold;
 }
 
-.scroll_disable {
+.scrollDisable {
     height: 100%;
     overflow: hidden;
 }

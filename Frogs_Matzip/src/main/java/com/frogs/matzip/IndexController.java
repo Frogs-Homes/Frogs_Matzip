@@ -5,15 +5,18 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.frogs.matzip.model.IndexPARAM;
 import com.frogs.matzip.model.IndexVO;
 
 
 @Controller
 public class IndexController {
+	
 	@Autowired
 	private IndexService service;
 	
@@ -33,10 +36,17 @@ public class IndexController {
 		return ViewRef.INDEX_TEMP;
 	}
 	
-	@RequestMapping(value="/ajaxJoin", produces = {"application/json; charset=UTF-8"})
+	@RequestMapping(value="/ajaxJoin", method = RequestMethod.POST)
 	@ResponseBody
+
 	public int ajaxJoin(IndexVO param) {
 		return service.ajaxJoin(param);
 	}
 	
+	@RequestMapping(value="/ajaxCheckId", method = RequestMethod.POST)
+	@ResponseBody
+	public String ajaxCheckId(@RequestBody IndexPARAM param) {
+		int result = service.login(param);
+		return String.valueOf(result);
+	}
 }
