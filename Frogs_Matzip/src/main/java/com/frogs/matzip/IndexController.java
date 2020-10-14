@@ -35,15 +35,8 @@ public class IndexController {
 	
 	@RequestMapping(value="/ajaxJoin", produces = {"application/json; charset=UTF-8"})
 	@ResponseBody
-	public int ajaxJoin(IndexVO param, HttpSession hs) {
-		int result = service.ajaxJoin(param);
-		
-		if(result != 1) {
-			// 메시지 session에 박아야만 하는지 아니면 다른데에 박을 수 있는지 ajax라서 잘 모르겠음 다시 확인 요망
-			hs.setAttribute(Const.MSG, "문제가 발생했습니다.");
-		}
-		
-		return result;
+	public int ajaxJoin(IndexVO param) {
+		return service.ajaxJoin(param);
 	}
 	
 }
