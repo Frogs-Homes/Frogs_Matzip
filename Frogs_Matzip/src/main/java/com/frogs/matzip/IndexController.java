@@ -46,18 +46,4 @@ public class IndexController {
 		return result;
 	}
 	
-	// ajax 참고용
-//	@RequestMapping(value="/ajaxGetList", produces = {"application/json; charset=UTF-8"}) //UTF-8 설정 하는 방법
-//	@ResponseBody
-//	public List<RestDMI> ajaxGetList(RestPARAM param, HttpSession hs) { //spring에 json라이브러리를 자동으로 받아져있음, 리턴으로 String으로 하지않고 List<RestDMI>할수있는 이유
-//		System.out.println("sw_lat : " + param.getSw_lat());
-//		System.out.println("sw_lng : " + param.getSw_lng());
-//		System.out.println("ne_lat : " + param.getNe_lat());
-//		System.out.println("ne_lng : " + param.getNe_lng());
-//		
-//		int i_user = SecurityUtils.getLoginUserPk(hs);
-//		param.setI_user(i_user);
-//		
-//		return service.selRestList(param);
-//	}
 }

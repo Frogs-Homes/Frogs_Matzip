@@ -55,14 +55,17 @@
             <div id="modal_login">
                 <h3>로그인</h3>
             </div>
-            <div id="modal_ctnt"><p>로그인하면 가고싶은 식당을<br>저장할 수 있어요</p></div>
+            <div id="modal_ctnt">
+            	<p>로그인하면 가고싶은 식당을<br>저장할 수 있어요</p>
+            	<p id="login_msg" class="err">${msg}</p>
+            </div>
             <div id="modal_value">
                 <form action="">
                     <label for="user_id" class="hidden"></label>
                     <input type="text" name="user_id" class="input_id" placeholder="   아이디"><br>
                     <label for="user_pw" class="hidden"></label>
                     <input type="password" name="user_pw" class="input_pw" placeholder="   비밀번호"><br>
-                    <input type="button" class="login_btn" value="로그인">
+                    <input type="button" class="login_btn" value="로그인" onclick="loginChk()">
                 </form>
                 <div class="join"><p class="join_ctnt">개굴플레이트 계정이 없으세요? <span id="join_btn">회원 가입</span></p></div>
             </div>
@@ -72,6 +75,7 @@
             <div id="modal_join">
                 <h3>회원가입</h3>
                 <p>로그인하면 가고싶은 식당을<br>저장할 수 있어요</p>
+                <p id="join_msg" class="err">${msg}</p>
                 <form id="join_frm">
                     <label for="user_id">ID</label>
                     <input type="text" name="user_id">
@@ -81,7 +85,7 @@
                     <input type="password" name="user_pw_chk">
                     <label for="user_nm">이름</label>
                     <input type="text" name="user_nm">
-                    <input type="button" value="회원가입" onclick="ajaxJoin()">
+                    <input type="button" value="회원가입" onclick="joinChk()">
                 </form>
             </div>
             <div class="modal_close"><span class="material-icons">clear</span></div>
@@ -90,9 +94,8 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-    	// join ajax
-    	
-    	function ajaxJoin() {
+    	// join - ajax
+    	function joinAjax() {
     		let parameter = {
     				'user_id': join_frm.user_id.value,
     				'user_pw': join_frm.user_pw.value,
@@ -104,10 +107,86 @@
     				// 성공, 자동로그인, index페이지
     			} else {
     				// 실패, paramter값 다시 박기, 회원가입 모달창
+    				join_msg.innerHTML = ${msg}
     			}
     		})
     	}
-    
+    	
+    	// join - check
+    	function joinChk() {
+			if(frm.user_id.value.length < 5) {
+				//alert('아이디는 5글자 이상이 되어야 합니다')
+				join_msg.innerHTML = '아이디는 5글자 이상이 되어야 합니다'
+				frm.user_id.focus()
+				return false
+			} else if(frm.user_pw.value.length < 5) {
+				//alert('비밀번호는 5글자 이상이 되어야 합니다')
+				join_msg.innerHTML = '비밀번호는 5글자 이상이 되어야 합니다'
+				frm.user_pw.focus()
+				return false
+			} else if(frm.user_pw.value != frm.user_pwre.value) {
+				//alert('비밀번호가 일치하지 않습니다')
+				join_msg.innerHTML = '비밀번호가 일치하지 않습니다'
+				frm.user_pw.focus()
+				return false
+			} else if(frm.nm.value.length > 0) {
+				const korean= /[^가-힣]/
+				if(korean.test(frm.nm.value)) {
+					//alert('올바른 이름을 입력하세요')
+					join_msg.innerHTML = '올바른 이름을 입력하세요'
+					frm.nm.focus()
+					return false
+				}
+			}
+			
+			joinAjax()
+    	}
+    	
+    	// login - ajax
+    	function loginAjax() {
+    		let parameter = {
+    				'user_id': join_frm.user_id.value,
+    				'user_pw': join_frm.user_pw.value
+    		}
+    		
+    		axios.post('/ajaxLogin', parameter).then(function(res) {
+    			if(res.data==1) {
+    				// 로그인 성공
+    			} else {
+    				// 로그인 실패, 에러메시지 띄우기
+    			}
+    		})
+    	}
+    	
+		// login - check
+		function loginChk() {
+			if(frm.user_id.value.length < 5) {
+				//alert('아이디는 5글자 이상이 되어야 합니다')
+				login_msg.innerHTML = '아이디는 5글자 이상이 되어야 합니다'
+				frm.user_id.focus()
+				return false
+			} else if(frm.user_pw.value.length < 5) {
+				//alert('비밀번호는 5글자 이상이 되어야 합니다')
+				login_msg.innerHTML = '비밀번호는 5글자 이상이 되어야 합니다'
+				frm.user_pw.focus()
+				return false
+			}
+			
+			loginAjax()
+		}
+		
+		/*
+		// email check 부분
+		if(frm.email.value.length > 0) {
+			const email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
+			if(!email.test(frm.email.value)) {
+				alert('이메일을 확인해 주세요')
+				frm.email.focus()
+				return false
+			}
+		}
+		*/
+    	
     	// 모달창
         function loginBtnClick() {
             document.querySelector('#modal_login_wrap').style.display = 'block'
