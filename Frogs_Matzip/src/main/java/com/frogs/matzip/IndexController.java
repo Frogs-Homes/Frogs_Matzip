@@ -5,15 +5,18 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.frogs.matzip.model.IndexPARAM;
 import com.frogs.matzip.model.IndexVO;
 
 
 @Controller
 public class IndexController {
+	
 	@Autowired
 	private IndexService service;
 	
@@ -33,17 +36,33 @@ public class IndexController {
 		return ViewRef.INDEX_TEMP;
 	}
 	
-	@RequestMapping(value="/ajaxJoin", produces = {"application/json; charset=UTF-8"})
+	@RequestMapping(value="/ajaxJoin", method = RequestMethod.POST)
 	@ResponseBody
-	public int ajaxJoin(IndexVO param, HttpSession hs) {
+	public String ajaxJoin(@RequestBody IndexVO param) {
 		int result = service.ajaxJoin(param);
 		
-		if(result != 1) {
-			// 메시지 session에 박아야만 하는지 아니면 다른데에 박을 수 있는지 ajax라서 잘 모르겠음 다시 확인 요망
-			hs.setAttribute(Const.MSG, "문제가 발생했습니다.");
-		}
 		
-		return result;
+		if(result == 1) {
+			return "redirect:/index";
+		}
+//		if(result != 1) {
+//			// 메시지 session에 박아야만 하는지 아니면 다른데에 박을 수 있는지 ajax라서 잘 모르겠음 다시 확인 요망
+//			hs.setAttribute(Const.MSG, "문제가 발생했습니다.");
+//		}
+		return "redirect:/index";
 	}
+	
+	
+	@RequestMapping(value="/ajaxCheckId", method = RequestMethod.POST)
+	@ResponseBody
+	public String ajaxCheckId(@RequestBody IndexPARAM param) {
+		int result = service.login(param);
+		return String.valueOf(result);
+	}
+		
+	
+	
+	
+	
 	
 }
