@@ -30,7 +30,7 @@ public class IndexController {
 	public String Index(Model model) {
 		// 인기 식당, 카테고리별 식당 리스트 뿌리기 해야 함
 		
-		model.addAttribute(Const.CSS, new String[] {"common", "index"});
+		model.addAttribute(Const.CSS, new String[] {"common", "index", "indexheader"});
 		model.addAttribute(Const.TITLE, "FrogsMatzip");
 		model.addAttribute(Const.VIEW, "index");
 		return ViewRef.INDEX_TEMP;

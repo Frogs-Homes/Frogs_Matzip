@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <c:forEach items="${css}" var="item">
-	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css">
+	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css?dkdk=1">
 </c:forEach>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <title>${title}</title>
@@ -15,12 +15,43 @@
 	<div class="main_back">
          <header>
              <div class="head">
-                <h2><a id="lnb_logo" href="">FrogsMatzip</a></h2>
+                <h2><a id="lnb_logo" href="#">FrogsMatzip</a></h2>
                 <nav class="lnb">
                     <h2 class="hidden">사용자 이용메뉴</h2>
-                    <ul class="lnb_wrap">
-                        <li id="login_btn">로그인</li>
-                    </ul>
+                    <div id="lnb_wrap">
+	                    <div id="img_back">
+	                    	<div class="user_button" onclick="userMenuBtn()">
+				                <span class="material-icons">menu</span>
+				                <div class="img_wrap">
+				                	<c:choose>
+				                		<c:when test="${loginUser.profile_img != null}">
+				                			<img class="default_img" src="/res/img/user/${loginUser.i_user}/${loginUser.profile_img}.png">
+				                		</c:when>
+				                		<c:otherwise>
+				                			<img class="default_img" src="/res/img/default_img.png">
+				                		</c:otherwise>
+				                	</c:choose>
+				                </div>
+				            </div>
+				        </div>
+				        <div id="list_wrap">
+				        	<c:choose>
+		                		<c:when test="${loginUser == null}">
+		                			<a id="login_btn">로그인</a>
+		                			<a>회원가입(넣을거여?)</a>
+		                		</c:when>
+		                		<c:otherwise>
+		                			<a>마이페이지</a>
+		                			<a>내가 쓴 리뷰</a>
+		                			<a>좋아요 목록</a>
+		                		</c:otherwise>
+		                	</c:choose>
+		                	<hr>
+		                	<a>로그인필요없는메뉴</a>
+		                	<a>로그인필요없는메뉴</a>
+		                	<a>로그인필요없는메뉴</a>
+				        </div>
+			        </div>
                 </nav>
              </div>
          </header>
@@ -31,7 +62,7 @@
                  <fieldset>
                          <legend class="hidden">검색창</legend>
                          <label for="search_bar" class="hidden">위치</label>
-                         <input type="text" id="search_bar"  value="지역,식당 또는 음식">
+                         <input type="text" id="search_bar" placeholder="지역,식당 또는 음식">
                          <input type="submit" id="search_btn" value="검색">
                 </fieldset>
             </form>
@@ -57,14 +88,14 @@
             </div>
             <div id="modal_ctnt"><p>로그인하면 가고싶은 식당을<br>저장할 수 있어요</p></div>
             <div class="modal_value">
+            	<div id="login_error_msg" class="msg"></div>
                 <form id="login_frm">
                     <label for="user_id" class="hidden"></label>
                     <input type="text" name="user_id" class="login_id" placeholder="   아이디"><br>
                     <label for="user_pw" class="hidden"></label>
                     <input type="password" name="user_pw" class="login_pw" placeholder="   비밀번호"><br>
-                    <input type="button" id="login_btn" value="로그인" onclick="loginChk()">
+                    <input type="button" id="login_submit_btn" value="로그인" onclick="loginChk()">
                 </form>
-                <div id="login_error_msg" class="msg"></div>
                 <div class="join">
                 	<p class="join_ctnt">개굴플레이트 계정이 없으세요? <span id="join_btn">회원 가입</span></p>
                 </div>
@@ -97,6 +128,32 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+ 		// -------------user menu 시작------------------------------------------------------------------------
+ 		function userMenuBtn() {
+ 			list_wrap.classList.toggle('show')
+ 		}
+ 		
+ 		/* When the user clicks on the button,
+ 		toggle between hiding and showing the dropdown content */
+ 		function myFunction() {
+ 		  document.getElementById("myDropdown").classList.toggle("show");
+ 		}
+
+ 		// Close the dropdown menu if the user clicks outside of it
+ 		window.onclick = function(event) {
+ 		  if (!event.target.matches('.dropbtn')) {
+ 		    var dropdowns = document.getElementsByClassName("dropdown-content");
+ 		    var i;
+ 		    for (i = 0; i < dropdowns.length; i++) {
+ 		      var openDropdown = dropdowns[i];
+ 		      if (openDropdown.classList.contains('show')) {
+ 		        openDropdown.classList.remove('show');
+ 		      }
+ 		    }
+ 		  }
+ 		}
+ 		// -------------user menu 끝------------------------------------------------------------------------
+    
     	// -------------join 시작------------------------------------------------------------------------
     	// join id 체크
     	function joinChkId() {
@@ -172,7 +229,8 @@
 			axios.post('/ajaxJoin', parameter).then(function(res) {
 				if(res.data == '1') {
 					// 회원가입 성공, 자동로그인, index페이지
-					"redirect:/"
+					alert('회원가입을 축하합니다!')
+					location.reload()
 				} else {
 					join_error_msg.innerText = '문제가 발생했습니다.'
 				}
@@ -184,11 +242,11 @@
 		// login - check
 		function loginChk() {
 			if(login_frm.user_id.value.length < 5) {
-				login_msg.innerHTML = '아이디는 5글자 이상이 되어야 합니다'
+				login_error_msg.innerHTML = '아이디는 5글자 이상이 되어야 합니다'
 				login_frm.user_id.focus()
 				return false
 			} else if(login_frm.user_pw.value.length < 5) {
-				login_msg.innerHTML = '비밀번호는 5글자 이상이 되어야 합니다'
+				login_error_msg.innerHTML = '비밀번호를 확인해 주세요'
 				login_frm.user_pw.focus()
 				return false
 			}
