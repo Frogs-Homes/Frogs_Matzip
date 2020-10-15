@@ -59,9 +59,9 @@
             <div id="modal_value">
                 <form id="login_frm">
                     <label for="user_id" class="hidden"></label>
-                    <input type="text" name="user_id" class="input_id" placeholder="   아이디"><br>
+                    <input type="text" name="user_id" class="login_id" placeholder="   아이디"><br>
                     <label for="user_pw" class="hidden"></label>
-                    <input type="password" name="user_pw" class="input_pw" placeholder="   비밀번호"><br>
+                    <input type="password" name="user_pw" class="login_pw" placeholder="   비밀번호"><br>
                     <input type="button" class="login_btn" value="로그인">
                 </form>
                 <div class="join"><p class="join_ctnt">개굴플레이트 계정이 없으세요? <span class="join_click">회원 가입</span></p></div>
