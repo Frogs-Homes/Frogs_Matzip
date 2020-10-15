@@ -38,14 +38,19 @@ public class IndexController {
 	
 	@RequestMapping(value="/ajaxJoin", method = RequestMethod.POST)
 	@ResponseBody
-	public int ajaxJoin(IndexVO param) {
+	public int ajaxJoin(@RequestBody IndexVO param) {
 		return service.ajaxJoin(param);
 	}
 	
 	@RequestMapping(value="/ajaxCheckId", method = RequestMethod.POST)
 	@ResponseBody
-	public String ajaxCheckId(@RequestBody IndexPARAM param) {
-		int result = service.login(param);
-		return String.valueOf(result);
+	public int ajaxCheckId(@RequestBody IndexPARAM param) {
+		return service.login(param);
+	}
+	
+	@RequestMapping(value="ajaxLogin", method = RequestMethod.POST)
+	@ResponseBody
+	public int ajaxLogin(@RequestBody IndexPARAM param) {
+		return service.login(param);
 	}
 }
