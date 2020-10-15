@@ -11,27 +11,23 @@
 <title>${title}</title>
 </head>
 <body>
-	<div class="main_back">
-        <header>
-            <div class="head">
-                <a id="nav_logo" href="">FrogsMatzip</a>
-                <ul class="nav_wrap">
-                    <li>로그인</li>
-                    <li>회원가입</li>
-                </ul>
+    <div id="header_back">
+        <div id="logo_back">
+            <a id="header_logo" href="">FrogsMatzip</a>
+        </div>
+        <div id="search_back">
+            <div class="search_wrap">
+                <input type="text" class="search_bar" placeholder="지역, 식당 또는 음식">
+                <div class="search_icon">
+                    <span class="material-icons">search</span>
+                </div>
             </div>
-        </header>
-        <div class="find_con">
-            <a class="title" href="#">솔직한 리뷰, 믿을 수 있는 평점!<br>FrogsMatzip</a>
-
-            <form>
-                <fieldset>
-                        <legend class="hidden">검색</legend>
-                        <label for="location" class="hidden">위치</label>
-                        <input class="main_input" type="text" id="location"  value="지역,식당 또는 음식">
-                        <input class="main_input button" type="button" value="검색" id="button">
-                </fieldset>
-            </form>
+        </div>
+        <div id="img_back">
+            <button type="button" class="user_button">
+                <span class="material-icons">menu</span>
+                <div class="img_wrap"><img src="./img/default_img.png"  class="default_img" alt=""></div>
+            </button>
         </div>
     </div>
 

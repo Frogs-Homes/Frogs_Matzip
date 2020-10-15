@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+/* index헤더 */
+.main_back{background: url(../img/main.jpg) no-repeat 80%; width: 100%; height: 640px; background-size: cover;}
+header{width: 100%; height: 70px; background-color: #ffffff6b;}
+.head{max-width: 1200px;height: 70px;margin: 0 auto;}
+h2 {display: inline;}
+#lnb_logo{ font-family: 'TmoneyRoundWindExtraBold';font-size: 1.5rem; line-height: 2.6;}
+.lnb{float: right; width: 280px; font-size: 1.2rem; line-height: 3.2;}
+.lnb_wrap li{float: left; margin-left: 9%;}

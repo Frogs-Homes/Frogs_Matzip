@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+/*list*/
+.container { width: 100%; height: 1000px; display: flex;}
+#list_back { width: 30%; display: inline-block; margin: 0 30px; }
+#list_back h2 { margin: 40px 0 0 20px; }
+.list_wrap { overflow: hidden; width: 100%; border-bottom: 1px solid #dbdbdb; }
+.list_wrap .list_ctnt_wrap { margin: 20px; position: relative; }
+.list_wrap .list_ctnt_wrap .matzip_list { display: inline-block; width: 150px; height: 150px; border: 1px solid #000; background-size: cover; border-color: white; }
+.list_wrap .list_ctnt_wrap .food_img { max-width: 150px; max-height: 150px; }
+.list_wrap .ctnt_wrap { display: inline-block; position: absolute; top: 0; left: 170px; }
+.list_wrap .ctnt_wrap h3 { display: inline-block; font-size: 1.5rem;}
+.list_wrap .ctnt_wrap strong { margin-left: 10px; color: #f07a2c;}
+.list_wrap .ctnt_wrap p { display: inline-block; margin-top: 4px; color: #9b9b9b;}
+
+
+
+/*map*/
+.container #map_back { width: 70%; display: inline-block; z-index: 0; }
+#map_back .food_img  { max-width: 100%; max-height: 100%;}
