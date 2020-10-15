@@ -51,18 +51,18 @@ h3 {font-size: 2rem;}
 #modal_value {width: 100%; margin-top: 50px; position: absolute;}
 #modal_value .login_id { width:300px; height: 40px; border-radius: 7px; border: #eee;}
 #modal_value .login_pw { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
-#modal_value .login_btn, .input_nm { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
+#modal_value .login_btn { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee; background-color: #f07a2c;}
 
 #modal_value .join {text-align: center; margin-bottom: 60px;}
 #modal_value .join_id { width:200px; height: 40px; border-radius: 7px; border: #eee; position: absolute; top: -20px; left: 90px;}
 #modal_value .check_id{ width:91px; height: 40px; border-radius: 7px; border: #eee; background-color: white; position: absolute; top: -20px; left: 298px;}
 #modal_value .join_pw { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
 #modal_value .join_btn, .join_nm { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
-#modal_value #login_form { height: 180px;}
-#modal_value #join_form { height: 270px;}
+#modal_value #login_frm { height: 180px;}
+#modal_value #join_frm { height: 270px;}
 #modal_value .join .join_click {font-weight: bolder; color: #f07a2c;}
 #modal_value .join_btn { width: 305px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee; color: #fff; background-color: #f07a2c; font-weight: bold;}
-#modal_value #idChkResult { text-align: center; margin-top: 75px; color: rgb(245, 106, 106);}
+#modal_value #idChkResult { text-align: center; color: rgb(245, 106, 106);}
 
 #modal_join_wrap {
     display: none;

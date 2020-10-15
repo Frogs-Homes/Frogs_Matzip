@@ -27,12 +27,12 @@
          <div class="search_wrap">
              <h1 class="hidden">개굴플레이트</h1>
              <p>솔직한 리뷰, 믿을 수 있는 평점!</p>
-             <form>
+              <form>
                  <fieldset>
                          <legend class="hidden">검색창</legend>
-                         <label for="location" class="hidden">위치</label>
-                         <input class="main_input" type="text" id="location"  value="지역,식당 또는 음식">
-                         <input class="main_input button" type="button" value="검색" id="button">
+                         <label for="search_bar" class="hidden">위치</label>
+                         <input type="text" id="search_bar"  value="지역,식당 또는 음식">
+                         <input type="submit" id="search_btn" value="검색">
                 </fieldset>
             </form>
         </div>
