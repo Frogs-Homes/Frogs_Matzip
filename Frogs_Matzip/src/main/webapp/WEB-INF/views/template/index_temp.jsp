@@ -203,7 +203,7 @@
     			// 1: 로그인 성공 2: 아이디없음 3: 비밀번호틀림 
     			if(res.data == '1') {
     				// 로그인 성공
-    				"redirect:/"
+    				location.reload()
     			} else if(res.data == '2') {
     				error_msg.innerText = '아이디를 확인해 주세요.'
     				login_frm.user_id.focus()

@@ -2,8 +2,6 @@ package com.frogs.matzip;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-import com.frogs.matzip.model.IndexVO;
-
 public class SecurityUtils {
 	
 	/*
