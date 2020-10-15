@@ -24,10 +24,19 @@
             </div>
         </div>
         <div id="img_back">
-            <button type="button" class="user_button">
+            <div class="user_button">
                 <span class="material-icons">menu</span>
-                <div class="img_wrap"><img src="./img/default_img.png"  class="default_img" alt=""></div>
-            </button>
+                <div class="img_wrap">
+                	<c:choose>
+                		<c:when test="${loginUser.profile_img != null}">
+                			<img class="default_img" src="/res/img/user/${loginUser.i_user}/${loginUser.profile_img}">
+                		</c:when>
+                		<c:otherwise>
+                			<img class="default_img" src="/res/img/default_img.png">
+                		</c:otherwise>
+                	</c:choose>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -10,9 +10,9 @@ border-radius:22px; width:60%;  padding:0 15px; margin-left: 1%; margin-left: 0%
 #search_btn {width: 100px; height: 46px; border-radius: 22px; background-color: #f07a2c; color: #fff; border: #fff; }
 
 /* 맛집리스트 */
-.best_wrap{    background: url(../images/back_.png) no-repeat;
-    background-size: 100% 80%;
-    background-position: 0 100%;}
+.best_wrap{ background: url(../img/back_.png) no-repeat;
+		    background-size: 100% 80%;
+		    background-position: 0 100%;}
 
 #contentWrap { width: 1200px; margin: 0 auto;}
 #best{height: 800px; margin-bottom: 50px;}
