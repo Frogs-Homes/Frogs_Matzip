@@ -59,12 +59,12 @@
              <h1 class="hidden">개굴플레이트</h1>
              <p>솔직한 리뷰, 믿을 수 있는 평점!</p>
               <form>
-                 <fieldset>
-                         <legend class="hidden">검색창</legend>
-                         <label for="search_bar" class="hidden">위치</label>
-                         <input type="text" id="search_bar" placeholder="지역,식당 또는 음식">
-                         <input type="submit" id="search_btn" value="검색">
-                </fieldset>
+	              <fieldset>
+		              <legend class="hidden">검색창</legend>
+		              <label for="search_bar" class="hidden">위치</label>
+		              <input type="text" id="search_bar" placeholder="지역,식당 또는 음식">
+		              <input type="button" id="search_btn" onclick="searchRest()" value="검색">
+	              </fieldset>
             </form>
         </div>
     </div>
@@ -132,14 +132,8 @@
  		function userMenuBtn() {
  			list_wrap.classList.toggle('show')
  		}
- 		
- 		/* When the user clicks on the button,
- 		toggle between hiding and showing the dropdown content */
- 		function myFunction() {
- 		  document.getElementById("myDropdown").classList.toggle("show");
- 		}
 
- 		// Close the dropdown menu if the user clicks outside of it
+ 		// 참고용 - Close the dropdown menu if the user clicks outside of it 
  		window.onclick = function(event) {
  		  if (!event.target.matches('.dropbtn')) {
  		    var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -153,7 +147,14 @@
  		  }
  		}
  		// -------------user menu 끝------------------------------------------------------------------------
-    
+    	
+ 		// -------------searchRest 시작------------------------------------------------------------------------
+ 		function searchRest() {
+ 			let search = search_bar.value
+ 		}
+ 		
+ 		// -------------searchRest 끝------------------------------------------------------------------------
+ 		
     	// -------------join 시작------------------------------------------------------------------------
     	// join id 체크
     	function joinChkId() {
