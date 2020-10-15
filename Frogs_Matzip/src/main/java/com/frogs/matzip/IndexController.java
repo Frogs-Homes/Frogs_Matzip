@@ -50,7 +50,11 @@ public class IndexController {
 	
 	@RequestMapping(value="ajaxLogin", method = RequestMethod.POST)
 	@ResponseBody
-	public int ajaxLogin(@RequestBody IndexPARAM param) {
-		return service.login(param);
+	public int ajaxLogin(@RequestBody IndexPARAM param, HttpSession hs) {
+		int result = service.login(param);
+		if(result == Const.SUCCESS) {
+			hs.setAttribute(Const.LOGIN_USER, param);
+		}
+		return result;
 	}
 }

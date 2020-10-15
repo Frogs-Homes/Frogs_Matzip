@@ -2,8 +2,6 @@ package com.frogs.matzip;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.web.multipart.MultipartRequest;
-
 public class CommonUtils {
 	public static int parseStrToInt(String str) {
 		return parseStrToInt(str, 0);
