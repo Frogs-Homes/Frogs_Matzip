@@ -38,7 +38,6 @@ public class IndexController {
 	
 	@RequestMapping(value="/ajaxJoin", method = RequestMethod.POST)
 	@ResponseBody
-
 	public int ajaxJoin(IndexVO param) {
 		return service.ajaxJoin(param);
 	}
