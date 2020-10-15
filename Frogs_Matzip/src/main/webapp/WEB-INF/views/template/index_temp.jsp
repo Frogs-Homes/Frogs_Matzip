@@ -64,7 +64,7 @@
                     <input type="password" name="user_pw" class="login_pw" placeholder="   비밀번호"><br>
                     <input type="button" class="login_btn" value="로그인">
                 </form>
-                <div class="join"><p class="join_ctnt">개굴플레이트 계정이 없으세요? <span class="join_click">회원 가입</span></p></div>
+                <div class="join"><p class="join_ctnt">개굴플레이트 계정이 없으세요? <span id="join_modal_open">회원 가입</span></p></div>
             </div>
             <div class="modal_close"><span class="material-icons">clear</span></div>
         </div>
@@ -72,7 +72,6 @@
         <div id="modal_join_wrap">
             <div id="modal_join">
                 <h3>회원가입</h3>
-                <div class="msg">${msg}</div>
             </div>
             <div id="modal_value">
                 <form id="join_frm">
@@ -87,7 +86,7 @@
                     <input type="text" name="user_nm" class="join_nm" placeholder="  이름"><br>
                     <input type="submit" class="join_btn" value="회원가입">
                 </form>
-                <div id="idChkResult" class="msg"></div>
+                <div id="error_msg" class="msg"></div>
             </div>
             <div class="modal_close"><span class="material-icons">clear</span></div>
         </div>
@@ -106,8 +105,10 @@
     		
     		axios.post('/ajaxJoin', parameter).then(function(res) {
     			if(res.data==1) {
-    				// 성공, 자동로그인, index페이지
+    				// 회원가입 성공, 자동로그인, index페이지
     				
+    			} else {
+    				error_msg.innerText = '문제가 발생했습니다.'
     			}
     		})
     	}
@@ -120,9 +121,9 @@
     			
     			if(user_id !=""){
     				if(res.data =='2'){
-        				idChkResult.innerText = '사용할 수 있는 아이디 입니다.'
+    					error_msg.innerText = '사용할 수 있는 아이디 입니다.'
         			} else if(res.data == '3') {
-        				idChkResult.innerText = '이미 사용중인 아이디 입니다.' 
+        				error_msg.innerText = '이미 사용중인 아이디 입니다.' 
         			}
     			} else {
     				alert('아이디를 입력하세요.')
@@ -171,8 +172,10 @@
     		axios.post('/ajaxLogin', parameter).then(function(res) {
     			if(res.data==1) {
     				// 로그인 성공
+    				"redirect:/"
     			} else {
     				// 로그인 실패, 에러메시지 띄우기
+    				error_msg.innerText = '에러 발생'
     			}
     		})
     	}
@@ -208,6 +211,8 @@
     	
     	// 모달창
         function loginBtnClick() {
+			modalOffClick()
+			
             document.querySelector('#modal_login_wrap').style.display = 'block'
             document.querySelector('#modal_bg').style.display = 'block'
 
@@ -216,15 +221,16 @@
         }
 
         function joinBtnClick() {
+        	modalOffClick()
+        	
             document.querySelector('#modal_join_wrap').style.display = 'block'
             document.querySelector('#modal_bg').style.display = 'block'
 
             document.querySelector('html').classList.add('scrollDisable')
             document.querySelector('body').classList.add('scrollDisable')
-            
         }
 
-        function modalOffClick() {            
+        function modalOffClick() {  
             document.querySelector('#modal_login_wrap').style.display = 'none'
             document.querySelector('#modal_join_wrap').style.display = 'none'
             document.querySelector('#modal_bg').style.display = 'none'
@@ -233,20 +239,16 @@
             document.querySelector('body').classList.remove('scrollDisable')
         }
 
-        function modalOffjoinClick() {
-            document.querySelector('#modal_login_wrap').style.display = 'none'
-        }
-
         document.querySelector('#login_btn').addEventListener('click', loginBtnClick)
-        document.querySelector('.join_click').addEventListener('click', joinBtnClick)
+        document.querySelector('#join_modal_open').addEventListener('click', joinBtnClick)
+        
         var modalCloseArr = document.querySelectorAll('.modal_close')
-        var modalLoginCloseArr = document.querySelectorAll('.join_click')
+        
         modalCloseArr.forEach(function(item) {
             item.addEventListener('click', modalOffClick)
         })
-        modalLoginCloseArr.forEach(function(item) {
-            item.addEventListener('click', modalOffjoinClick)
-        })
+        
+	
         
         
         /*
