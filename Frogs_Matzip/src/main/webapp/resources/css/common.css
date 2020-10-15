@@ -62,7 +62,7 @@ h3 {font-size: 2rem;}
 #modal_value #join_frm { height: 270px;}
 #modal_value .join .join_click {font-weight: bolder; color: #f07a2c;}
 #modal_value .join_btn { width: 305px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee; color: #fff; background-color: #f07a2c; font-weight: bold;}
-#modal_value #idChkResult { text-align: center; color: rgb(245, 106, 106);}
+#modal_value #error_msg { text-align: center; color: rgb(245, 106, 106);}
 
 #modal_join_wrap {
     display: none;

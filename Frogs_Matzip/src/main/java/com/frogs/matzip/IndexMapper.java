@@ -9,5 +9,6 @@ import com.frogs.matzip.model.IndexVO;
 @Mapper
 public interface IndexMapper {
 	int insUser(IndexVO param);
+	
 	IndexDMI selUser(IndexPARAM param);
 }
