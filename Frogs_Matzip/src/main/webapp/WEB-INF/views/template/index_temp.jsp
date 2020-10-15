@@ -56,7 +56,7 @@
                 <h3>로그인</h3>
             </div>
             <div id="modal_ctnt"><p>로그인하면 가고싶은 식당을<br>저장할 수 있어요</p></div>
-            <div id="modal_value">
+            <div class="modal_value">
                 <form id="login_frm">
                     <label for="user_id" class="hidden"></label>
                     <input type="text" name="user_id" class="login_id" placeholder="   아이디"><br>
@@ -76,7 +76,7 @@
             <div id="modal_join">
                 <h3>회원가입</h3>
             </div>
-            <div id="modal_value">
+            <div class="modal_value">
                 <form id="join_frm">
                     <label for="user_id" class="hidden"></label>
                     <input type="text" name="user_id" class="join_id" placeholder="    아이디"><br>
@@ -170,9 +170,9 @@
 					'nm': join_frm.user_nm.value
 			}
 			axios.post('/ajaxJoin', parameter).then(function(res) {
-				if(res.data==1) {
+				if(res.data == '1') {
 					// 회원가입 성공, 자동로그인, index페이지
-					
+					"redirect:/"
 				} else {
 					join_error_msg.innerText = '문제가 발생했습니다.'
 				}
@@ -184,12 +184,10 @@
 		// login - check
 		function loginChk() {
 			if(login_frm.user_id.value.length < 5) {
-				//alert('아이디는 5글자 이상이 되어야 합니다')
 				login_msg.innerHTML = '아이디는 5글자 이상이 되어야 합니다'
 				login_frm.user_id.focus()
 				return false
 			} else if(login_frm.user_pw.value.length < 5) {
-				//alert('비밀번호는 5글자 이상이 되어야 합니다')
 				login_msg.innerHTML = '비밀번호는 5글자 이상이 되어야 합니다'
 				login_frm.user_pw.focus()
 				return false
@@ -197,18 +195,24 @@
 			
 			// login - ajax
 			let parameter = {
-    				'user_id': join_frm.user_id.value,
-    				'user_pw': join_frm.user_pw.value
+    				'user_id': login_frm.user_id.value,
+    				'user_pw': login_frm.user_pw.value
     		}
     		
     		axios.post('/ajaxLogin', parameter).then(function(res) {
     			// 1: 로그인 성공 2: 아이디없음 3: 비밀번호틀림 
-    			if(res.data==1) {
+    			if(res.data == '1') {
     				// 로그인 성공
     				"redirect:/"
+    			} else if(res.data == '2') {
+    				error_msg.innerText = '아이디를 확인해 주세요.'
+    				login_frm.user_id.focus()
+    			} else if(res.data == '3') {
+    				error_msg.innerText = '비밀번호를 확인해 주세요.'
+    				login_frm.user_pw.focus()
     			} else {
     				// 로그인 실패, 에러메시지 띄우기
-    				error_msg.innerText = '에러 발생'
+    				error_msg.innerText = '에러가 발생했습니다.'
     			}
     		})
 		}
