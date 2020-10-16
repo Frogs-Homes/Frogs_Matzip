@@ -57,4 +57,12 @@ public class IndexController {
 		}
 		return result;
 	}
+	
+	@RequestMapping(value="/listmap", method = RequestMethod.GET)
+	public String listMap(Model model) {
+		model.addAttribute(Const.CSS, new String[] {"common", "listmap", "defaultheader"});
+		model.addAttribute(Const.TITLE, "MAP");
+		model.addAttribute(Const.VIEW, "list_map");
+		return ViewRef.DEFAULT_TEMP;
+	}
 }

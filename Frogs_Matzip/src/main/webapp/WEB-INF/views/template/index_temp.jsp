@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <c:forEach items="${css}" var="item">
-	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css?dkdk=1">
+	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css?dkdddk=1">
 </c:forEach>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <title>${title}</title>
@@ -150,7 +150,16 @@
     	
  		// -------------searchRest 시작------------------------------------------------------------------------
  		function searchRest() {
- 			let search = search_bar.value
+ 			if(search_bar.value == "") {
+ 				alert('검색어를 입력하세요.')
+ 				search_bar.focus()
+ 				return false
+ 			} else {
+ 				let search = search_bar.value
+ 				location.href='/listmap'
+ 			}
+ 			
+ 			
  		}
  		
  		// -------------searchRest 끝------------------------------------------------------------------------
