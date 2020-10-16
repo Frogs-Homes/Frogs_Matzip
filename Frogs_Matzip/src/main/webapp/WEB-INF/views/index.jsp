@@ -6,6 +6,15 @@
      <section id="best">
         <div class="res1_wrap">
             <h2>평점이 높은 인기 식당</h2>
+            <div id="rest_menu_wrap">
+            	<for:each items="${recMenuList}" var="item">
+            		<dl>
+            			<a href="#">
+            				<div class="restaurant"></div>
+            			</a>
+            		</dl>
+            	</for:each>
+            </div>
             <ol>
                 <li>
                     <dl><a href="#">
