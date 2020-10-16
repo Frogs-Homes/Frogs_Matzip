@@ -14,14 +14,17 @@ border-radius:22px; width:60%;  padding:0 15px; margin-left: 1%; margin-left: 0%
 		    background-size: 100% 80%;
 		    background-position: 0 100%;}
 
-#contentWrap { width: 1200px; margin: 0 auto;}
+/*#contentWrap { width: 1200px; margin: 0 auto;}*/
 #best{height: 800px; margin-bottom: 50px;}
 .res1_wrap { margin-top: 100px; height: 388px;}
-.res1_wrap ol { margin-top: 50px;}
+.res1_wrap #rest_menu_wrap { margin-top: 50px;}
 .res2_wrap { margin-top: 100px;}
 
 section { margin: 0 auto; max-width: 1200px; }
 section h2 { padding: 80px 0px 72px; font-size: 1.8rem;}
+section #rest_menu_wrap li {max-width: 23%; margin-left: 2.6%; float: left;}
+section #rest_menu_wrap li:first-child { margin-left: 0%;}
+
 section ol li {max-width: 23%; margin-left: 2.6%; float: left;}
 section ol li:first-child { margin-left: 0%;}
 
