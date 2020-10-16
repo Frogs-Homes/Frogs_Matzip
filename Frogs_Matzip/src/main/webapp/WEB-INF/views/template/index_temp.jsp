@@ -156,7 +156,7 @@
  				return false
  			} else {
  				let search = search_bar.value
- 				location.href='/listmap'
+ 				location.href='/rest/listMap'
  			}
  			
  			
