@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <c:forEach items="${css}" var="item">
-	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css?dkdddk=1">
+	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css">
 </c:forEach>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <title>${title}</title>
@@ -131,20 +131,6 @@
  		// -------------user menu 시작------------------------------------------------------------------------
  		function userMenuBtn() {
  			list_wrap.classList.toggle('show')
- 		}
-
- 		// 참고용 - Close the dropdown menu if the user clicks outside of it 
- 		window.onclick = function(event) {
- 		  if (!event.target.matches('.dropbtn')) {
- 		    var dropdowns = document.getElementsByClassName("dropdown-content");
- 		    var i;
- 		    for (i = 0; i < dropdowns.length; i++) {
- 		      var openDropdown = dropdowns[i];
- 		      if (openDropdown.classList.contains('show')) {
- 		        openDropdown.classList.remove('show');
- 		      }
- 		    }
- 		  }
  		}
  		// -------------user menu 끝------------------------------------------------------------------------
     	
