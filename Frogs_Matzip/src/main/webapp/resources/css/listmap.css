@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 /*list*/
-.container { width: 100%; height: 1000px; display: flex;}
-#list_back { width: 30%; display: inline-block; margin: 0 30px; }
+.back_wrap { width: 100%; height: 100%; display: flex;}
+#list_back { display: inline-block; width: 30%; margin: 0 30px; float: left;}
 #list_back h2 { margin: 40px 0 0 20px; }
 .list_wrap { overflow: hidden; width: 100%; border-bottom: 1px solid #dbdbdb; }
 .list_wrap .list_ctnt_wrap { margin: 20px; position: relative; }
@@ -15,6 +15,9 @@
 
 
 
+
+
 /*map*/
-.container #map_back { width: 70%; display: inline-block; z-index: 0; }
-#map_back .food_img  { max-width: 100%; max-height: 100%;}
+#map_back { width: 60%; height:100%; z-index: 0; }
+
+.map_wrap { display:inline-block; width:1300px; height:1300px; border-left: 1px solid #DBDBDB; overflow: hidden;}
