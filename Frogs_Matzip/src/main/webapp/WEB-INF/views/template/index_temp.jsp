@@ -38,7 +38,8 @@
 				        	<c:choose>
 		                		<c:when test="${loginUser == null}">
 		                			<a id="login_btn">로그인</a>
-		                			<a>회원가입(넣을거여?)</a>
+		                			<a>회원가입</a>
+		                			<a href="/rest/reg">신규 가게 등록</a>
 		                		</c:when>
 		                		<c:otherwise>
 		                			<a>마이페이지</a>
