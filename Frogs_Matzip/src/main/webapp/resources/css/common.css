@@ -30,13 +30,7 @@ body { font-family: 'TmoneyRoundWindRegular'; }
 .user_button .img_wrap { overflow: hidden; display: inline-block; width: 34px; height: 34px; margin-left: 9px; border: 1px solid #fff; border-radius: 17px;}
 .user_button .img_wrap .default_img { width: 36px; height: 36px; object-fit: fill; }
 
-/* user menu */
-#list_wrap { position: absolute; top: 47px; left: 0; display: none; width: 260px; z-index: 10; background-color: #ffffff;
-			overflow: hidden; border-radius: 20px; }
-#list_wrap a { display: block; color: rgb(153, 152, 150); width: 240px; height: 42px; padding-left: 20px; line-height: 42px; }
-#list_wrap a:hover { color: #ffffff; background-color: #f07a2c; }
-#list_wrap hr { margin: 1px 0; }
-.show { display: block !important; }
+
 
 /* 모달창 */
 #modal_login_wrap {

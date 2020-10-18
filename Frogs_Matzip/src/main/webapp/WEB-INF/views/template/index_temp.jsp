@@ -15,7 +15,7 @@
 	<div class="main_back">
          <header>
              <div class="head">
-                <h2><a id="lnb_logo" href="#">FrogsMatzip</a></h2>
+                <h2><a id="lnb_logo" href="/index">FrogsMatzip</a></h2>
                 <nav class="lnb">
                     <h2 class="hidden">사용자 이용메뉴</h2>
                     <div id="lnb_wrap">

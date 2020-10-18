@@ -11,6 +11,15 @@
     background-color: #FFFFFF;
 }
 
+/* user menu */
+#lnb_wrap { width : 230px;}
+#list_wrap { position: absolute; display: none; width: 210px; z-index: 10; background-color: #ffffff;
+			overflow: hidden; border-radius: 20px; }
+#list_wrap a { display: block; color: rgb(153, 152, 150);  height: 42px; padding-left: 20px; line-height: 42px; }
+#list_wrap a:hover { color: #ffffff; background-color: #f07a2c; }
+#list_wrap hr { margin: 1px 0; }
+.show { display: block !important; }
+
 
 #header_back #logo_back { height: 100%; width: 15%;}
 
