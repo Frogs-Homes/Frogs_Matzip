@@ -1,9 +1,8 @@
 @charset "UTF-8";
 
 /* default header */
-header {width: 100%; height: 70px; background-color: #ffffff6b; }
-.head {
-	display: flex; 
+#header_back {
+    display: flex; 
     width: 100%; height: 70px;
     margin: 0 auto;
     border-bottom: 1px solid #DBDBDB;
@@ -11,8 +10,27 @@ header {width: 100%; height: 70px; background-color: #ffffff6b; }
     box-shadow: 0 4px 11px rgba(0,0,0,0.1);
     background-color: #FFFFFF;
 }
-h1 { height: 100%; width: 15%; }
-h1 a { display: inline-block; height: 100%; }
-#logo { font-family: 'TmoneyRoundWindExtraBold'; font-size: 1.5rem; }
-.lnb {position: relative; float: right; width: 280px; font-size: 1.2rem; }
-.lnb_wrap li {float: left; margin-left: 9%;}
+
+
+#header_back #logo_back { height: 100%; width: 15%;}
+
+#header_back #search_back { height: 100%; width: 70%; display: flex; align-items: center; justify-content: center;}
+#search_back .search_icon { 
+    display: flex; align-items: center; justify-content: center; width: 30px; height: 29px; border-radius: 50px;  background-color: rgb(255, 234, 196); margin-left: 12px; font-size: 27px; border: white; background-color: #f07a2c; color: white;
+    box-sizing: border-box; box-shadow: 0 4px 11px rgba(0,0,0,0.2);
+}
+#search_back .search_wrap { 
+    height: 100%; display: flex; align-items: center;
+    border:none; width: 300px; height: 40px;
+    border-radius:22px; margin-left: 1%; border: 1px solid #000;
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 24px;
+    color: #222222 !important;
+}
+#search_bar { display: contents;}
+#search_back .search_bar {height: 25px; width: 235px; border:none; margin-left: 15px;}
+
+#header_logo { font-family: 'TmoneyRoundWindExtraBold';font-size: 1.5rem; line-height: 2.7; margin-left: 28px; float: left;}
+
+.lnb { height: 100%; display: flex; align-items: center;}
