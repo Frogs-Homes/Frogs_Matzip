@@ -11,7 +11,7 @@
     <button type="button" onclick="getLatLng()">좌표 가져오기</button><span id="resultGetLatLng"></span><br> <!--주소 검색하고 lat, lng에 담기-->
     <input type="hidden" name="lat" value="${data.lat == null ? 0 : data.lat}">
     <input type="hidden" name="lng" value="${data.lng == null ? 0 : data.lng}">
-    <fieldset id="frm_phone">
+    <fieldset>
     	<legend>전화번호</legend>
     	<select id="phone_1">
     		<option value="0">--선택--</option>
@@ -22,7 +22,7 @@
     	<input type="tel" id="phone_3" minlength="4" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'')">
 		<input type="hidden" name="phone">
     </fieldset>
-    <fieldset id="frm_field">
+    <fieldset>
         <legend>영업시간</legend>
         <label for="open_time" class="hidden">영업 시작시간</label>
         <input type="time" name="open_time" id="open_time">
@@ -37,14 +37,14 @@
                 <option value="${item.i_category}">${item.val}</option>
             </c:forEach>
     </select><br>
-    <fieldset id="frm_price">
-    	<legend>가격대 =</legend>
+    <fieldset>
+    	<legend>가격대</legend>
     	<input type="text" id="price_1">~
     	<input type="text" id="price_2">
     	<input type="hidden" name="price_range">
     </fieldset>
     <label for="menu_pic">메뉴판 사진</label>
-    <input type="text" id="menu_pic" name="menu_pic"><br>
+    <input type="file" name="menu_pic" accept="image/*"><br>
     <label for="ctnt">비고</label>
     <input type="text" id="ctnt" name="ctnt"><br>
     <input type="submit" value="등록">

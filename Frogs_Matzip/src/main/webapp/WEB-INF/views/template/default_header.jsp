@@ -50,7 +50,7 @@
 							<a>마이페이지</a>
 							<a>내가 쓴 리뷰</a>
 							<a>좋아요 목록</a>
-							<a href="/logout">로그아웃</a>
+							<a href="/user/logout">로그아웃</a>
 						</c:otherwise>
 					</c:choose>
 					<hr>

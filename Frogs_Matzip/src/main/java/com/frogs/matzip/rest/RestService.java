@@ -13,11 +13,16 @@ public class RestService {
 	@Autowired
 	private RestMapper mapper;
 	
-	public List<RestDMI> selCategoryList() {
-		return mapper.selCategoryList();
+	public int insRest(RestVO param) {
+		
+		return mapper.insRest(param);
 	}
 	
-	public int insRest(RestVO param) {
-		return mapper.insRest(param);
+	public List<RestDMI> selRecRestList() {
+		return mapper.selRecRestList();
+	}
+	
+	public List<RestDMI> selCategoryList() {
+		return mapper.selCategoryList();
 	}
 }
