@@ -11,7 +11,7 @@ h2 {display: inline;}
 
 /* user menu */
 #list_wrap { position: absolute; top: 47px; display: none; width: 260px; z-index: 10; background-color: #ffffff;
-			overflow: hidden; border-radius: 20px; }
+			overflow: hidden; border-radius: 20px; cursor: pointer; }
 #list_wrap a { display: block; color: rgb(153, 152, 150); width: 240px; height: 42px; padding-left: 20px; line-height: 42px; }
 #list_wrap a:hover { color: #ffffff; background-color: #f07a2c; }
 #list_wrap hr { margin: 1px 0; }

@@ -24,10 +24,12 @@ body { font-family: 'TmoneyRoundWindRegular'; }
 .msg { font-weight: bold; color: rgb(245, 106, 106); }
 
 /* User 버튼 */
-#img_back { height: 100%; display: flex; align-items: center; justify-content: flex-end; margin-right: 20px; z-index: 10;}
-.user_button { width: 83px; height: 42px; display: flex; align-items: center; justify-content: center; border: 1px solid #DDDDDD;  border-radius: 26px;  box-sizing: border-box; box-shadow: 0 4px 11px rgba(0,0,0,0.1); background-color: white;}
-.user_button .material-icons { width: 22px; height: 22px; font-size: 25px; color: rgb(153, 152, 150); z-index: 1; }
-.user_button .img_wrap { overflow: hidden; display: inline-block; width: 34px; height: 34px; margin-left: 9px; border: 1px solid #fff; border-radius: 17px;}
+#img_back { height: 100%; display: flex; align-items: center; justify-content: flex-end; margin-right: 20px; z-index: 10; }
+.user_button { width: 83px; height: 42px; display: flex; align-items: center; justify-content: center; border: 1px solid #DDDDDD;  border-radius: 26px;  box-sizing: border-box; 
+			box-shadow: 0 4px 11px rgba(0,0,0,0.1); background-color: white; pointer: cursor; }
+.user_button .material-icons { width: 22px; height: 22px; font-size: 25px; color: rgb(153, 152, 150); z-index: 1; cursor: pointer; }
+.user_button .img_wrap { overflow: hidden; display: inline-block; width: 34px; height: 34px; margin-left: 9px; border: 1px solid #fff; 
+						border-radius: 17px; cursor: pointer; }
 .user_button .img_wrap .default_img { width: 36px; height: 36px; object-fit: fill; }
 
 
@@ -52,17 +54,20 @@ h3 {font-size: 2rem;}
 .modal_value {width: 100%; margin-top: 50px; position: absolute;}
 .modal_value .login_id { width:300px; height: 40px; border-radius: 7px; border: #eee;}
 .modal_value .login_pw { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
-#login_submit_btn { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee; background-color: #f07a2c;}
+#login_submit_btn { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee; background-color: #f07a2c;
+											cursor: pointer; }
 
 .modal_value .join {text-align: center; margin-bottom: 60px;}
 .modal_value .join_id { width:200px; height: 40px; border-radius: 7px; border: #eee; position: absolute; top: -20px; left: 90px;}
-.modal_value .check_id{ width:91px; height: 40px; border-radius: 7px; border: #eee; background-color: white; position: absolute; top: -20px; left: 298px;}
+.modal_value .check_id{ width:91px; height: 40px; border-radius: 7px; border: #eee; background-color: white; 
+						position: absolute; top: -20px; left: 298px; cursor: pointer; }
 .modal_value .join_pw { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
-.modal_value .join_btn, .join_nm { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
+.modal_value .join_btn, .join_nm { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee; }
 .modal_value #login_frm { height: 180px;}
 .modal_value #join_frm { height: 270px;}
-.modal_value .join #join_btn {font-weight: bolder; color: #f07a2c;}
-.modal_value #join_submit_btn { width: 305px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee; color: #fff; background-color: #f07a2c; font-weight: bold;}
+.modal_value .join .join_btn {font-weight: bolder; color: #f07a2c; cursor: pointer; }
+.modal_value #join_submit_btn { width: 305px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee; color: #fff; 
+							background-color: #f07a2c; font-weight: bold; cursor: pointer; }
 .modal_value .msg { text-align: center; }
 
 #modal_join_wrap {
@@ -97,6 +102,7 @@ h3 {font-size: 2rem;}
     right: 0;
     color: #fff;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .scrollDisable {

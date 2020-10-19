@@ -13,10 +13,6 @@
 .list_wrap .ctnt_wrap strong { margin-left: 10px; color: #f07a2c;}
 .list_wrap .ctnt_wrap p { display: inline-block; margin-top: 4px; color: #9b9b9b;}
 
-
-
-
-
 /*map*/
 #map_back { width: 60%; height:100%; z-index: 0; }
 
