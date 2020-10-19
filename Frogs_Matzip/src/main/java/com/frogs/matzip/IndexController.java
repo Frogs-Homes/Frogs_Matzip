@@ -33,9 +33,9 @@ public class IndexController {
 		
 		model.addAttribute(Const.CSS, new String[] {"common", "index", "indexheader"});
 		model.addAttribute(Const.TITLE, "FrogsMatzip");
-		model.addAttribute(Const.HEADER, "/template/index_header");
+		model.addAttribute(Const.HEADER, "template/index_header");
 		model.addAttribute(Const.VIEW, "index");
-		return ViewRef.INDEX_TEMP;
+		return ViewRef.TEMP;
 	}
 	
 	@RequestMapping(value="/ajaxJoin", method = RequestMethod.POST)

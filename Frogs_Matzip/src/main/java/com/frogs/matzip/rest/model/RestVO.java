@@ -12,17 +12,28 @@ public class RestVO {
 	private String m_dt;
 	private String phone;
 	private String price_range;
-	private int open_time;
-	private int close_time;
+	private String open_time;
+	private String close_time;
 	private String ctnt;
-	private int i_user;
-	
-	
-	public int getI_user() {
-		return i_user;
+	private String menu_pic;
+
+	public String getMenu_pic() {
+		return menu_pic;
 	}
-	public void setI_user(int i_user) {
-		this.i_user = i_user;
+	public void setMenu_pic(String menu_pic) {
+		this.menu_pic = menu_pic;
+	}
+	public String getOpen_time() {
+		return open_time;
+	}
+	public void setOpen_time(String open_time) {
+		this.open_time = open_time;
+	}
+	public String getClose_time() {
+		return close_time;
+	}
+	public void setClose_time(String close_time) {
+		this.close_time = close_time;
 	}
 	public String getPhone() {
 		return phone;
@@ -35,18 +46,6 @@ public class RestVO {
 	}
 	public void setPrice_range(String price_range) {
 		this.price_range = price_range;
-	}
-	public int getOpen_time() {
-		return open_time;
-	}
-	public void setOpen_time(int open_time) {
-		this.open_time = open_time;
-	}
-	public int getClose_time() {
-		return close_time;
-	}
-	public void setClose_time(int close_time) {
-		this.close_time = close_time;
 	}
 	public String getCtnt() {
 		return ctnt;

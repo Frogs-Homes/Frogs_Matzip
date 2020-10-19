@@ -1,7 +1,6 @@
 package com.frogs.matzip;
 
 public class ViewRef {
-	public static final String DEFAULT_TEMP = "template/default_temp";
-	public static final String INDEX_TEMP = "template/index_temp";
+	public static final String TEMP = "template/base_template";
 	public static final String LIST_MAP = "rest/list_map";
 }

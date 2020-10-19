@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.frogs.matzip.rest.model.RestDMI;
-import com.frogs.matzip.rest.model.RestPARAM;
+import com.frogs.matzip.rest.model.RestVO;
 
 @Service
 public class RestService {
@@ -17,7 +17,7 @@ public class RestService {
 		return mapper.selCategoryList();
 	}
 	
-	public int insRest(RestPARAM param) {
+	public int insRest(RestVO param) {
 		return mapper.insRest(param);
 	}
 }
