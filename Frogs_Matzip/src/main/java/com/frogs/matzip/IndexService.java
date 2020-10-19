@@ -1,5 +1,7 @@
 package com.frogs.matzip;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +43,10 @@ public class IndexService {
 		param.setProfile_img(dbUser.getProfile_img());
 
 		return Const.SUCCESS;
+	}
+	
+	public List<IndexDMI> selRecRestList() {
+		// return mapper.selRecRestList();
+		return null;
 	}
 }

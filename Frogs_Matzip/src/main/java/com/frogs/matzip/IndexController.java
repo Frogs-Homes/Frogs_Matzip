@@ -29,6 +29,7 @@ public class IndexController {
 	@RequestMapping(value="/index", method = RequestMethod.GET)
 	public String Index(Model model) {
 		// 인기 식당, 카테고리별 식당 리스트 뿌리기 해야 함
+		model.addAttribute("recRestList", service.selRecRestList());
 		
 		model.addAttribute(Const.CSS, new String[] {"common", "index", "indexheader"});
 		model.addAttribute(Const.TITLE, "FrogsMatzip");
