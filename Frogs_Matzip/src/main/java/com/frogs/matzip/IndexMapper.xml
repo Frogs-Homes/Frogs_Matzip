@@ -15,4 +15,8 @@
 		<if test="i_user > 0">i_user = #{i_user}</if>
 		<if test=" user_id != null and user_id != ''"> user_id = #{user_id}</if>
 	</select>
+	
+	<select id="selRecRestList" resultType="IndexDMI">
+		select * from t_rest
+	</select>
 </mapper>

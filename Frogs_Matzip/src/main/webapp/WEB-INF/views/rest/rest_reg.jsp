@@ -10,16 +10,24 @@
     <button type="button" onclick="getLatLng()">좌표 가져오기</button><span id="resultGetLatLng"></span><br> <!--주소 검색하고 lat, lng에 담기-->
     <input type="hidden" name="lat" value="${data.lat == null ? 0 : data.lat}">
     <input type="hidden" name="lng" value="${data.lng == null ? 0 : data.lng}">
-    <label for="phone">전화번호</label>
-    <input type="tel" name="phone" id="phone" maxlength="13"><br>
+    <fieldset id="frm_phone">
+    	<legend>전화번호</legend>
+    	<select name="phone_1">
+    		<option value="0">--선택--</option>
+    		<option value="053">053</option>
+    		<option value="010">010</option>
+    	</select>
+    	<input type="tel" name="phone_2" minlength="3" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'')">-
+    	<input type="tel" name="phone_3" minlength="4" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'')">
+    	<input type="hidden" name="phone">
+    </fieldset>
     <fieldset id="frm_field">
-        <legend>영업시간
-            <label for="open_time" class="hidden">영업 시작시간</label>
-            <input type="time" name="open_time" id="open_time">
-            ~
-            <label for="close_time" class="hidden">영업 종료시간</label>
-            <input type="time" name="close_time" id="close_time">
-        </legend>
+        <legend>영업시간</legend>
+        <label for="open_time" class="hidden">영업 시작시간</label>
+        <input type="time" name="open_time" id="open_time">
+        ~
+        <label for="close_time" class="hidden">영업 종료시간</label>
+        <input type="time" name="close_time" id="close_time">
     </fieldset>
     <label for="category">음식 종류</label>
     <select id="category" name="i_category">
@@ -33,16 +41,15 @@
 <!-- 내 맛집스프링 앱키임 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=appkey=ef93669481fc09a5adb9cdbabc25ba28"></script>
 <script>
-	/*
-	let patt = new RegExp("[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}");
-	let res = patt.test(phone.value)
-	
-	if( !patt.test() ){
-	    alert("전화번호를 정확히 입력하여 주십시오.");
-	    return false;
+	// 전화번호 input 합치기
+	function addPhone() {
+		let phone_1 = frm.phone_1.value
+		let phone_2 = frm.phone_2.value
+		let phone_3 = frm.phone_3.value
+		frm.phone.value = phone_1 + '-' + phone_2 + '-' + phone_3
 	}
-	*/
 
+	// submit 시 폼 양식 확인
 	function chkFrm() {
 		if(frm.rest_nm.value.length == 0) {
 			alert('가게명을 입력해주세요')
@@ -58,7 +65,14 @@
 		} else if(frm.i_category.value == '0') {
 			frm.cd_category.focus()
 			return false
+		} else if(frm.phone_1.value == '0' || frm.phone_2.value < 3 || frm.phone_3.value < 4) {
+			alert('전화번호를 입력해주세요.')
+			return false
+		} else if(frm.open_time.value == '' || frm.close_time.value == '') {
+			
 		}
+		
+		addPhone()
 	}
 	
 	function changeAddr() {

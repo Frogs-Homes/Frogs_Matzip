@@ -7,14 +7,20 @@
         <div class="res1_wrap">
             <h2>평점이 높은 인기 식당</h2>
             <div id="rest_menu_wrap">
-            	<for:each items="${recMenuList}" var="item">
+            	<for:each items="${recRestList}" var="item">
             		<dl>
             			<a href="#">
-            				<div class="restaurant"></div>
+            				<div class="restaurant">
+            					<img src="/res/img/${item.menu_pic}.jpg" alt="">
+            					<dt class="rest_nm">${item.rest_nm} <span class="rest_score">${item.score}</span></dt>
+            					<dd class="rest_category">${item.category}</dd>
+            					<dd class="address">${item.addr}</dd>
+            				</div>
             			</a>
             		</dl>
             	</for:each>
             </div>
+            <!-- 
             <ol>
                 <li>
                     <dl><a href="#">
@@ -62,7 +68,7 @@
                 </li>
             </ol>
         </div>
-             <!-- 두번째 줄 시작 -->
+        두번째 줄 시작
         <div class="res2_wrap">
             <ol>
                 <li>
@@ -110,6 +116,7 @@
                     </dl>
                 </li>
             </ol>
+             -->
         </div>
      </section>
  </div>
