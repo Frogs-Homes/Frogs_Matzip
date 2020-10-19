@@ -12,7 +12,15 @@ public class IndexVO {
 	private String profile_img;
 	private String r_dt;
 	private String m_dt;
+	private int admin;
 	
+	
+	public int getAdmin() {
+		return admin;
+	}
+	public void setAdmin(int admin) {
+		this.admin = admin;
+	}
 	public int getI_user() {
 		return i_user;
 	}
