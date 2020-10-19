@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+
 <div class="main_back">
         <header>
             <div class="head">
@@ -21,7 +25,7 @@
             </div>
         </div>
         <div id="list_wrap">
-        	<c:if test="${loginUser.admin == 1}">
+        	<c:if test="${loginUser.admin == '1'}">
         		<a href="/rest/reg">신규 가게 등록</a>
         		<hr>
         	</c:if>
@@ -34,6 +38,7 @@
               			<a>마이페이지</a>
               			<a>내가 쓴 리뷰</a>
               			<a>좋아요 목록</a>
+              			<a href="/logout">로그아웃</a>
               		</c:otherwise>
               	</c:choose>
               	<hr>

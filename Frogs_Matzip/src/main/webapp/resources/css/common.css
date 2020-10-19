@@ -63,8 +63,8 @@ h3 {font-size: 2rem;}
 						position: absolute; top: -20px; left: 298px; cursor: pointer; }
 .modal_value .join_pw { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee;}
 .modal_value .join_btn, .join_nm { width:300px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee; }
-.modal_value #login_frm { height: 180px;}
-.modal_value #join_frm { height: 270px;}
+.modal_value #login_frm { height: 180px; text-align: center; }
+.modal_value #join_frm { height: 270px; text-align: center; }
 .modal_value .join .join_btn {font-weight: bolder; color: #f07a2c; cursor: pointer; }
 .modal_value #join_submit_btn { width: 305px; height: 40px; margin-top: 15px; border-radius: 7px;  border: #eee; color: #fff; 
 							background-color: #f07a2c; font-weight: bold; cursor: pointer; }

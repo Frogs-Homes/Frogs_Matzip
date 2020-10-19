@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.frogs.matzip.rest.RestMapper">
-	<insert id="insRest" parameterType="RestPARAM">
+	<insert id="insRest" parameterType="RestVO">
 		INSERT INTO t_rest
-		(nm, addr, lat, lng, i_category, menu_pic, hit, phone, price_range, open_time, close_time, ctnt)
+		(nm, addr, lat, lng, i_category, menu_pic, phone, price_range, open_time, close_time, ctnt)
 		VALUES
-		(#{nm}, #{addr}, #{lat}, #{lng}, #{i_category}, #{menu_pic}, #{hit}, #{phone}, #{price_range}, #{open_time}, #{close_time}, #{ctnt})
+		(#{nm}, #{addr}, #{lat}, #{lng}, #{i_category}, #{menu_pic}, #{phone}, #{price_range}, #{open_time}, #{close_time}, #{ctnt})
 	</insert>
 	
 	<select id="selCategoryList" resultType="RestDMI">

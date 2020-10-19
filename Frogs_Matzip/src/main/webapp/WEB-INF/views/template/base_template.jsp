@@ -1,20 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <c:forEach items="${css}" var="item">
-	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css?dk=112">
+	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css?dkd=112">
 </c:forEach>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <title>${title}</title>
 </head>
 <body>
-	<div>
-		<jsp:include page="/WEB-INF/views/${header}.jsp"></jsp:include>
-	</div>
+	
+	<jsp:include page="/WEB-INF/views/${tHeader}.jsp"></jsp:include>
+	
 	<div id="container">
 		<jsp:include page="/WEB-INF/views/${view}.jsp"></jsp:include>
 	</div>

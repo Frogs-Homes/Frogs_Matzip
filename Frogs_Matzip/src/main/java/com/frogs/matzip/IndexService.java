@@ -41,6 +41,7 @@ public class IndexService {
 		param.setUser_pw(null);
 		param.setNm(dbUser.getNm());
 		param.setProfile_img(dbUser.getProfile_img());
+		param.setAdmin(dbUser.getAdmin());
 
 		return Const.SUCCESS;
 	}

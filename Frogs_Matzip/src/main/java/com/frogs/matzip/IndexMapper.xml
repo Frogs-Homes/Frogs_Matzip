@@ -9,7 +9,7 @@
 	</insert>
 	
 	<select id="selUser" parameterType="IndexPARAM" resultType="IndexDMI">
-		SELECT i_user, user_id, user_pw, salt, nm, profile_img, r_dt
+		SELECT i_user, user_id, user_pw, salt, nm, profile_img, r_dt, admin
 		FROM t_user
 		WHERE
 		<if test="i_user > 0">i_user = #{i_user}</if>
