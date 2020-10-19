@@ -5,7 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-import com.frogs.matzip.model.IndexVO;
+import com.frogs.matzip.user.model.UserVO;
 
 public class SecurityUtils {
 	
@@ -15,14 +15,14 @@ public class SecurityUtils {
 	}
 	
 	public static int getLoginUserPk(HttpSession hs) {
-		IndexVO loginUser = (IndexVO)hs.getAttribute(Const.LOGIN_USER);
+		UserVO loginUser = (UserVO)hs.getAttribute(Const.LOGIN_USER);
 		
 		return loginUser == null ? 0 : loginUser.getI_user();
 	}
 	
-	public static IndexVO getLoginUser(HttpServletRequest request) {
+	public static UserVO getLoginUser(HttpServletRequest request) {
 		HttpSession hs = request.getSession();
-		return (IndexVO)hs.getAttribute(Const.LOGIN_USER);
+		return (UserVO)hs.getAttribute(Const.LOGIN_USER);
 	}
 	
 	public static boolean isLogout(HttpServletRequest request) {

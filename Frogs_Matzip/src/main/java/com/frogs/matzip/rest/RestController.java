@@ -42,7 +42,7 @@ public class RestController {
 	public String restReg(RestVO param, RedirectAttributes ra) {
 		int result = service.insRest(param);
 		
-		if(result == 1) {
+		if(result == Const.SUCCESS) {
 			ra.addFlashAttribute(Const.MSG, "등록 성공");
 		} else {
 			ra.addFlashAttribute(Const.MSG, "등록 실패");

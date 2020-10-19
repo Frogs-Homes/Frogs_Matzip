@@ -10,6 +10,8 @@ import com.frogs.matzip.rest.model.RestVO;
 
 @Mapper
 public interface RestMapper {
-	List<RestDMI> selCategoryList();
 	int insRest(RestVO param);
+	
+	List<RestDMI> selRecRestList();
+	List<RestDMI> selCategoryList();
 }

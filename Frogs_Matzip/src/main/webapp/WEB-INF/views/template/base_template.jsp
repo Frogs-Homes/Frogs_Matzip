@@ -14,7 +14,7 @@
 </head>
 <body>
 	
-	<jsp:include page="/WEB-INF/views/${tHeader}.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/views/${header_temp}.jsp"></jsp:include>
 	
 	<div id="container">
 		<jsp:include page="/WEB-INF/views/${view}.jsp"></jsp:include>
@@ -110,7 +110,7 @@
 				return false
 			}
     		
-    		axios.post('/ajaxCheckId', {
+    		axios.post('/user/ajaxCheckId', {
     			'user_id': join_frm.user_id.value
     		}).then(function(res) {
    				if (res.data =='2') {
@@ -169,7 +169,7 @@
 					'user_pw': join_frm.user_pw.value,
 					'nm': join_frm.user_nm.value
 			}
-			axios.post('/ajaxJoin', parameter).then(function(res) {
+			axios.post('/user/ajaxJoin', parameter).then(function(res) {
 				if(res.data == '1') {
 					// 회원가입 성공, 자동로그인, index페이지
 					alert('회원가입을 축하합니다!')
@@ -200,7 +200,7 @@
     				'user_pw': login_frm.user_pw.value
     		}
     		
-    		axios.post('/ajaxLogin', parameter).then(function(res) {
+    		axios.post('/user/ajaxLogin', parameter).then(function(res) {
     			// 1: 로그인 성공 2: 아이디없음 3: 비밀번호틀림 
     			if(res.data == '1') {
     				// 로그인 성공
