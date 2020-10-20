@@ -72,9 +72,11 @@
             <div class="modal_close"><span class="material-icons">clear</span></div>
         </div>
     </div>
-
+    
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ef93669481fc09a5adb9cdbabc25ba28&libraries=services"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
+    <script> 	
+    	
  		// -------------user menu 시작------------------------------------------------------------------------
  		function userMenuBtn() {
  			list_wrap.classList.toggle('show')
@@ -82,14 +84,36 @@
  		// -------------user menu 끝------------------------------------------------------------------------
     	
  		// -------------searchRest 시작------------------------------------------------------------------------
+ 	
  		function searchRest() {
+ 			
+ 			var ps = new kakao.maps.services.Places(); 
  			if(search_bar.value == "") {
  				alert('검색어를 입력하세요.')
  				search_bar.focus()
  				return false
  			} else {
  				let search = search_bar.value
+ 				console.log(search)
+ 				ps.keywordSearch(search, placesSearchCB); 
  				location.href='/rest/listMap'
+ 			}
+ 			
+ 			function placesSearchCB (data, status, pagination) {
+ 			    if (status === kakao.maps.services.Status.OK) {
+
+ 			        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+ 			        // LatLngBounds 객체에 좌표를 추가합니다
+ 			        var bounds = new kakao.maps.LatLngBounds();
+
+ 			        for (var i=0; i<data.length; i++) {
+ 			            displayMarker(data[i]);    
+ 			            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+ 			        }       
+
+ 			        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+ 			        map.setBounds(bounds);
+ 			    } 
  			}
  			
  			
