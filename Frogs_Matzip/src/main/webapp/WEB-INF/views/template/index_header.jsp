@@ -25,27 +25,27 @@
             </div>
         </div>
         <div id="list_wrap">
-        	<c:if test="${loginUser.admin == '1'}">
-        		<a href="/rest/reg">신규 가게 등록</a>
-        		<hr>
-        	</c:if>
-        	<c:choose>
-              		<c:when test="${loginUser == null}">
-              			<a id="login_btn">로그인</a>
-              			<a class="join_btn">회원가입</a>
-              		</c:when>
-              		<c:otherwise>
-              			<a>마이페이지</a>
-              			<a>내가 쓴 리뷰</a>
-              			<a>좋아요 목록</a>
-              			<a href="/user/logout">로그아웃</a>
-              		</c:otherwise>
-              	</c:choose>
-              	<hr>
-              	<a>로그인필요없는메뉴</a>
-              	<a>로그인필요없는메뉴</a>
-              	<a>로그인필요없는메뉴</a>
-        </div>
+			<c:if test="${loginUser.admin == '1'}">
+				<a href="/rest/reg">신규 가게 등록</a>
+				<hr>
+			</c:if>
+			<a>로그인필요없는메뉴</a>
+			<a>로그인필요없는메뉴</a>
+			<a>로그인필요없는메뉴</a>
+			<hr>
+			<c:choose>
+				<c:when test="${loginUser == null}">
+					<a id="login_btn">로그인</a>
+					<a class="join_btn">회원가입</a>
+				</c:when>
+				<c:otherwise>
+					<a>마이페이지</a>
+					<a>내가 쓴 리뷰</a>
+					<a>좋아요 목록</a>
+					<a href="/user/logout">로그아웃</a>
+				</c:otherwise>
+			</c:choose>
+		</div>
        </div>
             </nav>
          </div>

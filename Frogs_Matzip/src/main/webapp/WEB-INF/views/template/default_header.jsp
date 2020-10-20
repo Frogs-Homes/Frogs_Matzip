@@ -41,6 +41,10 @@
 						<a href="/rest/reg">신규 가게 등록</a>
 						<hr>
 					</c:if>
+					<a>로그인필요없는메뉴</a>
+					<a>로그인필요없는메뉴</a>
+					<a>로그인필요없는메뉴</a>
+					<hr>
 					<c:choose>
 						<c:when test="${loginUser == null}">
 							<a id="login_btn">로그인</a>
@@ -53,10 +57,6 @@
 							<a href="/user/logout">로그아웃</a>
 						</c:otherwise>
 					</c:choose>
-					<hr>
-					<a>로그인필요없는메뉴</a>
-					<a>로그인필요없는메뉴</a>
-					<a>로그인필요없는메뉴</a>
 				</div>
 			</div>
 		</nav>
