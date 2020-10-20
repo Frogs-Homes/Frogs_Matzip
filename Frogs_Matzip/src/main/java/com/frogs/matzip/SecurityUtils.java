@@ -22,11 +22,23 @@ public class SecurityUtils {
 	
 	public static UserVO getLoginUser(HttpServletRequest request) {
 		HttpSession hs = request.getSession();
+		Object result = hs.getAttribute(Const.LOGIN_USER);
+		if(result == null) {
+			return null;
+		}
 		return (UserVO)hs.getAttribute(Const.LOGIN_USER);
 	}
 	
 	public static boolean isLogout(HttpServletRequest request) {
 		return getLoginUser(request) == null;
+	}
+	
+	public static boolean isAdmin(HttpServletRequest request) {
+		UserVO loginUser = getLoginUser(request);
+		if(loginUser == null) {
+			return false;
+		}
+		return loginUser.getAdmin() == 1;
 	}
 	
 	public static String generateSalt() {
