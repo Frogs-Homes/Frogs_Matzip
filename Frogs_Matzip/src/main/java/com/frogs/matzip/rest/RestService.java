@@ -14,6 +14,8 @@ public class RestService {
 	private RestMapper mapper;
 	
 	public int insRest(RestVO param) {
+		String menu_pic = param.getMenu_pic();
+		
 		
 		return mapper.insRest(param);
 	}

@@ -21,6 +21,7 @@ public class IndexController {
 	public String Index(HttpServletRequest req, Model model) {
 		if(Const.realPath == null) {
 			Const.realPath = req.getSession().getServletContext().getRealPath("");
+			System.out.println(Const.realPath);
 		}
 		
 		// 인기 식당, 카테고리별 식당 리스트 뿌리기 해야 함
