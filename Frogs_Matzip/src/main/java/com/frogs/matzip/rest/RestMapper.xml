@@ -3,15 +3,34 @@
 <mapper namespace="com.frogs.matzip.rest.RestMapper">
 	<insert id="insRest" parameterType="RestVO">
 		INSERT INTO t_rest
-		(nm, addr, lat, lng, i_category, menu_pic, phone, price_range, open_time, close_time, ctnt)
+		(nm, addr, lat, lng, i_category, phone, price_range, open_time, close_time, ctnt)
 		VALUES
-		(#{nm}, #{addr}, #{lat}, #{lng}, #{i_category}, #{menu_pic}, #{phone}, #{price_range}, #{open_time}, #{close_time}, #{ctnt})
+		(#{nm}, #{addr}, #{lat}, #{lng}, #{i_category}, #{phone}, #{price_range}, #{open_time}, #{close_time}, #{ctnt})
 	</insert>
+	
+	<select id="selRest" parameterType="RestPARAM" resultType="RestDMI">
+		SELECT i_rest, nm, addr, lat, lng, i_category, menu_pic, hit, r_dt, m_dt, phone, price_range, open_time, close_time, ctnt 
+		FROM t_rest
+		<if test="i_rest > 0">
+			WHERE i_rest = #{i_rest}
+		</if>
+	</select>
+	
+	<select id="selRestMaxPk" resultType="RestDMI">
+		SELECT max(i_rest) 
+		FROM t_rest
+	</select>
 	
 	<select id="selRecRestList" resultType="RestDMI">
 		SELECT * FROM t_rest
 	</select>
+	
 	<select id="selCategoryList" resultType="RestDMI">
 		SELECT i_category, val FROM t_category
 	</select>
+	
+	<update id="updRestMenu" parameterType="RestVO">
+		UPDATE t_rest SET menu_pic = #{menu_pic}
+		WHERE i_rest = #{i_rest}
+	</update>
 </mapper>

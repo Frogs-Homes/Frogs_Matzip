@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.frogs.matzip.rest.model.RestDMI;
 import com.frogs.matzip.rest.model.RestVO;
@@ -13,11 +14,14 @@ public class RestService {
 	@Autowired
 	private RestMapper mapper;
 	
-	public int insRest(RestVO param) {
-		String menu_pic = param.getMenu_pic();
+	@Transactional
+	public void insRestTran(RestVO param) {
+		mapper.insRest(param);
+		mapper.selRestMaxPk();
 		
+		// 파일 저장
 		
-		return mapper.insRest(param);
+		mapper.updRestMenu(param);
 	}
 	
 	public List<RestDMI> selRecRestList() {

@@ -40,13 +40,21 @@ public class RestController {
 	
 	@RequestMapping(value="/reg", method = RequestMethod.POST)
 	public String restReg(RestVO param, RedirectAttributes ra) {
-		int result = service.insRest(param);
 		
-		if(result == Const.SUCCESS) {
+		int result = Const.SUCCESS;
+		try {
+			service.insRestTran(param);
+		} catch(Exception e) {
+			result = Const.FAIL;
+		}
+		
+		if (result == Const.SUCCESS) {
 			ra.addFlashAttribute(Const.MSG, "등록 성공");
 		} else {
 			ra.addFlashAttribute(Const.MSG, "등록 실패");
 		}
+		
+		
 		
 		return "redirect:/rest/reg";
 	}
