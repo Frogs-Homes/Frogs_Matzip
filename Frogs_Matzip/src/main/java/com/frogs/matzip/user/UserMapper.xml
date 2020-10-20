@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.frogs.matzip.IndexMapper">
-	<insert id="insUser" parameterType="IndexVO">
+<mapper namespace="com.frogs.matzip.user.UserMapper">
+	<insert id="insUser" parameterType="UserVO">
 		INSERT INTO t_user
 		(user_id, user_pw, salt, nm)
 		VALUES
 		(#{user_id}, #{user_pw}, #{salt}, #{nm})
 	</insert>
 	
-	<select id="selUser" parameterType="IndexPARAM" resultType="IndexDMI">
+	<select id="selUser" parameterType="UserPARAM" resultType="UserDMI">
 		SELECT i_user, user_id, user_pw, salt, nm, profile_img, r_dt, admin
 		FROM t_user
 		WHERE
 		<if test="i_user > 0">i_user = #{i_user}</if>
 		<if test=" user_id != null and user_id != ''"> user_id = #{user_id}</if>
-	</select>
-	
-	<select id="selRecRestList" resultType="IndexDMI">
-		select * from t_rest
 	</select>
 </mapper>

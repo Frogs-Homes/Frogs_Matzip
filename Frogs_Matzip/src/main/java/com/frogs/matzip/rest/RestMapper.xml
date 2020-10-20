@@ -8,6 +8,9 @@
 		(#{nm}, #{addr}, #{lat}, #{lng}, #{i_category}, #{menu_pic}, #{phone}, #{price_range}, #{open_time}, #{close_time}, #{ctnt})
 	</insert>
 	
+	<select id="selRecRestList" resultType="RestDMI">
+		SELECT * FROM t_rest
+	</select>
 	<select id="selCategoryList" resultType="RestDMI">
 		SELECT i_category, val FROM t_category
 	</select>
