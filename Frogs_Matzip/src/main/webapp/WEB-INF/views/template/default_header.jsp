@@ -9,7 +9,7 @@
 		</div>
 		<div id="search_back">
 			<div class="search_wrap">
-				<form onsubmit="searchPlaces(); return false;" id="search_bar">
+				<form id="search_bar">
 					<input type="text" name="search_place" class="search_bar" id="keyword" placeholder="지역, 식당 또는 음식" >
 					<button type="submit" class="search_icon"><span class="material-icons" >search</span></button>	
 				</form>
