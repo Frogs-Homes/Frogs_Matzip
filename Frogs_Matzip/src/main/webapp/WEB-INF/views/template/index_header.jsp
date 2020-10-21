@@ -52,7 +52,7 @@
      </header>
      <div class="search_wrap">
          <h1 class="hidden">개굴플레이트</h1>
-         <p>솔직한 리뷰, 믿을 수 있는 평점!<br>FrogsMatzip</p>
+         <p>솔직한 리뷰, 믿을 수 있는 평점!<br>FrogsMatzip<span class="region">(DAEGU)</span></p>
           <form action="/rest/listMap" method="GET">
            <fieldset>
             <legend class="hidden">검색창</legend>
