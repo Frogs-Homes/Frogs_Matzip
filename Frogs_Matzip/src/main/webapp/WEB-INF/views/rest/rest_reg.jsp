@@ -43,8 +43,8 @@
     	<input type="text" id="price_2">
     	<input type="hidden" name="price_range">
     </fieldset>
-    <label for="menu_pic">메뉴판 사진</label>
-    <input type="file" name="menu_pic" accept="image/*"><br>
+    <label for="menu_pic_file">메뉴판 사진</label>
+    <input type="file" name="menu_pic_file" accept="image/*"><br>
     <label for="ctnt">비고</label>
     <input type="text" id="ctnt" name="ctnt"><br>
     <input type="submit" value="등록">
@@ -96,6 +96,9 @@
 			return false
 		} else if(document.querySelector('#price_1').value == '' || document.querySelector('#price_2').value == '') {
 			alert('가격대를 입력해주세요.')
+			return false
+		} else if(frm.menu_pic_file.value == '') {
+			alert('메뉴판 사진을 등록해주세요.')
 			return false
 		}
 		

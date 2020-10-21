@@ -48,7 +48,15 @@
 	</beans:bean>
 	
 	<mybatis-spring:scan base-package="com.frogs.matzip"/>
-		
+	
+	<!-- tx: 트랜잭션 부분, namespace에서 tx 체크할 것 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource" />
+	</beans:bean>
+	
+	<!-- 인터셉터 -->
    <interceptors>
       <interceptor>
          <mapping path="/**"/>

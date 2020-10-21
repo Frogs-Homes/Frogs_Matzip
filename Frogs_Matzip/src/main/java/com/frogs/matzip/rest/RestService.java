@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.frogs.matzip.Const;
+import com.frogs.matzip.FileUtils;
 import com.frogs.matzip.rest.model.RestDMI;
-import com.frogs.matzip.rest.model.RestVO;
+import com.frogs.matzip.rest.model.RestPARAM;
 
 @Service
 public class RestService {
@@ -15,11 +17,16 @@ public class RestService {
 	private RestMapper mapper;
 	
 	@Transactional
-	public void insRestTran(RestVO param) {
+	public void insRestTran(RestPARAM param) {
 		mapper.insRest(param);
-		mapper.selRestMaxPk();
+		RestDMI dmi = mapper.selRestMaxPk();
+	
+		int i_rest = dmi.getI_rest();
+		String path = Const.realPath + "/resources/img/rest/" + i_rest + "/menu_pic/"; 
+		String menu_pic = FileUtils.saveFile(path, param.getMenu_pic_file());
 		
-		// 파일 저장
+		param.setI_rest(i_rest);
+		param.setMenu_pic(menu_pic);
 		
 		mapper.updRestMenu(param);
 	}

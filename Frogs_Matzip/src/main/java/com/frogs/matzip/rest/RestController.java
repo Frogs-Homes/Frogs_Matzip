@@ -11,8 +11,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.frogs.matzip.Const;
 import com.frogs.matzip.ViewRef;
+
 import com.frogs.matzip.model.IndexVO;
 import com.frogs.matzip.rest.model.RestVO;
+
 
 
 @Controller
@@ -43,7 +45,7 @@ public class RestController {
 	}
 	
 	@RequestMapping(value="/reg", method = RequestMethod.POST)
-	public String restReg(RestVO param, RedirectAttributes ra) {
+	public String restReg(RestPARAM param, RedirectAttributes ra) {
 		
 		int result = Const.SUCCESS;
 		try {
