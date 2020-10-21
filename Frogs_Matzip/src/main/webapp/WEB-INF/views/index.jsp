@@ -5,7 +5,7 @@
 <div class="best_wrap">
      <section id="best">
         <div class="res1_wrap">
-            <h2>평점이 높은 인기 식당</h2>
+            <h2>Best restaurants in Frogs</h2>
             <div id="rest_menu_wrap">
             	<for:each items="${recRestList}" var="item">
             		<dl>

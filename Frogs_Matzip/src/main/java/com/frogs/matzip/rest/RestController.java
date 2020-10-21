@@ -13,6 +13,7 @@ import com.frogs.matzip.Const;
 import com.frogs.matzip.ViewRef;
 
 import com.frogs.matzip.model.IndexVO;
+import com.frogs.matzip.rest.model.RestPARAM;
 import com.frogs.matzip.rest.model.RestVO;
 
 
@@ -59,9 +60,17 @@ public class RestController {
 		} else {
 			ra.addFlashAttribute(Const.MSG, "등록 실패");
 		}
-		
-		
-		
 		return "redirect:/rest/reg";
 	}
+	
+	@RequestMapping(value="/detail", method = RequestMethod.GET)
+	public String restDeail(Model model) {
+		
+		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restdetail"});
+		model.addAttribute(Const.TITLE, "Detail");
+		model.addAttribute(Const.HEADER, "/template/default_header");
+		model.addAttribute(Const.VIEW, "/rest/rest_detail");
+		return ViewRef.TEMP;
+	}
+	
 }

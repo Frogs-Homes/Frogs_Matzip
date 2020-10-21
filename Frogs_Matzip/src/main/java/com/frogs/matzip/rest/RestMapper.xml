@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.frogs.matzip.rest.RestMapper">
-	<insert id="insRest" parameterType="RestVO">
+	<insert id="insRest" parameterType="RestVO" useGeneratedKeys="true"  keyProperty="i_rest">
 		INSERT INTO t_rest
 		(nm, addr, lat, lng, i_category, phone, price_range, open_time, close_time, ctnt)
 		VALUES
