@@ -53,12 +53,12 @@
      <div class="search_wrap">
          <h1 class="hidden">개굴플레이트</h1>
          <p>솔직한 리뷰, 믿을 수 있는 평점!<br>FrogsMatzip<span class="region">(DAEGU)</span></p>
-          <form action="/rest/listMap" method="GET">
+          <form id="frm_search" action="/rest/listMap" method="GET" onsubmit="return searchRest()">
            <fieldset>
             <legend class="hidden">검색창</legend>
             <label for="search_bar" class="hidden">위치</label>
             <input type="text"  name="search_place" id="search_bar" placeholder="지역,식당 또는 음식">
-            <input type="submit" id="search_btn" onclick="searchRest()" value="검색">
+            <input type="submit" id="search_btn" value="검색">
            </fieldset>
         </form>
     </div>
