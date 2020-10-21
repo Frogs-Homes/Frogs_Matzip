@@ -121,11 +121,15 @@
      </section>
  </div>
  
+ 
  <div class="theme_wrap">
-    <h2 class="hidden">테마별 인기맛집</h2>
+     <h2>테마별 인기맛집</h2>
      <section id="theme">
          <div class="item1 item"></div>
-         <div class="item2 item"></div>
+         <div class="item2 item">
+             <p>오늘은 FrogsMatzip에서 추천하는 곳에서 <br>
+                 맛있는 한끼 어떠세요?</p>
+         </div>
          <div class="item3 item"></div>
          <div class="item4 item"></div>
          <div class="item5 item"></div>
