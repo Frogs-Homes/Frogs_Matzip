@@ -3,15 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="msg">${msg}</div>
-<form id="frm" action="/rest/reg" method="post" onsubmit="return chkFrm()">
+<form id="frm" action="/rest/reg" method="post" onsubmit="return chkFrm()" enctype="multipart/form-data">
     <label for="rest_nm">가게명</label>
-    <input type="text" id="rest_nm" name="nm" required autofocus><br>
+    <input type="text" id="rest_nm" name="nm" required autofocus value="test"><br>
     <label for="addr">주소</label>
-    <input type="text" id="addr" name="addr" placeholder="주소를 검색해주세요." onkeyup="changeAddr()">
+    <input type="text" id="addr" name="addr" placeholder="주소를 검색해주세요." onkeyup="changeAddr()" value="test">
     <button type="button" onclick="getLatLng()">좌표 가져오기</button><span id="resultGetLatLng"></span><br> <!--주소 검색하고 lat, lng에 담기-->
     <input type="hidden" name="lat" value="${data.lat == null ? 0 : data.lat}">
     <input type="hidden" name="lng" value="${data.lng == null ? 0 : data.lng}">
-    <fieldset>
+  <fieldset>
     	<legend>전화번호</legend>
     	<select id="phone_1">
     		<option value="0">--선택--</option>

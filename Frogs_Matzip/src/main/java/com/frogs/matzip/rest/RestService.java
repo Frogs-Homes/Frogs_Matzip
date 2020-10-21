@@ -19,9 +19,10 @@ public class RestService {
 	@Transactional
 	public void insRestTran(RestPARAM param) {
 		mapper.insRest(param);
-		RestDMI dmi = mapper.selRestMaxPk();
+		//RestDMI dmi = mapper.selRestMaxPk();
 	
-		int i_rest = dmi.getI_rest();
+		//int i_rest = dmi.getI_rest(); //여기서 에러 터짐
+		int i_rest = param.getI_rest();
 		String path = Const.realPath + "/resources/img/rest/" + i_rest + "/menu_pic/"; 
 		String menu_pic = FileUtils.saveFile(path, param.getMenu_pic_file());
 		
