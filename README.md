@@ -1,6 +1,16 @@
 # Frogs_Matzip
 맛집 프로젝트
 
+201021 한 일
+1. 지도 검색기능 구현
+2. 지도 마커 찍기
+3. 메뉴 사진 등록 구현 - 관리자 계정 시 가게 디테일 페이지에서 food_pic 입력페이지 이동시키기
+4. 신규 가게 등록창에 menu_pic, price_range 값 넣게 수정 -> menu_pic 폴더 추가, UUID 사용하여 저장해야 함
+5. detail 페이지 앞단 구현 프로토타입 완성
+6. 테스트용 db 값 넣기 - 북구까지
+7. default header에 검색버튼 작동하게 수정
+8. 테스트용 db lat, lng 수정
+
 201020 한 일
 1. user, user/model로 바꾸기
 2. /rest/reg, 음식사진 등록창에서 admin 계정인지 확인 후 들어가게 하기 추가
