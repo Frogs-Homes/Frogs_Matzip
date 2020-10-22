@@ -2,12 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!-- 관리자용 음식사진등록창 이동 -->
-<div>
-	<c:if test="${loginUser.admin == '1'}">
-		<a href="/rest/regFood">음식사진 등록창 이동</a>
-	</c:if>
-</div>
+
 
 <!--menuList-->
 <div id="menu_back">
@@ -25,8 +20,14 @@
     <div id="ctnt_back">
 		<div id="title_wrap">
             <div id="title">
-                <h1>미성옥</h1>
+                <h1>${data.nm}</h1>
                 <strong id="grade"><span>4.2</span></strong>
+                <!-- 관리자용 음식사진등록창 이동 -->
+				<div>
+					<c:if test="${loginUser.admin == '1'}">
+						<a href="/rest/regFood">음식사진 등록창 이동</a>
+					</c:if>
+				</div>
             </div>
             <div id="rest_action_button">
 
@@ -44,27 +45,27 @@
                     <tbody>
                         <tr>
                             <th>주소</th>
-                            <td>가나라다라마바</td>
+                            <td>${data.addr}</td>
                         </tr>
                         <tr>
                             <th>전화번호</th>
-                            <td>가나라다라마바</td>
+                            <td>${data.phone}</td>
                         </tr>
                         <tr>
                             <th>음식종류</th>
-                            <td>가나라다라마바</td>
+                            <td>${data.i_category}</td>
                         </tr>
                         <tr>
                             <th>가격대</th>
-                            <td>가나라다라마바</td>
+                            <td>${data.price_range}</td>
                         </tr>
                         <tr>
                             <th>영업시간</th>
-                            <td>가나라다라마바</td>
+                            <td>${data.open_time} ~ ${data.close_time}</td>
                         </tr>
                         <tr>
                             <th>비고</th>
-                            <td>가나라다라마바</td>
+                            <td>${data.ctnt}</td>
                         </tr>
                     </tbody>
                 </table>
