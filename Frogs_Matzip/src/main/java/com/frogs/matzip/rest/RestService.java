@@ -39,4 +39,8 @@ public class RestService {
 	public List<RestDMI> selCategoryList() {
 		return mapper.selCategoryList();
 	}
+	
+	public List<RestDMI> selRestList(RestPARAM param) {
+		return mapper.selRestList(param);
+	}
 }
