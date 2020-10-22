@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.frogs.matzip.rest.RestService;
+import com.frogs.matzip.rest.model.RestPARAM;
 
 @Controller
 public class IndexController {
@@ -17,14 +18,14 @@ public class IndexController {
 	private RestService rService;
 	
 	@RequestMapping(value="/index", method = RequestMethod.GET)
-	public String Index(HttpServletRequest req, Model model) {
+	public String Index(RestPARAM param, HttpServletRequest req, Model model) {
 		if(Const.realPath == null) {
 			Const.realPath = req.getSession().getServletContext().getRealPath("");
 			System.out.println(Const.realPath);
 		}
 		
 		// 인기 식당, 카테고리별 식당 리스트 뿌리기 해야 함
-		model.addAttribute("recRestList", rService.selRecRestList());
+		
 		
 		model.addAttribute(Const.CSS, new String[] {"common", "index", "indexheader"});
 		model.addAttribute(Const.TITLE, "FrogsMatzip");

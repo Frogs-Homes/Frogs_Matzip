@@ -44,6 +44,10 @@ public class RestService {
 		return mapper.selCategoryList();
 	}
 	
+	public List<RestDMI> selDistrictList() {
+		return mapper.selDistrictList();
+	}
+	
 	public List<RestDMI> selRestList(RestPARAM param) {
 		return mapper.selRestList(param);
 	}

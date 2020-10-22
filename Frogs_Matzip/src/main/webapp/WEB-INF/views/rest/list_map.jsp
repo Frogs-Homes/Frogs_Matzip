@@ -41,11 +41,11 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ef93669481fc09a5adb9cdbabc25ba28"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ef93669481fc09a5adb9cdbabc25ba28&libraries=services"></script>
 <script>
 	// 마커를 담을 배열입니다
 	var markerList = [];
-	console.log("markerList :" + markerList)
+	
 	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {

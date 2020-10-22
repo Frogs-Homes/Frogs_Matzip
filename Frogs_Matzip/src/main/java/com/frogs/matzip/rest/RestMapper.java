@@ -13,9 +13,9 @@ public interface RestMapper {
 	int insRest(RestVO param);
 	
 	RestDMI selRest(RestPARAM param);
-	RestDMI selRestMaxPk();
 	List<RestDMI> selRecRestList();
 	List<RestDMI> selCategoryList();
+	List<RestDMI> selDistrictList();
 	List<RestDMI> selRestList(RestPARAM param);
 	
 	int updRestMenu(RestVO param);

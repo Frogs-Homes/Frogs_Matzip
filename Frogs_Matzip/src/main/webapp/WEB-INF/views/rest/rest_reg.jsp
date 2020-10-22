@@ -36,7 +36,13 @@
     <select id="category" name="i_category">
         <option value="0">--선택--</option>
             <c:forEach items="${categoryList}" var="item">
-                <option value="${item.i_category}">${item.val}</option>
+                <option value="${item.i_category}">${item.category_val}</option>
+            </c:forEach>
+    </select><br>
+    <select id="district" name="i_district">
+        <option value="0">--선택--</option>
+            <c:forEach items="${districtList}" var="item">
+                <option value="${item.i_district}">${item.district_val}</option>
             </c:forEach>
     </select><br>
     <fieldset>
@@ -96,6 +102,9 @@
 			return false
 		} else if(frm.i_category.value == '0') {
 			alert('음식 종류를 선택해주세요.')
+			return false
+		} else if(frm.i_district.value == '0') {
+			alert('가게가 위치해 있는 지역을 선택해주세요.')
 			return false
 		} else if(document.querySelector('#price_1').value == '' || document.querySelector('#price_2').value == '') {
 			alert('가격대를 입력해주세요.')
