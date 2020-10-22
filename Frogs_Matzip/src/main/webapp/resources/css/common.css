@@ -32,7 +32,8 @@ body { font-family: 'TmoneyRoundWindRegular'; }
 						border-radius: 17px; cursor: pointer; }
 .user_button .img_wrap .default_img { width: 36px; height: 36px; object-fit: fill; }
 
-
+/* form_wrap 가운데정렬 */
+.frm_wrap { width: 1000px; margin: 0 auto; }
 
 /* 모달창 */
 #modal_login_wrap {

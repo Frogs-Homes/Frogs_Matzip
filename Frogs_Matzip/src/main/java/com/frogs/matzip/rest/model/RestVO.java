@@ -1,5 +1,8 @@
 package com.frogs.matzip.rest.model;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("RestVO")
 public class RestVO {
 	private int i_rest;
 	private String nm;

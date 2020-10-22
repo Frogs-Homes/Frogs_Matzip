@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="msg">${msg}</div>
+<div class="frm_wrap">
 <form id="frm" action="/rest/reg" method="post" onsubmit="return chkFrm()" enctype="multipart/form-data">
     <label for="rest_nm">가게명</label>
     <input type="text" id="rest_nm" name="nm" required autofocus><br>
@@ -17,6 +18,7 @@
     		<option value="0">--선택--</option>
     		<option value="053">053</option>
     		<option value="010">010</option>
+    		<option value="070">070</option>
     	</select>
     	<input type="tel" id="phone_2" minlength="3" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'')">-
     	<input type="tel" id="phone_3" minlength="4" maxlength="4" onKeyup="this.value=this.value.replace(/[^0-9]/g,'')">
@@ -49,6 +51,7 @@
     <input type="text" id="ctnt" name="ctnt"><br>
     <input type="submit" value="등록">
 </form>
+</div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=94c71877afeaf03a3aba3cf7f9905b26&libraries=services"></script>
 <script>
