@@ -19,7 +19,14 @@ public class RestVO {
 	private String close_time;
 	private String ctnt;
 	private String menu_pic;
+	private int i_district;
 
+	public int getI_district() {
+		return i_district;
+	}
+	public void setI_district(int i_district) {
+		this.i_district = i_district;
+	}
 	public String getMenu_pic() {
 		return menu_pic;
 	}

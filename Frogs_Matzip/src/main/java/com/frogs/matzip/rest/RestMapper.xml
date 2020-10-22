@@ -3,13 +3,13 @@
 <mapper namespace="com.frogs.matzip.rest.RestMapper">
 	<insert id="insRest" parameterType="RestVO" useGeneratedKeys="true"  keyProperty="i_rest">
 		INSERT INTO t_rest
-		(nm, addr, lat, lng, i_category, phone, price_range, open_time, close_time, ctnt)
+		(nm, addr, lat, lng, i_category, phone, price_range, open_time, close_time, ctnt, i_district)
 		VALUES
-		(#{nm}, #{addr}, #{lat}, #{lng}, #{i_category}, #{phone}, #{price_range}, #{open_time}, #{close_time}, #{ctnt})
+		(#{nm}, #{addr}, #{lat}, #{lng}, #{i_category}, #{phone}, #{price_range}, #{open_time}, #{close_time}, #{ctnt}, #{i_district})
 	</insert>
 	
 	<select id="selRest" parameterType="RestPARAM" resultType="RestDMI">
-		SELECT i_rest, nm, addr, lat, lng, i_category, menu_pic, hit, r_dt, m_dt, phone, price_range, open_time, close_time, ctnt 
+		SELECT i_rest, nm, addr, lat, lng, i_category, menu_pic, hit, r_dt, m_dt, phone, price_range, open_time, close_time, ctnt, i_district
 		FROM t_rest
 		<if test="i_rest > 0">
 			WHERE i_rest = #{i_rest}
@@ -21,11 +21,15 @@
 	</select>
 	
 	<select id="selCategoryList" resultType="RestDMI">
-		SELECT i_category, val FROM t_category
+		SELECT i_category, val as category_val FROM t_category
+	</select>
+	
+	<select id="selDistrictList" resultType="RestDMI">
+		SELECT i_district, val as district_val FROM t_district
 	</select>
 	
 	<select id="selRestList" parameterType="RestPARAM" resultType="RestDMI">
-	 	SELECT i_rest, nm, addr, lat, lng, i_category
+	 	SELECT i_rest, nm, addr, lat, lng, i_category, i_district
 	 	FROM t_rest
 	 	WHERE lat BETWEEN #{sw_lat} AND #{ne_lat}
 	 	AND lng BETWEEN #{sw_lng} AND #{ne_lng}

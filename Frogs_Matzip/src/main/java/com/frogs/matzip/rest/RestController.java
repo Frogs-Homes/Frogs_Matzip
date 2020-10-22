@@ -37,6 +37,7 @@ public class RestController {
 	@RequestMapping(value="/reg", method = RequestMethod.GET)
 	public String restReg(Model model) {
 		model.addAttribute("categoryList", service.selCategoryList());
+		model.addAttribute("districtList", service.selDistrictList());
 		
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restreg"});
 		model.addAttribute(Const.TITLE, "맛집 등록");
