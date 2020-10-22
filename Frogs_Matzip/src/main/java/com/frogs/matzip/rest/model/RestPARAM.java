@@ -1,7 +1,9 @@
 package com.frogs.matzip.rest.model;
 
+import org.apache.ibatis.type.Alias;
 import org.springframework.web.multipart.MultipartFile;
 
+@Alias("RestPARAM")
 public class RestPARAM extends RestVO {
 	private MultipartFile menu_pic_file;
 

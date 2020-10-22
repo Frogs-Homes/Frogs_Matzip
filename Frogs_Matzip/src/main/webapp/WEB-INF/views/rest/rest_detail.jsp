@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<!-- 관리자용 음식사진등록창 이동 -->
+<div>
+	<c:if test="${loginUser.admin == '1'}">
+		<a href="/rest/regFood">음식사진 등록창 이동</a>
+	</c:if>
+</div>
 
 <!--menuList-->
 <div id="menu_back">

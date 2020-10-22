@@ -1,5 +1,8 @@
 package com.frogs.matzip.model;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("IndexVO")
 public class IndexVO {
 	private String search_place;
 

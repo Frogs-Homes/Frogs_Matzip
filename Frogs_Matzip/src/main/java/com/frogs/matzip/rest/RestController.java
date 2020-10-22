@@ -1,7 +1,5 @@
 package com.frogs.matzip.rest;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +12,6 @@ import com.frogs.matzip.ViewRef;
 
 import com.frogs.matzip.model.IndexVO;
 import com.frogs.matzip.rest.model.RestPARAM;
-import com.frogs.matzip.rest.model.RestVO;
-
 
 
 @Controller
@@ -30,7 +26,7 @@ public class RestController {
 		model.addAttribute(Const.TITLE, "맛집 리스트");
 		model.addAttribute(Const.HEADER, "/template/default_header");
 		model.addAttribute(Const.VIEW, "/rest/list_map");
-		model.addAttribute("place", vo);
+		model.addAttribute(Const.PLACE, vo);
 		return ViewRef.TEMP;
 	}
 	
@@ -64,7 +60,8 @@ public class RestController {
 	}
 	
 	@RequestMapping(value="/detail", method = RequestMethod.GET)
-	public String restDeail(Model model) {
+	public String restDeail(RestPARAM param, Model model) {
+		// detail 데이터값 select해서 addAttribute하기
 		
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restdetail"});
 		model.addAttribute(Const.TITLE, "Detail");
@@ -73,4 +70,13 @@ public class RestController {
 		return ViewRef.TEMP;
 	}
 	
+	@RequestMapping(value="/regFood")
+	public String restRegFood(Model model) {
+		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restregfood"});
+		model.addAttribute(Const.TITLE, "음식사진등록");
+		model.addAttribute(Const.HEADER, "/template/default_header");
+		model.addAttribute(Const.VIEW, "/rest/rest_reg_food");
+//		model.addAttribute(i_rest 넣어야만..);
+		return ViewRef.TEMP;
+	}
 }

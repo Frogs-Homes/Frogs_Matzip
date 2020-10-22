@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.frogs.matzip.rest.RestService;
 
-
 @Controller
 public class IndexController {
 	
 	@Autowired
-	private RestService restService;
+	private RestService rService;
 	
 	@RequestMapping(value="/index", method = RequestMethod.GET)
 	public String Index(HttpServletRequest req, Model model) {
@@ -25,7 +24,7 @@ public class IndexController {
 		}
 		
 		// 인기 식당, 카테고리별 식당 리스트 뿌리기 해야 함
-		model.addAttribute("recRestList", restService.selRecRestList());
+		model.addAttribute("recRestList", rService.selRecRestList());
 		
 		model.addAttribute(Const.CSS, new String[] {"common", "index", "indexheader"});
 		model.addAttribute(Const.TITLE, "FrogsMatzip");

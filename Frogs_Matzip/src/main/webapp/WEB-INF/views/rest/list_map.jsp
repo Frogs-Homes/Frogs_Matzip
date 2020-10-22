@@ -1,9 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>  
+    pageEncoding="UTF-8"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="back_wrap">
 	<div id="list_back">
-	    <h2>** 맛집 인기 검색 순위</h2>
+	    <h2>${place.search_place} 지역의 맛집 목록(평점 순)</h2>
+	    <!-- 
+	    <c:forEach items="${recRestList}" var="item">
+		    <div class="list_wrap">
+		        <div class="list_ctnt_wrap">
+		            <div class="matzip_list">
+		                <img src="${item.food_pic}" class="food_img" alt="${item.nm}의 음식 사진">
+		            </div>
+		            <div class="ctnt_wrap">
+		                <h3><a href="#">${item.nm}</a></h3>
+		                <strong>${item.avg_grade}</strong><br>
+		                <p>${item.district}-${item.category_nm}</p><br>
+		                <p>review:${item.review}</p>
+		            </div>
+		        </div>
+		    </div>
+	    </c:forEach>
+	     -->
 	    <div class="list_wrap">
 	        <div class="list_ctnt_wrap">
 	            <div class="matzip_list">
