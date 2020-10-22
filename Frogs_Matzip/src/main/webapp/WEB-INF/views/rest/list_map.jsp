@@ -13,8 +13,9 @@
 <div class="back_wrap">
 	<div id="list_back">
 	    <h2>${place.search_place} 지역의 맛집 목록(평점 순)</h2>
+	    <div id="rest_list_wrap"></div>
 	    <!-- 
-	    <c:forEach items="${restMenuList}" var="item">
+	    <c:forEach items="${recRestList}" var="item">
 		    <div class="list_wrap">
 		        <div class="list_ctnt_wrap">
 		            <div class="matzip_list">
@@ -30,65 +31,10 @@
 		    </div>
 	    </c:forEach>
 	     -->
-	    <div class="list_wrap">
-	        <div class="list_ctnt_wrap">
-	            <div class="matzip_list">
-	                <img src="/res/img/곱창.jpg" class="food_img" alt="">
-	            </div>
-	            <div class="ctnt_wrap">
-	                <a href="#"><h3>쿠이곱창</h3></a>
-	                <Strong>4.8</Strong><br>
-	                <p>홍대-곱창</p><br>
-	                <p>review:90</p>
-	            </div>
-	        </div>
-	    </div>
-	    
-	    <div class="list_wrap">
-	        <div class="list_ctnt_wrap">
-	            <div class="matzip_list">
-	                <img src="/res/img/곱창.jpg" class="food_img" alt="">
-	            </div>
-	            <div class="ctnt_wrap">
-	                <a href="#"><h3>쿠이곱창</h3></a>
-	                <Strong>4.8</Strong><br>
-	                <p>홍대-곱창</p><br>
-	                <p>review:90</p>
-	            </div>
-	        </div>
-	    </div>
-	    
-	    <div class="list_wrap">
-	        <div class="list_ctnt_wrap">
-	            <div class="matzip_list">
-	                <img src="/res/img/곱창.jpg" class="food_img" alt="">
-	            </div>
-	            <div class="ctnt_wrap">
-	                <a href="#"><h3>쿠이곱창</h3></a>
-	                <Strong>4.8</Strong><br>
-	                <p>홍대-곱창</p><br>
-	                <p>review:90</p>
-	            </div>
-	        </div>
-	    </div>
-	    
-	    <div class="list_wrap">
-	        <div class="list_ctnt_wrap">
-	            <div class="matzip_list">
-	                <img src="/res/img/곱창.jpg" class="food_img" alt="">
-	            </div>
-	            <div class="ctnt_wrap">
-	                <a href="#"><h3>쿠이곱창</h3></a>
-	                <Strong>4.8</Strong><br>
-	                <p>홍대-곱창</p><br>
-	                <p>review:90</p>
-	            </div>
-	        </div>
-	    </div>
 	</div>
 	
 	<div class="map_wrap">
-	    <div id="map" style="width:1500px; height:100%; position:relative;overflow:hidden; "></div>
+	    <div id="map" style="width:100vw; height:100vh; position:fixed;overflow:hidden; "></div>
 	</div>
 	
 </div>
@@ -103,7 +49,7 @@
 	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {
-	        center: new kakao.maps.LatLng(35.8641294, 128.592569), // 지도의 중심좌표
+	        center: new kakao.maps.LatLng(35.865280, 128.593418), // 지도의 중심좌표
 	        level: 2 // 지도의 확대 레벨
 	    };  
 	
@@ -124,6 +70,9 @@
 		markerList.forEach(function(marker) {
 			marker.setMap(null)
 		})
+		
+		// 리스트 모두 지우기
+		while ( rest_list_wrap.hasChildNodes() ) { rest_list_wrap.removeChild( rest_list_wrap.firstChild ); }
 		
 		const bounds = map.getBounds()
 		const southWest = bounds.getSouthWest()
@@ -146,12 +95,14 @@
 			
 			res.data.forEach(function(item) {					
 				createMarker(item)
+				createRestDiv(item)
 			})
 		})		
 	}
 	
 	kakao.maps.event.addListener(map, 'tilesloaded', getRestList)
 	
+	// 마커 생성 함수
 	function createMarker(item) {
 			
 		var content = document.createElement('div')
@@ -187,6 +138,59 @@
 		marker.setMap(map)
 		
 		markerList.push(marker)
+	}
+	
+	// 맛집 목록 내 content 생성
+	function createRestDiv(item) {
+		var list_wrap = document.createElement('div')
+		list_wrap.classList.add('list_wrap')
+		
+		var list_ctnt_wrap = document.createElement('div')
+		list_ctnt_wrap.classList.add('list_ctnt_wrap')
+		
+		var matzip_list = document.createElement('div')
+		matzip_list.classList.add('matzip_list')
+		
+		var food_img = document.createElement('img')
+		food_img.classList.add('food_img')
+		food_img.setAttribute('src', item.food_pic)
+		food_img.setAttribute('alt', item.nm+'의 음식 사진')
+		
+		var ctnt_wrap = document.createElement('div')
+		ctnt_wrap.classList.add('ctnt_wrap')
+		
+		var rest_nm = document.createElement('h3')
+		
+		var rest_nm_a = document.createElement('a')
+		rest_nm_a.setAttribute('href', '#')
+		rest_nm_a.innerHTML = item.nm
+		
+		var avg_grade = document.createElement('strong')
+		avg_grade.innerHTML = item.avg_grade
+		
+		var br = document.createElement('br')
+		
+		var rest_info = document.createElement('p')
+		rest_info.innerHTML = item.district + ' - ' + item.category_nm
+		
+		var rest_review = document.createElement('p')
+		rest_review.innerHTML = 'review: ' + item.review
+		
+		matzip_list.append(food_img)
+		
+		rest_nm.append(rest_nm_a)
+		ctnt_wrap.append(rest_nm)
+		ctnt_wrap.append(avg_grade)
+		ctnt_wrap.append(br)
+		ctnt_wrap.append(rest_info)
+		ctnt_wrap.append(br)
+		ctnt_wrap.append(rest_review)
+		
+		list_ctnt_wrap.append(matzip_list)
+		list_ctnt_wrap.append(ctnt_wrap)
+		list_wrap.append(list_ctnt_wrap)
+		
+		rest_list_wrap.append(list_wrap)
 	}
 	
 	function moveToDetail(i_rest) {

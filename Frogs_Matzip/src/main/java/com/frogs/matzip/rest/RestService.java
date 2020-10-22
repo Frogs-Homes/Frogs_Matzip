@@ -32,6 +32,10 @@ public class RestService {
 		mapper.updRestMenu(param);
 	}
 	
+	public RestDMI selRest(RestPARAM param) {
+		return mapper.selRest(param);
+	}
+	
 	public List<RestDMI> selRecRestList() {
 		return mapper.selRecRestList();
 	}
