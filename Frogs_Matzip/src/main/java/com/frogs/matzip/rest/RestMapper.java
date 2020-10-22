@@ -1,7 +1,6 @@
 package com.frogs.matzip.rest;
 
 import java.util.List;
-
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,6 +16,7 @@ public interface RestMapper {
 	RestDMI selRestMaxPk();
 	List<RestDMI> selRecRestList();
 	List<RestDMI> selCategoryList();
+	List<RestDMI> selRestList(RestPARAM param);
 	
 	int updRestMenu(RestVO param);
 }

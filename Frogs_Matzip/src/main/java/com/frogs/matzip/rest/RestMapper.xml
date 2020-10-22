@@ -16,17 +16,19 @@
 		</if>
 	</select>
 	
-	<select id="selRestMaxPk" resultType="RestDMI">
-		SELECT max(i_rest) 
-		FROM t_rest
-	</select>
-	
 	<select id="selRecRestList" resultType="RestDMI">
 		SELECT * FROM t_rest
 	</select>
 	
 	<select id="selCategoryList" resultType="RestDMI">
 		SELECT i_category, val FROM t_category
+	</select>
+	
+	<select id="selRestList" parameterType="RestPARAM" resultType="RestDMI">
+	 	SELECT i_rest, nm, addr, lat, lng, i_category
+	 	FROM t_rest
+	 	WHERE lat BETWEEN #{sw_lat} AND #{ne_lat}
+	 	AND lng BETWEEN #{sw_lng} AND #{ne_lng}
 	</select>
 	
 	<update id="updRestMenu" parameterType="RestVO">

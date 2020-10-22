@@ -33,6 +33,7 @@ public class UserController {
 	
 	@RequestMapping(value="/ajaxCheckId", method = RequestMethod.POST)
 	@ResponseBody
+	
 	public int ajaxCheckId(@RequestBody UserPARAM param) {
 		return service.login(param);
 	}
