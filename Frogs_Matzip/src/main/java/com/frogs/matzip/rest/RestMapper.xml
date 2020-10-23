@@ -8,6 +8,13 @@
 		(#{nm}, #{addr}, #{lat}, #{lng}, #{i_category}, #{phone}, #{price_range}, #{open_time}, #{close_time}, #{ctnt}, #{i_district})
 	</insert>
 	
+	<insert id="insFoodMenu" parameterType="RestRecMenuVO">
+		INSERT INTO t_rest_pic 
+		(i_rest, seq, food_pic)
+		SELECT #{i_rest}, ifnull(max(seq), 0) + 1, #{food_pic}
+		FROM t_rest_pic
+	</insert>
+	
 	<select id="selRest" parameterType="RestPARAM" resultType="RestDMI">
 		SELECT i_rest, nm, addr, lat, lng, i_category, menu_pic, hit, r_dt, m_dt, phone, price_range, open_time, close_time, ctnt, i_district
 		FROM t_rest
@@ -33,6 +40,11 @@
 	 	FROM t_rest
 	 	WHERE lat BETWEEN #{sw_lat} AND #{ne_lat}
 	 	AND lng BETWEEN #{sw_lng} AND #{ne_lng}
+	</select>
+	
+	<select id ="selFoodmenu" parameterType="RestPARAM" resultType="RestRecMenuVO">
+		SELECT i_rest, seq, food_pic
+		FROM t_rest_pic
 	</select>
 	
 	<update id="updRestMenu" parameterType="RestVO">
