@@ -6,13 +6,15 @@
 
 <!--menuList-->
 <div id="menu_back">
-    <div id="menu_wrap">
-        <div class="menulist"><img src="./img/곱창.jpg" class="menu" alt=""></div>
-        <div class="menulist"><img src="./img/곱창.jpg" class="menu" alt=""></div>
-        <div class="menulist"><img src="./img/곱창.jpg" class="menu" alt=""></div>
-        <div class="menulist"><img src="./img/곱창.jpg" class="menu" alt=""></div>
-        <div class="menulist"><img src="./img/곱창.jpg" class="menu" alt=""></div>
-    </div>
+   <div id="menu_wrap">
+    <c:forEach items="${foodMenuList}" var="item">
+   		<div class="menulist">
+    		<c:if test="${item.food_pic != null && item.food_pic != '' }">
+    			<img src="/res/img/rest/${data.i_rest}/food_pic/${item.food_pic}" class="menu" >
+    		</c:if>
+   		</div>	 
+  	</c:forEach>   
+   </div>
 </div>
 
 <!--ctnt-->
@@ -25,7 +27,7 @@
                 <!-- 관리자용 음식사진등록창 이동 -->
 				<div>
 					<c:if test="${loginUser.admin == '1'}">
-						<a href="/rest/regFood">음식사진 등록창 이동</a>
+						<a href="/rest/regFood?i_rest=${data.i_rest}">음식사진 등록창 이동</a>
 					</c:if>
 				</div>
             </div>
@@ -71,7 +73,7 @@
                 </table>
             </div>
             <div id="menu_pic">
-                <img src="./img/menu/미성옥메뉴판.jpg" alt="">
+                <img src="/res/img/rest/${data.i_rest}/menu_pic/${data.menu_pic }" alt="menuList_img">
             </div>
         </section>
 

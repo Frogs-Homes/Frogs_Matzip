@@ -87,7 +87,7 @@
  		// -------------searchRest 시작------------------------------------------------------------------------
 	 	kakao.maps.load(function() {
 	 		var ps = new kakao.maps.services.Places(); 
-	 		var keyword = "${place.search_place}"
+	 		let keyword = "${place.search_place}"
 	 		
 			
 	 		ps.keywordSearch( keyword, function(data, status, pagination) {

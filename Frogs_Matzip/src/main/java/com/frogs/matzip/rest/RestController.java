@@ -2,6 +2,8 @@ package com.frogs.matzip.rest;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,13 +13,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.frogs.matzip.Const;
+import com.frogs.matzip.SecurityUtils;
 import com.frogs.matzip.ViewRef;
-
 import com.frogs.matzip.model.IndexVO;
 import com.frogs.matzip.rest.model.RestDMI;
+import com.frogs.matzip.rest.model.RestFoodFile;
 import com.frogs.matzip.rest.model.RestPARAM;
+import com.frogs.matzip.rest.model.RestRecMenuVO;
 
-
+import jdk.nashorn.internal.runtime.logging.Logger;
+import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/rest")
 public class RestController {
@@ -69,6 +74,7 @@ public class RestController {
 		// detail 데이터값 select해서 addAttribute하기
 		RestDMI data = service.selRest(param);
 		
+		model.addAttribute("foodMenuList", service.selFoodmenu(param));
 		model.addAttribute("data", data);
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restdetail"});
 		model.addAttribute(Const.TITLE, "Detail");
@@ -77,15 +83,42 @@ public class RestController {
 		return ViewRef.TEMP;
 	}
 	
-	@RequestMapping(value="/regFood")
-	public String restRegFood(Model model) {
+	
+	@RequestMapping(value="/regFood", method = RequestMethod.GET)
+	public String restRegFood(RestPARAM param, Model model) {
+		RestDMI data = service.selRest(param);
+		model.addAttribute("data", data);
+		
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restregfood"});
 		model.addAttribute(Const.TITLE, "음식사진등록");
 		model.addAttribute(Const.HEADER, "/template/default_header");
-		model.addAttribute(Const.VIEW, "/rest/rest_reg_food");
-//		model.addAttribute(i_rest 넣어야만..);
+		model.addAttribute(Const.VIEW, "/rest/rest_regFood");
+
 		return ViewRef.TEMP;
 	}
+	
+	@RequestMapping(value="/regFood", method = RequestMethod.POST)
+	public String detailReg(RestFoodFile param, RedirectAttributes ra, HttpSession hs){
+		int i_user = SecurityUtils.getLoginUserPk(hs);
+		int i_rest = param.getI_rest();
+		int result = Const.SUCCESS;
+		try {
+			service.insFoodMenu(param);
+		} catch(Exception e) {
+			result = Const.FAIL;
+		}
+		
+		if (result == Const.SUCCESS) {
+			ra.addFlashAttribute(Const.MSG, "등록 성공");
+		} else {
+			ra.addFlashAttribute(Const.MSG, "등록 실패");
+		}
+	
+	
+		return "redirect:/rest/regFood?i_rest=" + i_rest;
+	}
+	
+	
 	
 	@RequestMapping(value="/ajaxGetList", produces = {"application/json; charset=UTF-8"})
 	@ResponseBody
