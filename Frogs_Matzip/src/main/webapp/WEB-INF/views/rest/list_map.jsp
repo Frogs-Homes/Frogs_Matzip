@@ -41,7 +41,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ef93669481fc09a5adb9cdbabc25ba28&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d88fdcc4a19e51b35f8bf4dc0300b352&libraries=services"></script>
 <script>
 	// 마커를 담을 배열입니다
 	var markerList = [];
@@ -162,7 +162,7 @@
 		var rest_nm = document.createElement('h3')
 		
 		var rest_nm_a = document.createElement('a')
-		rest_nm_a.setAttribute('href', '#')
+		rest_nm_a.setAttribute('href', '/rest/detail?i_rest=' + item.i_rest)
 		rest_nm_a.innerHTML = item.nm
 		
 		var avg_grade = document.createElement('strong')
