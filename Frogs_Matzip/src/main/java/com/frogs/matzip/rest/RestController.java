@@ -31,6 +31,8 @@ public class RestController {
 	
 	@RequestMapping(value="/listMap", method = RequestMethod.GET)
 	public String listMap(IndexVO vo, Model model) {
+		
+		
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","listmap"});
 		model.addAttribute(Const.TITLE, "맛집 리스트");
 		model.addAttribute(Const.HEADER, "/template/default_header");
