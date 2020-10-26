@@ -79,7 +79,8 @@
 		
 		axios.get('/rest/ajaxGetList', {
 			params: {
-				sw_lat, sw_lng, ne_lat, ne_lng
+				sw_lat, sw_lng, ne_lat, ne_lng, 
+				search_text: '${place}'
 			}
 		}).then(function(res) {
 			console.log(res.data)
@@ -228,7 +229,7 @@
 	
 	kakao.maps.load(function() {
  		var ps = new kakao.maps.services.Places();
- 		let keyword = "${place.search_place}"
+ 		let keyword = "${place}"
  	
  		ps.keywordSearch(keyword, function(data, status, pagination) {
  		    //if (status === kakao.maps.services.Status.OK) {

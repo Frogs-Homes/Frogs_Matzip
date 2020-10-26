@@ -11,15 +11,15 @@ public class RestPARAM extends RestVO {
 	private double ne_lat;
 	private double ne_lng;
 	private String search_text;
-	private String search_text_sql;
-
+	private String sql_search_text;
 	
-	public String getSearch_text_sql() {
-		return search_text_sql;
+
+	public String getSql_search_text() {
+		return sql_search_text;
 	}
 
-	public void setSearch_text_sql(String search_text_sql) {
-		this.search_text_sql = search_text_sql;
+	public void setSql_search_text(String sql_search_text) {
+		this.sql_search_text = sql_search_text;
 	}
 
 	public String getSearch_text() {
