@@ -2,7 +2,7 @@ package com.frogs.matzip.rest.model;
 
 import org.apache.ibatis.type.Alias;
 
-@Alias("RestPicVO")
+@Alias("RestFoodVO")
 public class RestFoodVO {
 	private int i_rest;
 	private int seq;
