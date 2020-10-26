@@ -85,33 +85,6 @@
  		// -------------user menu 끝------------------------------------------------------------------------
     	
  		// -------------searchRest 시작------------------------------------------------------------------------
-	 	kakao.maps.load(function() {
-	 		var ps = new kakao.maps.services.Places(); 
-	 		let keyword = "${place.search_place}"
-	 		
-			
-	 		ps.keywordSearch( keyword, function(data, status, pagination) {
-	 		    if (status === kakao.maps.services.Status.OK) {
-	 		        // 데이터 확인
-	 		        var bounds = new kakao.maps.LatLngBounds();
-
-			        for (var i=0; i<data.length; i++) {
-			            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-			        }       
-			        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-			        map.setBounds(bounds);
-		 		    console.log(data);
-	 		          
-	 		      } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-	 		          alert('검색 결과가 존재하지 않습니다.');
-	 		          return;
-	 		      } else if (status === kakao.maps.services.Status.ERROR) {
-	 		          alert('검색 결과 중 오류가 발생했습니다.');
-	 		          return;
-	 		      }
-	 		});	
-	 	});
- 	
  		function searchRest() {
  			
  			if(search_bar.value == "") {

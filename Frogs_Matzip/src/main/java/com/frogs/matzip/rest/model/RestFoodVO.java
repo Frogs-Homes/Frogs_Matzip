@@ -1,12 +1,9 @@
 package com.frogs.matzip.rest.model;
 
-import java.util.List;
-
 import org.apache.ibatis.type.Alias;
-import org.springframework.web.multipart.MultipartFile;
 
-@Alias("RestRecMenuVO")
-public class RestRecMenuVO {
+@Alias("RestPicVO")
+public class RestFoodVO {
 	private int i_rest;
 	private int seq;
 	private String food_pic;

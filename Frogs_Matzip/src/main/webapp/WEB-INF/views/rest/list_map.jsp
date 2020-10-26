@@ -12,7 +12,7 @@
 
 <div class="back_wrap">
 	<div id="list_back">
-	    <h2>${place.search_place} 지역의 맛집 목록(평점 순)</h2>
+	    <h2>${place} 지역의 맛집 목록(평점 순)</h2>
 	    <div id="rest_list_wrap"></div>
 	    <!-- 
 	    <c:forEach items="${recRestList}" var="item">
@@ -49,21 +49,12 @@
 	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {
-	        center: new kakao.maps.LatLng(35.865280, 128.593418), // 지도의 중심좌표
-	        level: 2 // 지도의 확대 레벨
+	        center: new kakao.maps.LatLng(35.865280, 128.593418), // 지도의 중심좌표 
+	        level: 5 // 지도의 확대 레벨
 	    };  
 	
 	// 지도를 생성합니다    
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-	function searchRest() {
-		
-		if(search_bar.value == "") {
-			alert('검색어를 입력하세요.')
-			search_bar.focus()
-			return false
-		}
-	}
+	var map = new kakao.maps.Map(mapContainer, mapOption);
 	
 	function getRestList() {
 		//마커 모두 지우기
@@ -74,7 +65,7 @@
 		// 리스트 모두 지우기
 		while ( rest_list_wrap.hasChildNodes() ) { rest_list_wrap.removeChild( rest_list_wrap.firstChild ); }
 		
-		const bounds = map.getBounds()
+		const bounds = new kakao.maps.LatLngBounds();
 		const southWest = bounds.getSouthWest()
 		const northEast = bounds.getNorthEast()
 		
@@ -98,6 +89,12 @@
 				createRestDiv(item)
 			})
 		})		
+	}
+	
+	function setBounds() {
+	    // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
+	    // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
+	    map.setBounds(bounds);
 	}
 	
 	kakao.maps.event.addListener(map, 'tilesloaded', getRestList)
@@ -168,7 +165,8 @@
 		var avg_grade = document.createElement('strong')
 		avg_grade.innerHTML = item.avg_grade
 		
-		var br = document.createElement('br')
+		var br1 = document.createElement('br')
+		var br2 = document.createElement('br')
 		
 		var rest_info = document.createElement('p')
 		rest_info.innerHTML = item.district + ' - ' + item.category_nm
@@ -181,9 +179,9 @@
 		rest_nm.append(rest_nm_a)
 		ctnt_wrap.append(rest_nm)
 		ctnt_wrap.append(avg_grade)
-		ctnt_wrap.append(br)
+		ctnt_wrap.append(br1)
 		ctnt_wrap.append(rest_info)
-		ctnt_wrap.append(br)
+		ctnt_wrap.append(br2)
 		ctnt_wrap.append(rest_review)
 		
 		list_ctnt_wrap.append(matzip_list)
@@ -227,5 +225,32 @@
 	}	else {
 		console.log('Geolocation is not supported for this Browser/OS.')
 	}
+	
+	kakao.maps.load(function() {
+ 		var ps = new kakao.maps.services.Places();
+ 		let keyword = "${place.search_place}"
+ 	
+ 		ps.keywordSearch(keyword, function(data, status, pagination) {
+ 		    //if (status === kakao.maps.services.Status.OK) {
+ 		    if (status === kakao.maps.services.Status.OK) {
+ 		        // 데이터 확인
+ 		        var bounds = new kakao.maps.LatLngBounds();
+
+		        for (var i=0; i<data.length; i++) {
+		            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+		        }       
+		        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+		        map.setBounds(bounds);
+	 		    console.log(data);
+ 		          
+ 		      } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+ 		          alert('검색 결과가 존재하지 않습니다.');
+ 		          return;
+ 		      } else if (status === kakao.maps.services.Status.ERROR) {
+ 		          alert('검색 결과 중 오류가 발생했습니다.');
+ 		          return;
+ 		      }
+ 		});
+ 	});
 
 </script>

@@ -13,9 +13,7 @@ import com.frogs.matzip.FileUtils;
 import com.frogs.matzip.rest.model.RestDMI;
 import com.frogs.matzip.rest.model.RestFoodFile;
 import com.frogs.matzip.rest.model.RestPARAM;
-import com.frogs.matzip.rest.model.RestRecMenuVO;
-
-import lombok.extern.slf4j.Slf4j;
+import com.frogs.matzip.rest.model.RestFoodVO;
 
 @Service
 public class RestService {
@@ -41,10 +39,10 @@ public class RestService {
 	public int insFoodMenu(RestFoodFile param) {
 		String path = Const.realPath + "/resources/img/rest/" + param.getI_rest() + "/food_pic/"; 
 			
-		List<RestRecMenuVO> list = new ArrayList();
+		List<RestFoodVO> list = new ArrayList();
 		
 		for(MultipartFile mf : param.getFood_list()) {
-			RestRecMenuVO vo = new RestRecMenuVO();
+			RestFoodVO vo = new RestFoodVO();
 			list.add(vo);
 			
 			String saveFileNm = FileUtils.saveFile(path, mf);
@@ -52,7 +50,7 @@ public class RestService {
 			vo.setI_rest(param.getI_rest());
 		}
 		
-		for(RestRecMenuVO vo : list) {
+		for(RestFoodVO vo : list) {
 			mapper.insFoodMenu(vo);
 		}
 		
@@ -76,10 +74,15 @@ public class RestService {
 	}
 	
 	public List<RestDMI> selRestList(RestPARAM param) {
+		String search_text = param.getSearch_text();
+		if(search_text != null) {
+			param.setSearch_text_sql("%"+search_text+"%");
+		}
+
 		return mapper.selRestList(param);
 	}
 	
-	public List<RestRecMenuVO> selFoodmenu(RestPARAM param) {
+	public List<RestFoodVO> selFoodmenu(RestPARAM param) {
 		return mapper.selFoodmenu(param);
 	}
 }
