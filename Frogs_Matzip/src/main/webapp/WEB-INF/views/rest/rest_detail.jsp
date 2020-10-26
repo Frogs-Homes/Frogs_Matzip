@@ -21,7 +21,7 @@
 <div id="column_back">
     <div id="ctnt_back">
 		<div id="title_wrap">
-            <div id="title">
+            <span id="title">
                 <h1>${data.nm}</h1>
                 <strong id="grade"><span>4.2</span></strong>
                 <!-- 관리자용 음식사진등록창 이동 -->
@@ -30,14 +30,22 @@
 						<a href="/rest/regFood?i_rest=${data.i_rest}">음식사진 등록창 이동</a>
 					</c:if>
 				</div>
-            </div>
+            </span>
             <div id="rest_action_button">
-
-            </div>
+                    <div class="edit">
+                        <span class="material-icons" id="review_write">edit</span>
+                        <span class="icons_ctnt">리뷰쓰기</span>
+                    </div>
+                    <div class="favorite">
+                        <span class="material-icons">favorite_border</span>
+                        <span class="icons_ctnt">가고싶다</span>
+                    </div>
+                </div>
 		</div>
 
         <div id="user_content_wrap">
-
+                <span class="material-icons" id="review_write">edit</span><span class="write_cnt">132</span>
+                <span class="material-icons">favorite</span><span class="favorite_cnt">441</span>
         </div>
 
         <section id="rest_detail">
@@ -82,19 +90,88 @@
                 <h2>리뷰</h2>
                 <span>(53)</span>
             </div>
-            <div id="review_ctnt">
-                <div id="user_wrap">
-
-                </div>
-                <div id="user_ctnt">
-
-                </div>
-            </div>
+             <div class="review_ctnt_back">
+	             <div id="review_ctnt">
+	                 <div id="user_wrap">
+	                     <div class="profile_img_wrap">
+	                         <img src="/res/img/default_img.png" class="profile_img" alt="">
+	                     </div>
+	                     <div class="user_nm_wrap">
+	                         <div class="user_nm">박철민</div>
+	                     </div>
+	                 </div>
+	                 <div id="user_ctnt_wrap">
+	                     <div class="user_ctnt">
+	                         <div class="day">6일전</div>
+	                         <p class="write">와 정말 맛있다! 엄청 유명해질 데로 유명해져서 맛도 예전과 좀 달라져버리지 않았을까 하며 기대없이 방문했다가 전복죽에 치이고 물회에 또 치였다.
+	                             뜨끈한 전복죽은 내장이 들어가 정말 고소하고 맛났었다. 죽을 먹으며 위장을 워밍업 시키고 본격적으로 물회를 한입 맛 본 순간, 감칠맛과 새콤함이 입안에 퍼지고 신선한 회와 해삼들이 씹는 맛을 재밌게 해준다.
+	                             큰 규모덕에 정말 많은 사람들이 몰려오는 가게지만 정말 맛있는 음식으로 이 모두를 감당해내고 있는 느낌이시다.
+	                             속초에 올때는 필수 코스가 될 것 같다!</p>
+	                     </div>
+	                     <div class="user_like_wrap">
+	                         <div class="user_like">
+	                             <span class="material-icons">sentiment_very_dissatisfied</span>
+	                             <span class="like_ctnt">똥이다</span>
+	                         </div>
+	                     </div>
+	                 </div>
+	             </div>
+	         </div>
         </section>
     </div>
 </div>  
 
-    
+<div id="modal_bg"></div>
+<div id="modal_review_back">
+    <div class="review_title">
+        <span class="title">포폴로피자</span><p class="title_ctnt"> 에 대한 솔직한 리뷰를 써주세요.</p>
+    </div>
+    <div class="review_ctnt_wrap">
+        <div class="grade_icons">
+            <span class="material-icons" id="one">mood_bad</span><span class="icon_ctnt">최악이다</span>
+            <span class="material-icons" id="two">sentiment_very_dissatisfied</span><span class="icon_ctnt">별로다</span>
+            <span class="material-icons" id="three">sentiment_dissatisfied</span><span class="icon_ctnt">보통이다</span>
+            <span class="material-icons" id="four">sentiment_satisfied</span><span class="icon_ctnt">괜찮다</span>
+            <span class="material-icons" id="five">sentiment_very_satisfied</span><span class="icon_ctnt">맛있다</span>
+        </div>
+        <div class="review_ctnt">
+            <textarea name="review_user" id="review_user" maxlength="400" placeholder="박철민님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!!"></textarea>
+        </div>
+        <div class="btn_back">
+            <div class="btn_wrap">
+               <button class="cancel_btn">취소</button>
+               <button class="submit_btn">리뷰 올리기</button>
+            </div>  
+        </div>
+        <div class="modal_close"><span class="material-icons">clear</span></div>
+    </div>
+</div>
+
+<script>
+        document.querySelector('#review_write').addEventListener('click', reviewBtnClick)
+
+        function reviewBtnClick() {
+            document.querySelector('#modal_review_back').style.display = 'block'
+            document.querySelector('#modal_bg').style.display = 'block'
+
+            document.querySelector('html').classList.add('scrollDisable')
+            document.querySelector('body').classList.add('scrollDisable')
+        }
+
+        function modalOffClick() {  
+            document.querySelector('#modal_review_back').style.display = 'none'
+            document.querySelector('#modal_bg').style.display = 'none'
+
+            document.querySelector('html').classList.remove('scrollDisable')
+            document.querySelector('body').classList.remove('scrollDisable')
+        }
+
+        var modalCloseArr = document.querySelectorAll('.modal_close')
+
+        modalCloseArr.forEach(function(item) {
+            item.addEventListener('click', modalOffClick)
+        })
+</script>   
     
     
     

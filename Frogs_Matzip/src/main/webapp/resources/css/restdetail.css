@@ -14,9 +14,17 @@
 #title_wrap #title h1 { display: inline-block;}
 #title_wrap #title #grade { font-size: 1.6rem; margin-left: 10px; color: #f07a2c;}
 
-#title_wrap #rest_action_button { width: 70%; height: 60px; }
+#title_wrap #rest_action_button { width: 70%; height: 60px; text-align: center; display: flex; justify-content: flex-end}
+#title_wrap #rest_action_button .material-icons { font-size: 50px; }
+#title_wrap #rest_action_button .edit { width: 60px; height: 60px; font-size: 13px; margin-right: 22px; color: #9B9B9B; }
+#title_wrap #rest_action_button .edit:hover {cursor: pointer; color: #f07a2c !important;}
+#title_wrap #rest_action_button .favorite { width: 60px; font-size: 13px; color: #9B9B9B;} 
+#title_wrap #rest_action_button .favorite:hover {cursor: pointer; color: #f07a2c;}
 
-#user_content_wrap { width: 70%; height: 15px; margin: 0 auto; border-bottom: 1px solid lightgray;}
+
+#user_content_wrap { width: 70%; height: 25px; margin: 0 auto; border-bottom: 1px solid lightgray; display: flex;}
+#user_content_wrap .material-icons { color: #9B9B9B;}
+#user_content_wrap .write_cnt { margin-right: 20px; }
 
 #rest_detail { 
     width: 70%; margin: 0 auto; display: flex;
@@ -28,15 +36,94 @@ table { width: 100%;  }
 tr { height: 40px;}
 th { width: 20%; text-align: start;}
 
-#menu_pic { width: 40%; height: 280px; border: 1px solid #000;}
+#menu_pic { width: 40%; height: 280px; }
 #menu_pic img { width: 100%; height: 280px; background-size: cover;}
 
 /*rest_review*/
-#rest_review {  width: 70%; height: 600px; margin: 0 auto; box-sizing: border-box; border: 1px solid #000; margin-top: 30px;}
+#rest_review {  width: 70%; height: 600px; margin: 0 auto; box-sizing: border-box; margin-top: 30px;}
 #rest_review #review_title { width: 100%;}
 #rest_review #review_title h2 { display: inline-block; }
 #rest_review #review_title span { margin-left: 5px;}
 
+#rest_review .review_ctnt_back { width: 100%; height: 310px; border-bottom: 1px solid lightgray;}
+
 #rest_review #review_ctnt { width: 100%; height: 550px; margin-top: 20px; display: flex;}
-#rest_review #review_ctnt #user_wrap { width: 20%; height: 250px; border: 1px solid #000;}
-#rest_review #review_ctnt #user_ctnt { width: 80%; height: 250px; border: 1px solid #000;}
+#rest_review #review_ctnt #user_wrap { width: 15%; height: 250px; }
+#rest_review #review_ctnt #user_wrap .profile_img_wrap { width: 100%; margin: 0 auto; text-align: center;}
+#rest_review #review_ctnt #user_wrap .profile_img_wrap .profile_img { width: 70px; height: 70px; margin-top: 35px; border-radius: 100%;}
+#rest_review #review_ctnt #user_wrap .user_nm_wrap { width: 100%; margin: 0 auto;}
+#rest_review #review_ctnt #user_wrap .user_nm_wrap .user_nm{ text-align: center;}
+
+#rest_review #review_ctnt #user_ctnt_wrap { width: 85%; height: 250px; display: flex; }
+#rest_review #review_ctnt #user_ctnt_wrap .user_ctnt { width: 700px; display: flex; flex-direction: column; word-break: break-all;}
+#rest_review #review_ctnt #user_ctnt_wrap .user_ctnt .day { height: 25px; font-size: 15px; color: #9B9B9B;}
+#rest_review #review_ctnt #user_ctnt_wrap .user_ctnt .write { flex: 1; line-height: 30px; }
+
+#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap { flex: 1; text-align: center;}
+#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .user_like { width: 60px; margin: 0 auto;}
+#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .user_like .material-icons { font-size: 55px;}
+
+/* modal review*/
+#modal_bg {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0,0, 0.5);
+    top:0;
+    left: 0;
+    z-index: 9;
+}
+
+#modal_review_back {
+    display: none;
+    width: 900px;
+    height: 510px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin: -250px 0 0 -450px;
+    border-radius: 12px;
+    background:#eee;
+    z-index: 10;
+}
+
+.modal_close {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: -30px;
+    right: 0;
+    color: #fff;
+    font-weight: bold;
+}
+
+.scrollDisable {
+    height: 100%;
+    overflow: hidden;
+}
+
+
+#modal_review_back .review_title { margin: 20px 0 0 30px;}
+#modal_review_back .review_title .title { font-weight: bold; font-size: 35px; color: #f07a2c;}
+#modal_review_back .review_title .title_ctnt { display: inline; font-size: 20px;}  
+
+#modal_review_back .review_ctnt_wrap { width: 840px; height: 340px; margin: 20px auto; border: 2px solid #fff; border-radius: 10px; }
+#modal_review_back .review_ctnt_wrap .grade_icons { width: 100%; height: 85px; display: flex;}
+#modal_review_back .review_ctnt_wrap .grade_icons .material-icons{ font-size: 80px; color: #9B9B9B;}
+#modal_review_back .review_ctnt_wrap .grade_icons .icon_ctnt { width: 65px; height: 60px; line-height: 75px; color: #9B9B9B;}
+
+#modal_review_back .review_ctnt_wrap .review_ctnt {color: #9B9B9B;}
+#modal_review_back .review_ctnt_wrap .review_ctnt textarea { width: 99%; height: 235px; overflow: hidden; overflow-wrap: break-word; font-size: 20px; resize: none; background-color: transparent; border: none;}
+#modal_review_back .review_ctnt_wrap .review_ctnt textarea:focus { outline: none;}
+#modal_review_back .review_ctnt_wrap .review_ctnt textarea::placeholder { color: #b8b8b8; font-weight: bold; font-size: 20px;}
+
+
+#modal_review_back .review_ctnt_wrap .btn_back {  width: 100%; height: 50px; margin: 30px auto; display: flex;}
+#modal_review_back .review_ctnt_wrap .btn_back .btn_wrap { margin: 0 auto; display: flex;}
+#modal_review_back .review_ctnt_wrap .btn_back .cancel_btn { width: 150px; height: 50px; text-align: center; border: 1px solid #9B9B9B;; border-radius: 25px; line-height: 36px; font-size: 20px;}
+#modal_review_back .review_ctnt_wrap .btn_back .submit_btn { width: 150px; height: 50px; text-align: center; border: 1px solid #9B9B9B;; margin-left: 90px; border-radius: 25px; line-height: 36px; font-size: 20px;}
+#modal_review_back .review_ctnt_wrap .btn_back button:focus { outline: none;}
+#modal_review_back .review_ctnt_wrap .btn_back button:hover { cursor: pointer; background-color: #f07a2c; color: #fff;}
+
+#modal_review_back .review_ctnt_wrap .modal_close:hover {cursor: pointer; color: #fff;}
