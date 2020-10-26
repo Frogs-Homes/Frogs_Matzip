@@ -1,5 +1,17 @@
 # Frogs_Matzip
 맛집 프로젝트
+201023 한 일
+- 디테일 food_img파일 등록창 만들고 db에 이미지 등록 완료
+- 등록한 이미지 detail에 뿌리기 완료
+- list 클릭 시 detail창 이동 구현 완료
+
+201022 한 일
+- 대구지역으로 한정 -> index 페이지 수정
+- listMap에서 지도의 latlng 영역값 안의 db 뿌리기
+- js로 지도 영역 내 db 값들 마커 찍기
+- db에 district 추가
+- 가게 등록창에 i_district 부분 추가
+- 테스트용 db 값 넣기 (수성구까지)
 
 201021 한 일
 1. 지도 검색기능 구현
