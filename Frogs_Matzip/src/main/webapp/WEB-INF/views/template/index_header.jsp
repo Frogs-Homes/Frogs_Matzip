@@ -41,7 +41,7 @@
 			<c:otherwise>
 				<a>마이페이지</a>
 				<a>내가 쓴 리뷰</a>
-				<a>좋아요 목록</a>
+				<a>가고싶은 식당 목록</a>
 				<a href="/user/logout">로그아웃</a>
 			</c:otherwise>
 		</c:choose>
@@ -59,7 +59,7 @@
         <form id="frm_search" action="/rest/listMap" method="GET" onsubmit="return searchRest()">
 	        <fieldset>
 		        <legend class="hidden">검색창</legend>
-		        <input type="text" name="search_place" id="search_bar" placeholder="지역,식당 또는 음식">
+		        <input type="text" name="search_text" id="search_bar" placeholder="지역,식당 또는 음식">
 		        <input type="submit" id="search_btn" value="검색">
 	        </fieldset>
         </form>

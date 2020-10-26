@@ -38,7 +38,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			
 		case ViewRef.URI_REST : //rest
 			switch(uriArr[2]) {
-			case "reg" :
+			case "reg" : case "regFood" :
 				if(!isAdmin) {
 					response.sendRedirect("/");
 					return false;

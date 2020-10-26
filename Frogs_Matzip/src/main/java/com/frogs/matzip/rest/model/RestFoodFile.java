@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class RestFoodFile {
 	private int i_rest;
 	private List<MultipartFile> food_list;
+	
 	public int getI_rest() {
 		return i_rest;
 	}
