@@ -12,8 +12,9 @@ import com.frogs.matzip.Const;
 import com.frogs.matzip.FileUtils;
 import com.frogs.matzip.rest.model.RestDMI;
 import com.frogs.matzip.rest.model.RestFoodFile;
-import com.frogs.matzip.rest.model.RestPARAM;
 import com.frogs.matzip.rest.model.RestFoodVO;
+import com.frogs.matzip.rest.model.RestPARAM;
+import com.frogs.matzip.rest.model.RestReviewVO;
 
 @Service
 public class RestService {
@@ -55,6 +56,10 @@ public class RestService {
 		}
 		
 		return Const.SUCCESS;
+	}
+	
+	public int insReview(RestReviewVO param) {
+		return mapper.insReview(param);
 	}
 	
 	public RestDMI selRest(RestPARAM param) {

@@ -10,6 +10,7 @@ public class Const {
 	public static final String CSS = "css";
 	
 	public static final String MSG = "msg";
+	public static final String DATA = "data";
 	public static final String PLACE = "place";
 	public static final String RESTLIST = "restList";
 	

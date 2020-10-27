@@ -15,6 +15,13 @@
 		FROM t_rest_pic
 	</insert>
 	
+	<insert id="insReview" parameterType="RestReviewVO">
+		INSERT INTO t_review
+		(i_user, i_rest, grade, ctnt)
+		VALUES
+		(#{i_user}, #{i_rest}, #{grade}, #{ctnt})
+	</insert>
+	
 	<select id="selRest" parameterType="RestPARAM" resultType="RestDMI">
 		SELECT i_rest, nm, addr, lat, lng, i_category, menu_pic, hit, r_dt, m_dt, phone, price_range, open_time, close_time, ctnt, i_district
 		FROM t_rest

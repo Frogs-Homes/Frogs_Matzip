@@ -4,19 +4,24 @@ package com.frogs.matzip.rest;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.frogs.matzip.Const;
+import com.frogs.matzip.SecurityUtils;
 import com.frogs.matzip.ViewRef;
 import com.frogs.matzip.rest.model.RestDMI;
 import com.frogs.matzip.rest.model.RestFoodFile;
 import com.frogs.matzip.rest.model.RestPARAM;
+import com.frogs.matzip.rest.model.RestReviewVO;
 
 @Controller
 @RequestMapping("/rest")
@@ -71,7 +76,7 @@ public class RestController {
 		RestDMI data = service.selRest(param);
 		
 		model.addAttribute("foodMenuList", service.selFoodmenu(param));
-		model.addAttribute("data", data);
+		model.addAttribute(Const.DATA, data);
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restdetail"});
 		model.addAttribute(Const.TITLE, "Detail");
 		model.addAttribute(Const.HEADER, "/template/default_header");
@@ -112,8 +117,7 @@ public class RestController {
 	
 		return "redirect:/rest/regFood?i_rest=" + i_rest;
 	}
-	
-	
+
 	
 	@RequestMapping(value="/ajaxGetList", produces = {"application/json; charset=UTF-8"})
 	@ResponseBody
@@ -124,5 +128,17 @@ public class RestController {
 		System.out.println("ne_lng : " + param.getNe_lng());
 		
 		return service.selRestList(param);
+	}
+	
+	@RequestMapping(value="ajaxInsReview", method = RequestMethod.POST)
+	@ResponseBody
+	public int ajaxInsReview(@RequestBody RestReviewVO param, HttpSession hs) { //session과  set get? 
+		int i_user = SecurityUtils.getLoginUserPk(hs);
+		if(i_user == 0) {
+			return Const.FAIL;
+		}
+		param.setI_user(i_user);
+
+		return service.insReview(param);
 	}
 }
