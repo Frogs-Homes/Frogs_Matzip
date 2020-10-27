@@ -122,29 +122,39 @@
 </div>  
 
 <div id="modal_bg"></div>
-<div id="modal_review_back">
-    <div class="review_title">
-        <span class="title">포폴로피자</span><p class="title_ctnt"> 에 대한 솔직한 리뷰를 써주세요.</p>
-    </div>
-    <div class="review_ctnt_wrap">
-        <div class="grade_icons">
-            <span class="material-icons" id="one">mood_bad</span><span class="icon_ctnt">최악이다</span>
-            <span class="material-icons" id="two">sentiment_very_dissatisfied</span><span class="icon_ctnt">별로다</span>
-            <span class="material-icons" id="three">sentiment_dissatisfied</span><span class="icon_ctnt">보통이다</span>
-            <span class="material-icons" id="four">sentiment_satisfied</span><span class="icon_ctnt">괜찮다</span>
-            <span class="material-icons" id="five">sentiment_very_satisfied</span><span class="icon_ctnt">맛있다</span>
+    <div id="modal_review_back">
+        <div class="review_title">
+            <span class="title">포폴로피자</span><p class="title_ctnt"> 에 대한 솔직한 리뷰를 써주세요.</p>
         </div>
-        <div class="review_ctnt">
-            <textarea name="review_user" id="review_user" maxlength="400" placeholder="박철민님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!!"></textarea>
-        </div>
-        <div class="btn_back">
-            <div class="btn_wrap">
-               <button class="cancel_btn">취소</button>
-               <button class="submit_btn">리뷰 올리기</button>
-            </div>  
-        </div>
-        <div class="modal_close"><span class="material-icons">clear</span></div>
-    </div>
+        <form id="review_frm">
+            <div class="review_ctnt_wrap">
+                <div id="grade_icons">
+                    <label for="one"><span class="material-icons">mood_bad</span><span class="icon_ctnt">최악이다</span></label>
+                    <input type="hidden" name="one" value="1">
+                    <label for="two"><span class="material-icons">sentiment_very_dissatisfied</span><span class="icon_ctnt">별로다</span></label>
+                    <input type="hidden" name="two" value="2">
+                    <label for="three"><span class="material-icons">sentiment_dissatisfied</span><span class="icon_ctnt">보통이다</span></label>
+                    <input type="hidden" name="three" value="3">
+                    <label for="four"><span class="material-icons">sentiment_satisfied</span><span class="icon_ctnt">괜찮다</span></label>
+                    <input type="hidden" name="four"  value="4">
+                    <label for="five"><span class="material-icons">sentiment_very_satisfied</span><span class="icon_ctnt">맛있다</span></label>
+                    <input type="hidden" name="five" value="5">
+
+                    <input id="grade_result" name="grade_result" type="hidden" value="0">
+                    
+                </div>
+                <div class="review_ctnt">
+                    <textarea name="review_user" id="review_user" maxlength="400" placeholder="박철민님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!!"></textarea>
+                </div>
+                <div class="btn_back">
+                    <div class="btn_wrap">
+                       <button class="cancel_btn">취소</button>
+                       <button class="submit_btn" onclick="reviewChk()">리뷰 올리기</button>
+                    </div>  
+                </div>
+            </div>
+        </form>
+    <div class="modal_close"><span class="material-icons">clear</span></div>
 </div>
 
 <script>
@@ -171,6 +181,44 @@
         modalCloseArr.forEach(function(item) {
             item.addEventListener('click', modalOffClick)
         })
+        
+        
+        /*modal grade*/
+         var gradeIconsArr = document.querySelectorAll('#grade_icons span.material-icons')
+
+	    gradeIconsArr.forEach(function(item) {
+	        item.addEventListener('click', iconsClick)
+	    })
+
+
+	    function iconsClick() {
+	        gradeIconsArr.forEach(function(item) {
+	            item.classList.remove('on')
+	        })
+	
+	        var e = window.event,
+	        icon = e.target || e.srcElement;
+	        icon.classList.add('on')
+	        grade_result.value = icon.parentNode.nextElementSibling.value
+	    }
+        
+        
+        function reviewChk() {
+    		// review - ajax
+    		let parameter = {
+    				'i_rest': '${data.i_rest}', 
+					'grade': review_frm.grade_result.value,
+					'ctnt': review_frm.review_user.value
+			}
+			axios.post('/rest/ajaxInsReview', parameter).then(function(res) {
+				if(res.data == '1') {
+					alert('댓글이 등록되었습니다.')
+					location.reload()
+				} else {
+					alert('문제가 발생하였습니다.')
+				}
+			})
+        }
 </script>   
     
     
