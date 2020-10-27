@@ -87,14 +87,16 @@
  		// -------------searchRest 시작------------------------------------------------------------------------
  		function searchRest() {
  			
- 			if(search_bar.value == "") {
+ 			if(frm_search.search_text.value == "") {
  				alert('검색어를 입력하세요.')
- 				search_bar.focus()
+ 				frm_search.search_text.focus()
+ 				return false
+ 			} else if(frm_search.search_text.value.length < 2) {
+ 				alert('검색어를 두 글자 이상 입력하세요.')
+ 				frm_search.search_text.focus()
  				return false
  			}
- 		}	
-
- 		
+ 		}
  		// -------------searchRest 끝------------------------------------------------------------------------
  		
     	// -------------join 시작------------------------------------------------------------------------

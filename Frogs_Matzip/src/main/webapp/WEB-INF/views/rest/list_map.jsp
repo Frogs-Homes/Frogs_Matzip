@@ -12,7 +12,7 @@
 
 <div class="back_wrap">
 	<div id="list_back">
-	    <h2>${place} 지역의 맛집 목록(평점 순)</h2>
+		<h2>${place} 지역의 맛집 목록</h2>
 	    <div id="rest_list_wrap"></div>
 	    <!-- 
 	    <c:forEach items="${recRestList}" var="item">
@@ -56,14 +56,22 @@
 	// 지도를 생성합니다    
 	var map = new kakao.maps.Map(mapContainer, mapOption);
 	
+	// ajax로 db값 가져오기
 	function getRestList() {
+		// search_text 값이 빈 값이 아닌지, 2글자 이상인지 체크
+		searchRest()
+		
 		//마커 모두 지우기
 		markerList.forEach(function(marker) {
 			marker.setMap(null)
 		})
 		
 		// 리스트 모두 지우기
-		while ( rest_list_wrap.hasChildNodes() ) { rest_list_wrap.removeChild( rest_list_wrap.firstChild ); }
+		while ( list_back.hasChildNodes() ) { list_back.removeChild( list_back.firstChild ); }
+		
+		let search_text = frm_search.search_text.value
+		
+		
 		
 		const bounds = new kakao.maps.LatLngBounds();
 		const southWest = bounds.getSouthWest()
@@ -80,16 +88,29 @@
 		axios.get('/rest/ajaxGetList', {
 			params: {
 				sw_lat, sw_lng, ne_lat, ne_lng, 
-				search_text: '${place}'
+				search_text
 			}
 		}).then(function(res) {
 			console.log(res.data)
 			
-			res.data.forEach(function(item) {					
+			// db에 값이 없을 경우 에러메시지 출력 후 기본지도 위치로 재설정, 리스트에는 추천식당 띄우기
+			if(res.data == null) {
+				alert('검색 결과가 존재하지 않습니다.')
+				location.href = '/rest/listMap?search_text=대구'
+				return false;
+			}
+			
+			var bounds = new kakao.maps.LatLngBounds();
+			createTitle(search_text)
+			
+			res.data.forEach(function(item) {
+				bounds.extend(new kakao.maps.LatLng(item.lat, item.lng));
 				createMarker(item)
 				createRestDiv(item)
 			})
-		})		
+			
+			map.setBounds(bounds);
+		})
 	}
 	
 	function setBounds() {
@@ -136,6 +157,18 @@
 		marker.setMap(map)
 		
 		markerList.push(marker)
+	}
+	
+	// 맛집 목록 제목 생성
+	function createTitle(e) {
+		var heading = document.createElement('h2')
+		heading.innerHTML = e + ' 지역의 맛집 목록'
+		
+		var rest_list_wrap = document.createElement('div')
+		rest_list_wrap.id = 'rest_list_wrap'
+		
+		list_back.prepend(heading)
+		list_back.append(rest_list_wrap)
 	}
 	
 	// 맛집 목록 내 content 생성
@@ -227,7 +260,7 @@
 		console.log('Geolocation is not supported for this Browser/OS.')
 	}
 	
-	kakao.maps.load(function() {
+	/* kakao.maps.load(function() {
  		var ps = new kakao.maps.services.Places();
  		let keyword = "${place}"
  	
@@ -252,6 +285,6 @@
  		          return;
  		      }
  		});
- 	});
+ 	}); */
 
 </script>
