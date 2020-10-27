@@ -28,7 +28,7 @@ h2 a span { margin-left: 4px; text-transform: uppercase; font-size: 0.6em; color
 #title_wrap p span { color: #f07a2c; }
 #frm_search { width: 55%; min-width: 645px; height: 200px; margin: 0 auto; text-align: center; }
 fieldset { border: none; height: 100px; position: relative; }
-#search_bar { border:none; outline:none; display:inline-block; width: 90%; height:55px;  
+.search_bar { border:none; outline:none; display:inline-block; width: 90%; height:55px;  
 border-radius:27px; padding:0 25px; font-size: 20px; }
 #search_btn {position: absolute; right: 0; width: 100px; height: 55px; border-radius: 27px; background-color: #f07a2c; 
 			color: #fff; font-size: 20px; border: none; cursor: pointer; }

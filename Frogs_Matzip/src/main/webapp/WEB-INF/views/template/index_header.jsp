@@ -59,7 +59,7 @@
         <form id="frm_search" action="/rest/listMap" method="GET" onsubmit="return searchRest()">
 	        <fieldset>
 		        <legend class="hidden">검색창</legend>
-		        <input type="text" name="search_text" id="search_bar" placeholder="지역,식당 또는 음식">
+		        <input type="text" name="search_text" class="search_bar" placeholder="지역,식당 또는 음식">
 		        <input type="submit" id="search_btn" value="검색">
 	        </fieldset>
         </form>
