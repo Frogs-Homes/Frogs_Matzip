@@ -3,23 +3,17 @@ package com.frogs.matzip.rest.model;
 import org.apache.ibatis.type.Alias;
 
 @Alias("RestReviewVO")
-public class RestReviewVO {
-	private int i_user;
-	private int i_rest;
+public class RestReviewVO extends RestVO{
 	private int grade;
 	private String ctnt;
+	private int i_user;
+	
 	
 	public int getI_user() {
 		return i_user;
 	}
 	public void setI_user(int i_user) {
 		this.i_user = i_user;
-	}
-	public int getI_rest() {
-		return i_rest;
-	}
-	public void setI_rest(int i_rest) {
-		this.i_rest = i_rest;
 	}
 	public int getGrade() {
 		return grade;

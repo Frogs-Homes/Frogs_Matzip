@@ -56,6 +56,14 @@
 		FROM t_rest_pic
 	</select>
 	
+	<select id ="selReviewList" parameterType="RestReviewVO" resultType="RestDMI">
+		SELECT A.i_user, A.i_rest, A.grade, A.ctnt, A.m_dt, B.nm
+		FROM t_review A
+		LEFT JOIN t_user B
+		ON A.i_user = B.i_user
+		ORDER BY m_dt DESC
+	</select>
+	
 	<update id="updRestMenu" parameterType="RestVO">
 		UPDATE t_rest SET menu_pic = #{menu_pic}
 		WHERE i_rest = #{i_rest}

@@ -71,11 +71,12 @@ public class RestController {
 	}
 	
 	@RequestMapping(value="/detail", method = RequestMethod.GET)
-	public String restDeail(RestPARAM param, Model model) {
-		// detail 데이터값 select해서 addAttribute하기
+	public String restDeail(RestPARAM param, Model model, HttpSession hs) {
 		RestDMI data = service.selRest(param);
 		
 		model.addAttribute("foodMenuList", service.selFoodmenu(param));
+		model.addAttribute("reviewList", service.selReviewList(param));
+		
 		model.addAttribute(Const.DATA, data);
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restdetail"});
 		model.addAttribute(Const.TITLE, "Detail");
