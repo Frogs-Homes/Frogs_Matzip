@@ -90,4 +90,8 @@ public class RestService {
 	public List<RestFoodVO> selFoodmenu(RestPARAM param) {
 		return mapper.selFoodmenu(param);
 	}
+	
+	public List<RestDMI> selReviewList(RestPARAM param) {
+		return mapper.selReviewList(param);
+	}
 }

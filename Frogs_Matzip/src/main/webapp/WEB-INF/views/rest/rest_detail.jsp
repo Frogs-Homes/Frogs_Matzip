@@ -90,33 +90,38 @@
                 <h2>리뷰</h2>
                 <span>(53)</span>
             </div>
-             <div class="review_ctnt_back">
-	             <div id="review_ctnt">
-	                 <div id="user_wrap">
-	                     <div class="profile_img_wrap">
-	                         <img src="/res/img/default_img.png" class="profile_img" alt="">
-	                     </div>
-	                     <div class="user_nm_wrap">
-	                         <div class="user_nm">박철민</div>
-	                     </div>
-	                 </div>
-	                 <div id="user_ctnt_wrap">
-	                     <div class="user_ctnt">
-	                         <div class="day">6일전</div>
-	                         <p class="write">와 정말 맛있다! 엄청 유명해질 데로 유명해져서 맛도 예전과 좀 달라져버리지 않았을까 하며 기대없이 방문했다가 전복죽에 치이고 물회에 또 치였다.
-	                             뜨끈한 전복죽은 내장이 들어가 정말 고소하고 맛났었다. 죽을 먹으며 위장을 워밍업 시키고 본격적으로 물회를 한입 맛 본 순간, 감칠맛과 새콤함이 입안에 퍼지고 신선한 회와 해삼들이 씹는 맛을 재밌게 해준다.
-	                             큰 규모덕에 정말 많은 사람들이 몰려오는 가게지만 정말 맛있는 음식으로 이 모두를 감당해내고 있는 느낌이시다.
-	                             속초에 올때는 필수 코스가 될 것 같다!</p>
-	                     </div>
-	                     <div class="user_like_wrap">
-	                         <div class="user_like">
-	                             <span class="material-icons">sentiment_very_dissatisfied</span>
-	                             <span class="like_ctnt">똥이다</span>
-	                         </div>
-	                     </div>
-	                 </div>
-	             </div>
-	         </div>
+             <c:forEach items="${reviewList}" var="item">
+	             <div class="review_ctnt_back">
+		             <div id="review_ctnt">
+		                 <div id="user_wrap">
+		                     <div class="profile_img_wrap">
+		                         <img src="/res/img/default_img.png" class="profile_img" alt="">
+		                     </div>
+		                     <div class="user_nm_wrap">
+		                         <div class="user_nm">${item.nm}</div>
+		                     </div>
+		                 </div>
+		                 <div id="user_ctnt_wrap">
+		                     <div class="user_ctnt">
+		                         <div class="day">${item.m_dt}</div>
+		                         <p class="write">${item.ctnt}</p>
+		                     </div>
+		                     <div class="user_like_wrap">
+		                         <div class="user_like">
+		                             <span class="material-icons">sentiment_very_dissatisfied</span>
+		                             <span class="like_ctnt">똥이다</span>
+		                         </div>
+		                     </div>
+		                 </div>
+		             </div>
+		             
+		       			<div id="user_btn">
+	                        	<button class="review_mod">수정</button>
+	                        	<button class="review_del">삭제</button>     
+	                 	</div>
+					
+		         </div>
+		      </c:forEach>
         </section>
     </div>
 </div>  
@@ -124,7 +129,7 @@
 <div id="modal_bg"></div>
     <div id="modal_review_back">
         <div class="review_title">
-            <span class="title">포폴로피자</span><p class="title_ctnt"> 에 대한 솔직한 리뷰를 써주세요.</p>
+            <span class="title">${data.nm}</span><p class="title_ctnt"> 에 대한 솔직한 리뷰를 써주세요.</p>
         </div>
         <form id="review_frm">
             <div class="review_ctnt_wrap">
