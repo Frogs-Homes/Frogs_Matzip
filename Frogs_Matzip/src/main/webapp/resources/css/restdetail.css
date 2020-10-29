@@ -45,11 +45,11 @@ th { width: 20%; text-align: start;}
 #rest_review #review_title h2 { display: inline-block; }
 #rest_review #review_title span { margin-left: 5px;}
 
-#rest_review .review_ctnt_back { width: 100%; border-bottom: 1px solid lightgray;}
+#rest_review .review_ctnt_back { width: 100%; border-bottom: 1px solid lightgray; margin-bottom: 20px;}
 #rest_review .review_ctnt_back:hover { background-color: #f7f7f7;}
 
 #rest_review #review_ctnt { width: 100%; margin-top: 20px; display: flex;}
-#rest_review #review_ctnt #user_wrap { width: 15%;}
+#rest_review #review_ctnt #user_wrap { width: 15%; margin-bottom: 30px;}
 #rest_review #review_ctnt #user_wrap .profile_img_wrap { width: 100%; margin: 0 auto; text-align: center;}
 #rest_review #review_ctnt #user_wrap .profile_img_wrap .profile_img { width: 70px; height: 70px; margin-top: 35px; border-radius: 100%;}
 #rest_review #review_ctnt #user_wrap .user_nm_wrap { width: 100%; margin: 0 auto;}
@@ -61,7 +61,7 @@ th { width: 20%; text-align: start;}
 #rest_review #review_ctnt #user_ctnt_wrap .user_ctnt .write { flex: 1; line-height: 30px; }
 
 #rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap { flex: 1; text-align: center;}
-#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .user_like { width: 60px; margin: 0 auto;}
+#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .user_like { width: 65px; margin: 0 auto;}
 #rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .user_like .material-icons { font-size: 55px;}
 
 .review_ctnt_back #user_btn { margin: 0 0 10px 850px;}
@@ -129,10 +129,10 @@ th { width: 20%; text-align: start;}
 
 #modal_review_back .review_ctnt_wrap .btn_back {  width: 100%; height: 50px; margin: 30px auto; display: flex;}
 #modal_review_back .review_ctnt_wrap .btn_back .btn_wrap { margin: 0 auto; display: flex;}
-#modal_review_back .review_ctnt_wrap .btn_back .cancel_btn { width: 150px; height: 50px; text-align: center; border: 1px solid #9B9B9B;; border-radius: 25px; line-height: 36px; font-size: 20px;}
-#modal_review_back .review_ctnt_wrap .btn_back .submit_btn { width: 150px; height: 50px; text-align: center; border: 1px solid #9B9B9B;; margin-left: 90px; border-radius: 25px; line-height: 36px; font-size: 20px;}
-#modal_review_back .review_ctnt_wrap .btn_back button:focus { outline: none;}
-#modal_review_back .review_ctnt_wrap .btn_back button:hover { cursor: pointer; background-color: #f07a2c; color: #fff;}
+#modal_review_back .review_ctnt_wrap .btn_back #cancel_btn { width: 150px; height: 50px; text-align: center; border: 1px solid #9B9B9B;; border-radius: 25px; line-height: 36px; font-size: 20px;}
+#modal_review_back .review_ctnt_wrap .btn_back #submit_btn { width: 150px; height: 50px; text-align: center; border: 1px solid #9B9B9B;; margin-left: 90px; border-radius: 25px; line-height: 36px; font-size: 20px;}
+#modal_review_back .review_ctnt_wrap .btn_back input:focus { outline: none;}
+#modal_review_back .review_ctnt_wrap .btn_back input:hover { cursor: pointer; background-color: #f07a2c; color: #fff;}
 
 #modal_review_back .review_ctnt_wrap .modal_close:hover {cursor: pointer; color: #fff;}
 

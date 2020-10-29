@@ -91,7 +91,7 @@
                 <span>(53)</span>
             </div>
              <c:forEach items="${reviewList}" var="item">
-	             <div class="review_ctnt_back">
+	             <div class="review_ctnt_back" id="review_ctnt_back_${item.seq}">
 		             <div id="review_ctnt">
 		                 <div id="user_wrap">
 		                     <div class="profile_img_wrap">
@@ -108,18 +108,36 @@
 		                     </div>
 		                     <div class="user_like_wrap">
 		                         <div class="user_like">
-		                             <span class="material-icons">sentiment_very_dissatisfied</span>
-		                             <span class="like_ctnt">똥이다</span>
+		                         <c:if test="${item.grade == 1}">
+					                    <label for="one"><span class="material-icons">mood_bad</span><span class="icon_ctnt">최악이다</span></label>
+					                    <input type="hidden" name="one" value="1">
+		                         	</c:if>
+		                         	<c:if test="${item.grade == 2}">
+					                    <label for="two"><span class="material-icons">sentiment_very_dissatisfied</span><span class="icon_ctnt">별로다</span></label>
+					                    <input type="hidden" name="two" value="2">
+		                         	</c:if>
+		                         	<c:if test="${item.grade == 3}">
+					                    <label for="three"><span class="material-icons">sentiment_dissatisfied</span><span class="icon_ctnt">보통이다</span></label>
+					                    <input type="hidden" name="three" value="3">
+		                         	</c:if>
+		                         	<c:if test="${item.grade == 4}">
+					                    <label for="four"><span class="material-icons">sentiment_satisfied</span><span class="icon_ctnt">괜찮다</span></label>
+					                    <input type="hidden" name="four"  value="4">
+		                         	</c:if>
+		                         	<c:if test="${item.grade == 5}">
+					                    <label for="five"><span class="material-icons">sentiment_very_satisfied</span><span class="icon_ctnt">맛있다</span></label>
+					                    <input type="hidden" name="five" value="5">
+		                         	</c:if>
 		                         </div>
 		                     </div>
 		                 </div>
 		             </div>
-		             
+		             <c:if test="${item.i_user == loginUser.i_user}">
 		       			<div id="user_btn">
-	                        	<button class="review_mod">수정</button>
-	                        	<button class="review_del">삭제</button>     
+	                        	<button class="review_mod" onclick="reviewMod(${item.seq}, '${item.ctnt}')">수정</button>
+	                        	<button class="review_del" onclick="reviewDel(${item.seq})">삭제</button>     
 	                 	</div>
-					
+					</c:if>
 		         </div>
 		      </c:forEach>
         </section>
@@ -149,12 +167,12 @@
                     
                 </div>
                 <div class="review_ctnt">
-                    <textarea name="review_user" id="review_user" maxlength="400" placeholder="박철민님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!!"></textarea>
+                    <textarea name="review_user" id="review_user" value="" maxlength="400" placeholder="박철민님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!!" ></textarea>
                 </div>
                 <div class="btn_back">
                     <div class="btn_wrap">
-                       <button class="cancel_btn">취소</button>
-                       <button class="submit_btn" onclick="reviewChk()">리뷰 올리기</button>
+                       <input type="button" id="cancel_btn" value="취소">
+                       <input type="button" id="submit_btn" onclick="reviewChk()" value="리뷰 올리기">
                     </div>  
                 </div>
             </div>
@@ -163,14 +181,25 @@
 </div>
 
 <script>
-        document.querySelector('#review_write').addEventListener('click', reviewBtnClick)
-
+		var i_user = '${loginUser.i_user}'
+		
+		
+		 document.querySelector('#review_write').addEventListener('click', function(){
+        	if(i_user == "" || i_user == null) {
+        		loginBtnClick()
+        	} else {
+        		reviewBtnClick()
+        	}
+        })
+        
+        
         function reviewBtnClick() {
             document.querySelector('#modal_review_back').style.display = 'block'
             document.querySelector('#modal_bg').style.display = 'block'
 
             document.querySelector('html').classList.add('scrollDisable')
             document.querySelector('body').classList.add('scrollDisable')
+            submit_btn.value = "리뷰 올리기"
         }
 
         function modalOffClick() {  
@@ -224,6 +253,55 @@
 				}
 			})
         }
+        
+        /*리뷰수정*/
+        function reviewUpd(seq, ctnt) {
+        	review_user.value = ctnt
+        	reviewBtnClick()
+        	submit_btn.value = "수정"
+        	
+       		document.querySelector('.review_mod').addEventListener('click', function(){
+           		if(!confirm('수정하시겠습니까?')) {
+              			return
+              		}
+                  	console.log('seq : ' + seq)
+                  	let parameter = {
+          					'seq': seq 
+          			}
+                  	
+       			axios.post('/rest/ajaxMoUpdview', parameter).then(function(res) {
+       				if(res.data == '1') {
+       					alert('댓글이 수정되었습니다.')
+       					location.reload()
+       				} else {
+       					alert('문제가 발생하였습니다.')
+       				}
+       			})
+           	})
+        		
+        }
+        
+        /*리뷰삭제*/
+        function reviewDel(seq) {
+        	if(!confirm('삭제하시겠습니까?')) {
+    			return
+    		}
+        	
+        	let parameter = {
+					'seq': seq 
+			}
+        	
+			axios.post('/rest/ajaxDelReview', parameter).then(function(res) {
+				if(res.data == '1') {
+					alert('댓글이 삭제되었습니다.')
+					location.reload()
+				} else {
+					alert('문제가 발생하였습니다.')
+				}
+			})
+        }
+        
+        
 </script>   
     
     

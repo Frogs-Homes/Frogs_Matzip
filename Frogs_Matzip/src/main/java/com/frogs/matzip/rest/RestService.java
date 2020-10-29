@@ -94,4 +94,12 @@ public class RestService {
 	public List<RestDMI> selReviewList(RestPARAM param) {
 		return mapper.selReviewList(param);
 	}
+	
+	public int updReview(RestReviewVO param) {
+		return mapper.updReview(param);
+	}
+	
+	public int delReview(RestReviewVO param) {
+		return mapper.delReview(param);
+	}
 }

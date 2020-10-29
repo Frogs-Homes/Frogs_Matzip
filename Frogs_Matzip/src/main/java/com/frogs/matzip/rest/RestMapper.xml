@@ -57,7 +57,7 @@
 	</select>
 	
 	<select id ="selReviewList" parameterType="RestReviewVO" resultType="RestDMI">
-		SELECT A.i_user, A.i_rest, A.grade, A.ctnt, A.m_dt, B.nm
+		SELECT A.seq, A.i_user, A.i_rest, A.grade, A.ctnt, A.m_dt, B.nm
 		FROM t_review A
 		LEFT JOIN t_user B
 		ON A.i_user = B.i_user
@@ -68,4 +68,16 @@
 		UPDATE t_rest SET menu_pic = #{menu_pic}
 		WHERE i_rest = #{i_rest}
 	</update>
+	
+	<update id="updReview" parameterType="RestReviewVO">
+		UPDATE t_review SET ctnt = #{ctnt}
+		WHERE i_user = #{i_user}
+		AND seq = #{seq} 
+	</update>
+	
+	<delete id="delReview" parameterType="RestReviewVO">
+		DELETE FROM t_review
+		WHERE i_user = #{i_user}
+		AND seq = #{seq}
+	</delete>
 </mapper>
