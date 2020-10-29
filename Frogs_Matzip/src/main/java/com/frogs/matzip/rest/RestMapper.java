@@ -25,4 +25,7 @@ public interface RestMapper {
 	List<RestDMI> selReviewList(RestPARAM param);
 	
 	int updRestMenu(RestVO param);
+	int updReview(RestReviewVO param);
+	
+	int delReview(RestReviewVO param);
 }

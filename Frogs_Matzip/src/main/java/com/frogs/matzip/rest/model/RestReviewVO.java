@@ -7,8 +7,14 @@ public class RestReviewVO extends RestVO{
 	private int grade;
 	private String ctnt;
 	private int i_user;
+	private int seq;
 	
-	
+	public int getSeq() {
+		return seq;
+	}
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
 	public int getI_user() {
 		return i_user;
 	}

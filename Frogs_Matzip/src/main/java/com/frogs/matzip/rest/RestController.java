@@ -73,9 +73,11 @@ public class RestController {
 	@RequestMapping(value="/detail", method = RequestMethod.GET)
 	public String restDeail(RestPARAM param, Model model, HttpSession hs) {
 		RestDMI data = service.selRest(param);
+		List <RestDMI> reviewList = service.selReviewList(param);
+	
 		
 		model.addAttribute("foodMenuList", service.selFoodmenu(param));
-		model.addAttribute("reviewList", service.selReviewList(param));
+		model.addAttribute("reviewList", reviewList);
 		
 		model.addAttribute(Const.DATA, data);
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restdetail"});
@@ -141,5 +143,31 @@ public class RestController {
 		param.setI_user(i_user);
 
 		return service.insReview(param);
+	}
+	
+	@RequestMapping(value="ajaxDelReview", method = RequestMethod.POST)
+	@ResponseBody
+	public int ajaxDelReview(@RequestBody RestReviewVO param, HttpSession hs) {
+		int i_user = SecurityUtils.getLoginUserPk(hs);
+		if(i_user == 0) {
+			return Const.FAIL;
+		}
+		param.setI_user(i_user);
+		
+		
+		return service.delReview(param);
+	}
+	
+	@RequestMapping(value="ajaxUpdReview", method = RequestMethod.POST)
+	@ResponseBody
+	public int ajaxModReview(@RequestBody RestReviewVO param, HttpSession hs) {
+		int i_user = SecurityUtils.getLoginUserPk(hs);
+		if(i_user == 0) {
+			return Const.FAIL;
+		}
+		param.setI_user(i_user);
+		
+		
+		return service.updReview(param);
 	}
 }
