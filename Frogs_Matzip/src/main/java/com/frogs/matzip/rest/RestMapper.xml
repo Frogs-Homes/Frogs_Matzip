@@ -45,9 +45,15 @@
 	<select id="selRestList" parameterType="RestPARAM" resultType="RestDMI">
 	 	SELECT i_rest, nm, addr, lat, lng, i_category, i_district
 	 	FROM t_rest
-	 	<if test="search_text != null">
-	 		WHERE nm like #{sql_search_text} or addr like #{sql_search_text}
-	 	</if>
+	 	<choose>
+	 		<when test="search_text != null">
+	 			WHERE nm like #{sql_search_text} or addr like #{sql_search_text}
+	 		</when>
+	 		<otherwise>
+	 			WHERE lat BETWEEN #{sw_lat} AND #{ne_lat}
+				AND lng BETWEEN #{sw_lng} AND #{ne_lng}
+	 		</otherwise>
+	 	</choose>
 	 	ORDER BY i_rest
 	</select>
 	

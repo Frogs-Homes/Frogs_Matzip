@@ -262,13 +262,13 @@
     	// -------------chkSearchRest 시작------------------------------------------------------------------------
  		function chkSearchRest() {
  			
- 			if(frm_search.search_text.value == "") {
+ 			if(keyword.value == "") {
  				alert('검색어를 입력하세요.')
- 				frm_search.search_text.focus()
+ 				keyword.focus()
  				return false
- 			} else if(frm_search.search_text.value.length < 2) {
+ 			} else if(keyword.value.length < 2) {
  				alert('검색어를 두 글자 이상 입력하세요.')
- 				frm_search.search_text.focus()
+ 				keyword.focus()
  				return false
  			}
  		}
@@ -307,7 +307,7 @@
 			
 			createTitle('현재')
 			
-			const bounds = new kakao.maps.LatLngBounds();
+			const bounds = map.getBounds();
 			const southWest = bounds.getSouthWest()
 			const northEast = bounds.getNorthEast()
 			
@@ -350,8 +350,6 @@
 			
 			let search_text = keyword.value
 			
-			const bounds = new kakao.maps.LatLngBounds();
-			
 			axios.get('/rest/ajaxGetList', {
 				params: {
 					search_text
@@ -367,6 +365,7 @@
 				}
 				
 				createTitle(search_text)
+				const bounds = new kakao.maps.LatLngBounds();
 				
 				res.data.forEach(function(item) {
 					createMarker(item)
