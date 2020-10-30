@@ -72,14 +72,13 @@ public class RestController {
 	
 	@RequestMapping(value="/detail", method = RequestMethod.GET)
 	public String restDeail(RestPARAM param, Model model, HttpSession hs) {
-		RestDMI data = service.selRest(param);
 		List <RestDMI> reviewList = service.selReviewList(param);
 	
 		
 		model.addAttribute("foodMenuList", service.selFoodmenu(param));
 		model.addAttribute("reviewList", reviewList);
 		
-		model.addAttribute(Const.DATA, data);
+		model.addAttribute(Const.DATA, service.selRest(param));
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restdetail"});
 		model.addAttribute(Const.TITLE, "Detail");
 		model.addAttribute(Const.HEADER, "/template/default_header");

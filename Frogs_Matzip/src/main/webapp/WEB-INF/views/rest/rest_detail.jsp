@@ -108,7 +108,7 @@
 		                     </div>
 		                     <div class="user_like_wrap">
 		                         <div class="user_like">
-		                         <c:if test="${item.grade == 1}">
+		                         	<c:if test="${item.grade == 1}">
 					                    <label for="one"><span class="material-icons">mood_bad</span><span class="icon_ctnt">최악이다</span></label>
 					                    <input type="hidden" name="one" value="1">
 		                         	</c:if>
@@ -134,7 +134,7 @@
 		             </div>
 		             <c:if test="${item.i_user == loginUser.i_user}">
 		       			<div id="user_btn">
-	                        	<button class="review_mod" onclick="reviewMod(${item.seq}, '${item.ctnt}')">수정</button>
+	                        	<button class="review_mod" onclick="reviewUpd(${item.seq}, '${item.ctnt}', ${item.grade})">수정</button>
 	                        	<button class="review_del" onclick="reviewDel(${item.seq})">삭제</button>     
 	                 	</div>
 					</c:if>
@@ -171,8 +171,8 @@
                 </div>
                 <div class="btn_back">
                     <div class="btn_wrap">
-                       <input type="button" id="cancel_btn" value="취소">
-                       <input type="button" id="submit_btn" onclick="reviewChk()" value="리뷰 올리기">
+                        <input type="button" id="cancel_btn" value="취소">   
+                     	<input type="button" id="submit_btn" onclick="reviewChk()" value="리뷰 올리기">
                     </div>  
                 </div>
             </div>
@@ -238,38 +238,50 @@
         
         
         function reviewChk() {
+        	if( review_frm.grade_result.value == 0) {
+        		alert('평점을 등록해주세요')
+        		return false
+        	} else if( review_frm.review_user.value == '') {
+        		alert('내용을 입력해주세요.')
+        		return false
+        	}
+        	
     		// review - ajax
     		let parameter = {
     				'i_rest': '${data.i_rest}', 
 					'grade': review_frm.grade_result.value,
 					'ctnt': review_frm.review_user.value
 			}
-			axios.post('/rest/ajaxInsReview', parameter).then(function(res) {
-				if(res.data == '1') {
-					alert('댓글이 등록되었습니다.')
-					location.reload()
-				} else {
-					alert('문제가 발생하였습니다.')
-				}
-			})
+    	 			
+   			axios.post('/rest/ajaxInsReview', parameter).then(function(res) {
+   				if(res.data == '1') {
+   					alert('댓글이 등록되었습니다.')
+   					location.reload()
+   				} else {
+   					alert('문제가 발생하였습니다.')
+   				}
+   			})
+    		
+			
         }
         
         /*리뷰수정*/
-        function reviewUpd(seq, ctnt) {
+        function reviewUpd(seq, ctnt, grade) {
         	review_user.value = ctnt
+			
         	reviewBtnClick()
-        	submit_btn.value = "수정"
+        	submit_btn.value = '수정'
         	
-       		document.querySelector('.review_mod').addEventListener('click', function(){
+       		document.querySelector('#submit_btn').addEventListener('click', function(){
            		if(!confirm('수정하시겠습니까?')) {
               			return
               		}
                   	console.log('seq : ' + seq)
                   	let parameter = {
-          					'seq': seq 
+          				'seq': seq 
           			}
                   	
-       			axios.post('/rest/ajaxMoUpdview', parameter).then(function(res) {
+       			axios.post('/rest/ajaxUpdReview', parameter).then(function(res) {
        				if(res.data == '1') {
        					alert('댓글이 수정되었습니다.')
        					location.reload()
