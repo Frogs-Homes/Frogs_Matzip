@@ -62,12 +62,17 @@
 		FROM t_rest_pic
 	</select>
 	
-	<select id ="selReviewList" parameterType="RestReviewVO" resultType="RestDMI">
+	<select id ="selReviewList" parameterType="RestPARAM" resultType="RestDMI">
 		SELECT A.seq, A.i_user, A.i_rest, A.grade, A.ctnt, A.m_dt, B.nm
 		FROM t_review A
 		LEFT JOIN t_user B
 		ON A.i_user = B.i_user
 		ORDER BY m_dt DESC
+	</select>
+	
+	<select id="selReviewCount" parameterType="RestReviewVO" resultType="RestDMI">
+		SELECT COUNT(seq) AS review_cnt FROM t_review
+		WHERE i_rest = #{i_rest}
 	</select>
 	
 	<update id="updRestMenu" parameterType="RestVO">

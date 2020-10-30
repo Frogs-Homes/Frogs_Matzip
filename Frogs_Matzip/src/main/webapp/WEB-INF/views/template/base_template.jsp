@@ -271,6 +271,8 @@
  				keyword.focus()
  				return false
  			}
+ 			
+ 			return true
  		}
  		// -------------chkSearchRest 끝------------------------------------------------------------------------
     	
@@ -340,14 +342,6 @@
 				return;
 			}
 			
-			//마커 모두 지우기
-			markerList.forEach(function(marker) {
-				marker.setMap(null)
-			})
-			
-			// 리스트 모두 지우기
-			while ( list_back.hasChildNodes() ) { list_back.removeChild( list_back.firstChild ); }
-			
 			let search_text = keyword.value
 			
 			axios.get('/rest/ajaxGetList', {
@@ -355,6 +349,7 @@
 					search_text
 				}
 			}).then(function(res) {
+				
 				console.log(res.data)
 				
 				// db에 값이 없을 경우 에러메시지 출력 후 기본지도 위치로 재설정, 리스트에는 추천식당 띄우기
@@ -364,27 +359,43 @@
 					return;
 				}
 				
+				// 리스트 모두 지우기			
+				list_back.innerHTML = ''
+				
+				//마커 모두 지우기
+				markerList.forEach(function(marker) {
+					marker.setMap(null)
+				})
+				
 				createTitle(search_text)
 				const bounds = new kakao.maps.LatLngBounds();
 				
+				/*
 				res.data.forEach(function(item) {
 					createMarker(item)
 					createRestDiv(item)
 				})
-				bounds.extend(new kakao.maps.LatLng(res.data[0].lat, res.data[0].lng));
+				*/
+				//bounds.extend(new kakao.maps.LatLng(res.data[0].lat, res.data[0].lng));
 				
-				map.setBounds(bounds);
+				
+				//map.setBounds(bounds);
+				
+				 var moveLatLon = new kakao.maps.LatLng(res.data[0].lat, res.data[0].lng);
+				 map.setCenter(moveLatLon);
+				 
+				 
 			})
 		}
+		
+		kakao.maps.event.addListener(map, 'tilesloaded', getBoundRestList)
 		
 		function setBounds() {
 		    // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
 		    // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
 		    map.setBounds(bounds);
 		}
-		
-		kakao.maps.event.addListener(map, 'bounds_changed', getBoundRestList)
-		
+				
 		// 마커 생성 함수
 		function createMarker(item) {
 				

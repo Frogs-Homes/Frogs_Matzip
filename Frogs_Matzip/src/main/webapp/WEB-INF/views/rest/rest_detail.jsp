@@ -88,7 +88,7 @@
         <section id="rest_review">
             <div id="review_title">
                 <h2>리뷰</h2>
-                <span>(53)</span>
+                <span>(${count.review_cnt})</span>
             </div>
              <c:forEach items="${reviewList}" var="item">
 	             <div class="review_ctnt_back" id="review_ctnt_back_${item.seq}">
@@ -150,6 +150,8 @@
             <span class="title">${data.nm}</span><p class="title_ctnt"> 에 대한 솔직한 리뷰를 써주세요.</p>
         </div>
         <form id="review_frm">
+        	<input type="hidden" name="typ">
+        	<input type="hidden" name="seq">
             <div class="review_ctnt_wrap">
                 <div id="grade_icons">
                     <label for="one"><span class="material-icons">mood_bad</span><span class="icon_ctnt">최악이다</span></label>
@@ -188,19 +190,17 @@
         	if(i_user == "" || i_user == null) {
         		loginBtnClick()
         	} else {
-        		reviewBtnClick()
+        		reviewInsClick()
         	}
         })
-        
-        
-        function reviewBtnClick() {
-            document.querySelector('#modal_review_back').style.display = 'block'
-            document.querySelector('#modal_bg').style.display = 'block'
+		
+		function modalOn() {
+			document.querySelector('#modal_review_back').style.display = 'block'
+	        document.querySelector('#modal_bg').style.display = 'block'
 
-            document.querySelector('html').classList.add('scrollDisable')
-            document.querySelector('body').classList.add('scrollDisable')
-            submit_btn.value = "리뷰 올리기"
-        }
+	        document.querySelector('html').classList.add('scrollDisable')
+	        document.querySelector('body').classList.add('scrollDisable')
+		}
 
         function modalOffClick() {  
             document.querySelector('#modal_review_back').style.display = 'none'
@@ -236,6 +236,12 @@
 	        grade_result.value = icon.parentNode.nextElementSibling.value
 	    }
         
+		/*review*/
+        function reviewInsClick() {			
+			review_frm.typ = '1'            
+            submit_btn.value = "리뷰 올리기"
+          	modalOn()
+        }
         
         function reviewChk() {
         	if( review_frm.grade_result.value == 0) {
@@ -246,16 +252,29 @@
         		return false
         	}
         	
-    		// review - ajax
-    		let parameter = {
-    				'i_rest': '${data.i_rest}', 
-					'grade': review_frm.grade_result.value,
-					'ctnt': review_frm.review_user.value
-			}
+        	var typ = review_frm.typ.value
+        	
+        	var url = '/rest/ajaxInsReview' //기본 주소는 등록
+        	var msg = '댓글이 등록되었습니다.'
+        	
+        	
+        	// review - ajax
+       		let parameter = {
+       				'i_rest': '${data.i_rest}', 
+   					'grade': review_frm.grade_result.value,
+   					'ctnt': review_frm.review_user.value
+   			}
+        	
+        	if(typ == '2') { //수정이면 주소 변경
+        		url = '/rest/ajaxUpdReview'
+        		msg = '댓글이 수정되었습니다.'
+        		
+        		parameter.seq = review_frm.seq.value
+        	}
     	 			
-   			axios.post('/rest/ajaxInsReview', parameter).then(function(res) {
+   			axios.post(url, parameter).then(function(res) {
    				if(res.data == '1') {
-   					alert('댓글이 등록되었습니다.')
+   					alert(msg)
    					location.reload()
    				} else {
    					alert('문제가 발생하였습니다.')
@@ -268,29 +287,11 @@
         /*리뷰수정*/
         function reviewUpd(seq, ctnt, grade) {
         	review_user.value = ctnt
-			
-        	reviewBtnClick()
+        	review_frm.typ.value = '2'
+        	review_frm.seq.value = seq
+        	review_frm.grade_result.value = grade
         	submit_btn.value = '수정'
-        	
-       		document.querySelector('#submit_btn').addEventListener('click', function(){
-           		if(!confirm('수정하시겠습니까?')) {
-              			return
-              		}
-                  	console.log('seq : ' + seq)
-                  	let parameter = {
-          				'seq': seq 
-          			}
-                  	
-       			axios.post('/rest/ajaxUpdReview', parameter).then(function(res) {
-       				if(res.data == '1') {
-       					alert('댓글이 수정되었습니다.')
-       					location.reload()
-       				} else {
-       					alert('문제가 발생하였습니다.')
-       				}
-       			})
-           	})
-        		
+        	modalOn()
         }
         
         /*리뷰삭제*/

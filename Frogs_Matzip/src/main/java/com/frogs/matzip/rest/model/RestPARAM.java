@@ -12,7 +12,17 @@ public class RestPARAM extends RestVO {
 	private double ne_lng;
 	private String search_text;
 	private String sql_search_text;
+	private int seq;
 	
+	
+
+	public int getSeq() {
+		return seq;
+	}
+
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
 
 	public String getSql_search_text() {
 		return sql_search_text;
