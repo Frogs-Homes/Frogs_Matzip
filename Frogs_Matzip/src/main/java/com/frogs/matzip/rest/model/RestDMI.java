@@ -9,8 +9,15 @@ public class RestDMI extends RestVO {
 	private int i_user;
 	private int seq;
 	private int grade;
+	private int review_cnt;
 	
 	
+	public int getReview_cnt() {
+		return review_cnt;
+	}
+	public void setReview_cnt(int review_cnt) {
+		this.review_cnt = review_cnt;
+	}
 	public int getGrade() {
 		return grade;
 	}

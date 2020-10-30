@@ -34,7 +34,7 @@
 	</div>
 	
 	<div class="map_wrap">
-	    <div id="map" style="width:100vw; height:100vh; position:fixed;overflow:hidden; "></div>
+	    <div id="map" style="width:100%; height:100%; position:fixed;"></div>
 	</div>
 	
 </div>
@@ -43,7 +43,8 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d88fdcc4a19e51b35f8bf4dc0300b352&libraries=services"></script>
 <script>
-	// 마커를 담을 배열입니다
+/*
+	 // 마커를 담을 배열입니다
 	var markerList = [];
 	
 	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
@@ -260,7 +261,7 @@
 		console.log('Geolocation is not supported for this Browser/OS.')
 	}
 	
-	/* kakao.maps.load(function() {
+ kakao.maps.load(function() {
  		var ps = new kakao.maps.services.Places();
  		let keyword = "${place}"
  	

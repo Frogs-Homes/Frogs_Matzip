@@ -95,6 +95,10 @@ public class RestService {
 		return mapper.selReviewList(param);
 	}
 	
+	public RestDMI selReviewCount(RestReviewVO param) {
+		return mapper.selReviewCount(param);
+	}
+	
 	public int updReview(RestReviewVO param) {
 		return mapper.updReview(param);
 	}
