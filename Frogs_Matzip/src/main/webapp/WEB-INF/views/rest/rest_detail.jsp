@@ -44,7 +44,7 @@
 		</div>
 
         <div id="user_content_wrap">
-                <span class="material-icons" id="review_write">edit</span><span class="write_cnt">132</span>
+                <span class="material-icons" id="review_write">edit</span><span class="write_cnt">${count.review_cnt}</span>
                 <span class="material-icons">favorite</span><span class="favorite_cnt">441</span>
         </div>
 
@@ -169,12 +169,12 @@
                     
                 </div>
                 <div class="review_ctnt">
-                    <textarea name="review_user" id="review_user" value="" maxlength="400" placeholder="박철민님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!!" ></textarea>
+                    <textarea name="review_user" id="review_user" maxlength="400" placeholder="박철민님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!!" ></textarea>
                 </div>
                 <div class="btn_back">
                     <div class="btn_wrap">
                         <input type="button" id="cancel_btn" value="취소">   
-                     	<input type="button" id="submit_btn" onclick="reviewChk()" value="리뷰 올리기">
+                     	<input type="button" id="submit_btn" onclick="reviewIns()" value="리뷰 올리기">
                     </div>  
                 </div>
             </div>
@@ -224,11 +224,14 @@
 	        item.addEventListener('click', iconsClick)
 	    })
 
+	    function disableIcons() {        	
+	        gradeIconsArr.forEach(function(item) {
+	        	item.classList.remove('on')
+		    })	 
+        }
 
 	    function iconsClick() {
-	        gradeIconsArr.forEach(function(item) {
-	            item.classList.remove('on')
-	        })
+	    	disableIcons()
 	
 	        var e = window.event,
 	        icon = e.target || e.srcElement;
@@ -237,13 +240,17 @@
 	    }
         
 		/*review*/
-        function reviewInsClick() {			
-			review_frm.typ = '1'            
+        function reviewInsClick() {	
+        	disableIcons()
+ 	        
+			review_frm.typ = '1'
+			review_frm.review_user.value = ''
             submit_btn.value = "리뷰 올리기"
+            
           	modalOn()
         }
         
-        function reviewChk() {
+        function reviewIns() {
         	if( review_frm.grade_result.value == 0) {
         		alert('평점을 등록해주세요')
         		return false
@@ -285,7 +292,33 @@
         }
         
         /*리뷰수정*/
+        //grade는 값 범위가 1~5 가??0~5입니다아무것도입력안했을때 0 오키도키
         function reviewUpd(seq, ctnt, grade) {
+        	//document.querySelectorAll('#grade_icons .material-icons').
+        	disableIcons()
+        	
+        	var gradeIcon
+        	
+        	switch(grade) {
+        	case 1:
+        		gradeIcon = document.querySelectorAll('#grade_icons span.material-icons')[0]
+        		break;
+        	case 2:
+        		gradeIcon = document.querySelectorAll('#grade_icons span.material-icons')[1]
+        		break;
+        	case 3:
+        		gradeIcon = document.querySelectorAll('#grade_icons span.material-icons')[2]
+        		break;
+        	case 4:
+        		gradeIcon = document.querySelectorAll('#grade_icons span.material-icons')[3]
+        		break;
+        	case 5:
+        		gradeIcon = document.querySelectorAll('#grade_icons span.material-icons')[4]
+        		break;
+        	}
+        	
+        	gradeIcon.classList.add('on')
+        	
         	review_user.value = ctnt
         	review_frm.typ.value = '2'
         	review_frm.seq.value = seq
