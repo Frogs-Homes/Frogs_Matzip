@@ -7,19 +7,16 @@
 <head>
 <meta charset="UTF-8">
 <c:forEach items="${css}" var="item">
-	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css?fdddf=2">
+	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css?fddf=2">
 </c:forEach>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <title>${title}</title>
 </head>
 <body>
-	
 	<jsp:include page="/WEB-INF/views/${header_temp}.jsp"></jsp:include>
-	
 	<div id="container">
 		<jsp:include page="/WEB-INF/views/${view}.jsp"></jsp:include>
 	</div>
-	
 	<footer>
         <dl>
             <dt>이 페이지는 포트폴리오를 위해서 제작되었습니다.</dt>
@@ -262,7 +259,7 @@
     	// -------------chkSearchRest 시작------------------------------------------------------------------------
  		function chkSearchRest() {
  			
- 			if(keyword.value == "") {
+ 			if(keyword.value == '') {
  				alert('검색어를 입력하세요.')
  				keyword.focus()
  				return false
@@ -276,11 +273,18 @@
  		}
  		// -------------chkSearchRest 끝------------------------------------------------------------------------
     	
+ 		
+ 		
+ 		
+ 		
+ 		
+ 		
         // -------------list map js 시작------------------------------------------------------------------------
 	    //chkKeyword
 		function chkKeyword(e) {
 			if(e.keyCode == 13) {
 				getSearchRestList()
+				getBoundRestList()
 			}
 		}
 		
@@ -297,6 +301,8 @@
 		// 지도를 생성합니다    
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		
+		var search_text = keyword.value;
+		
 		// ajax - latlng 내 db값 가져오기
 		function getBoundRestList() {
 			// 마커 모두 지우기
@@ -307,7 +313,9 @@
 			// 리스트 모두 지우기
 			while ( list_back.hasChildNodes() ) { list_back.removeChild( list_back.firstChild ); }
 			
-			createTitle('현재')
+			let title = '현재';
+			if(search_text != '') { title = search_text }
+			createTitle(title)
 			
 			const bounds = map.getBounds();
 			const southWest = bounds.getSouthWest()
@@ -332,6 +340,8 @@
 					createMarker(item)
 					createRestDiv(item)
 				})
+				
+				search_text = ''
 			})
 		}
 		
@@ -341,8 +351,6 @@
 			if(!chkSearchRest()) {
 				return;
 			}
-			
-			let search_text = keyword.value
 			
 			axios.get('/rest/ajaxGetList', {
 				params: {
@@ -383,8 +391,6 @@
 				
 				 var moveLatLon = new kakao.maps.LatLng(res.data[0].lat, res.data[0].lng);
 				 map.setCenter(moveLatLon);
-				 
-				 
 			})
 		}
 		
@@ -436,11 +442,11 @@
 		
 		// 맛집 목록 제목 생성
 		function createTitle(e) {
-			var heading = document.createElement('h2')
-			heading.innerHTML = e + ' 지역의 맛집 목록'
-			
-			var rest_list_wrap = document.createElement('div')
+			let heading = document.createElement('h2')
+			let rest_list_wrap = document.createElement('div')
 			rest_list_wrap.id = 'rest_list_wrap'
+			
+			heading.innerHTML = `\${e} 지역의 맛집 목록`
 			
 			list_back.prepend(heading)
 			list_back.append(rest_list_wrap)

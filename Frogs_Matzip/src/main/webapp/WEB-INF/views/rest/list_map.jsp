@@ -2,41 +2,30 @@
     pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<style>
-	    .label {margin-bottom: 96px;}
-		.label * {display: inline-block;vertical-align: top;}
-		.label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
-		.label .center {background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
-		.label .right {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
-</style>
+<div id="list_back">
+	<h2><span id="place_nm"></span> 지역의 맛집 목록</h2>
+    <div id="rest_list_wrap"></div>
+    <!-- 
+    <c:forEach items="${recRestList}" var="item">
+	    <div class="list_wrap">
+	        <div class="list_ctnt_wrap">
+	            <div class="matzip_list">
+	                <img src="${item.food_pic}" class="food_img" alt="${item.nm}의 음식 사진">
+	            </div>
+	            <div class="ctnt_wrap">
+	                <h3><a href="#">${item.nm}</a></h3>
+	                <strong>${item.avg_grade}</strong><br>
+	                <p>${item.district}-${item.category_nm}</p><br>
+	                <p>review:${item.review}</p>
+	            </div>
+	        </div>
+	    </div>
+    </c:forEach>
+     -->
+</div>
 
-<div class="back_wrap">
-	<div id="list_back">
-		<h2>${place} 지역의 맛집 목록</h2>
-	    <div id="rest_list_wrap"></div>
-	    <!-- 
-	    <c:forEach items="${recRestList}" var="item">
-		    <div class="list_wrap">
-		        <div class="list_ctnt_wrap">
-		            <div class="matzip_list">
-		                <img src="${item.food_pic}" class="food_img" alt="${item.nm}의 음식 사진">
-		            </div>
-		            <div class="ctnt_wrap">
-		                <h3><a href="#">${item.nm}</a></h3>
-		                <strong>${item.avg_grade}</strong><br>
-		                <p>${item.district}-${item.category_nm}</p><br>
-		                <p>review:${item.review}</p>
-		            </div>
-		        </div>
-		    </div>
-	    </c:forEach>
-	     -->
-	</div>
-	
-	<div class="map_wrap">
-	    <div id="map" style="width:100%; height:100%; position:fixed;"></div>
-	</div>
-	
+<div class="map_wrap">
+    <div id="map" style="width:100%; height:100%; position:fixed;"></div>
 </div>
 
 

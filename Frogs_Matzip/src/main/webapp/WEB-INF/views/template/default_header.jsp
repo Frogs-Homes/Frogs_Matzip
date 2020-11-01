@@ -4,14 +4,14 @@
 
 <header>
 	<div id="header_back">
-		<div id="logo_back">
-			<a id="header_logo" href="/index">FrogsMatzip</a>
+		<div id="logo_wrap">
+			<h2><a id="lnb_logo" href="/index">FrogsMatzip<span>daegu</span></a></h2>
 		</div>
 		<div id="search_back">
 			<div class="search_wrap">
 				<div id="frm_search">
-					<input type="text" name="search_text" class="search_bar" id="keyword" placeholder="지역, 식당 또는 음식" value="${place}">
-					<button type="submit" class="search_icon"><span class="material-icons" >search</span></button>	
+					<input type="text" name="search_text" class="search_bar" id="keyword" placeholder="지역, 식당 또는 음식" value="${place}" onKeyPress="chkKeyword(event)">
+					<button type="button" class="search_icon" onclick="getSearchRestList()"><span class="material-icons" >search</span></button>	
 				</div>
 				<hr>
 				<ul id="placesList"></ul>
