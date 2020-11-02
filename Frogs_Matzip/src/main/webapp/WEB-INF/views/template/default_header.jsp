@@ -15,7 +15,6 @@
 				</div>
 				<hr>
 				<ul id="placesList"></ul>
-				<div id="pagination"></div>
 			</div>
 		</div>
 		<nav class="lnb">
