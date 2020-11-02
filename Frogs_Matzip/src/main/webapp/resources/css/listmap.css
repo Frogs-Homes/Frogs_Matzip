@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 /*list*/
-#container { width: 100vw; height: 100vh; display: flex; margin-top: 70px; }
-#list_back { display: inline-block; width: 350px; margin: 0 30px; }
-#list_back h2 { margin: 40px 0 0 20px; }
-.list_wrap { overflow: hidden; width: 100%; border-bottom: 1px solid #dbdbdb; }
+#container { width: 100%; display: flex; margin-top: 70px; }
+#list_back { width: 350px; height: calc(100vh - 70px); overflow-y: auto; }
+#rest_list_wrap { }
+.list_wrap { width: 100%; border-bottom: 1px solid #dbdbdb; }
 .list_wrap .list_ctnt_wrap { margin: 20px; position: relative; }
 .list_wrap .list_ctnt_wrap .matzip_list { display: inline-block; width: 150px; height: 150px; border: 1px solid #000; background-size: cover; border-color: white; }
 .list_wrap .list_ctnt_wrap .food_img { max-width: 150px; max-height: 150px; }
@@ -14,8 +14,9 @@
 .list_wrap .ctnt_wrap p { display: inline-block; margin-top: 4px; color: #9b9b9b;}
 
 /*map*/
-.map_wrap { display: inline-block; flex: 1; border-left: 1px solid #DBDBDB; }
+#map { height: calc(100vh - 70px); flex: 1; border-left: 1px solid #DBDBDB; }
 
+/* marker */
 .label {margin-bottom: 96px;}
 .label * {display: inline-block; vertical-align: top; }
 .label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
