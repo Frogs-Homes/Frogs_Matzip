@@ -1,6 +1,11 @@
 # Frogs_Matzip
 맛집 프로젝트
 
+201031~201101 한 일
+- Default header logo 수정
+- 검색 시 카카오 라이브러리 대신 frogs_matzip db에서 검색 기능 구현
+- default_header에서 검색 기능 가능하게 하기
+
 201028~201030 한 일
 - 리뷰 등록, 삭제 백엔드 연결
 - 리뷰 수정 백엔드 해결
