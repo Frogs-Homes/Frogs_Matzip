@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /*list*/
-#container { width: 100vw; height: 100vh; display: flex; }
+#container { width: 100vw; height: 100vh; display: flex; margin-top: 70px; }
 #list_back { display: inline-block; width: 350px; margin: 0 30px; }
 #list_back h2 { margin: 40px 0 0 20px; }
 .list_wrap { overflow: hidden; width: 100%; border-bottom: 1px solid #dbdbdb; }
