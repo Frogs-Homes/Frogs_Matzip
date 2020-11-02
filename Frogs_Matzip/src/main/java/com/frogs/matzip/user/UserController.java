@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.frogs.matzip.Const;
 import com.frogs.matzip.user.model.UserPARAM;
 import com.frogs.matzip.user.model.UserVO;
+import com.frogs.matzip.SecurityUtils;
 
 @Controller
 @RequestMapping("/user")
@@ -46,5 +47,14 @@ public class UserController {
 			hs.setAttribute(Const.LOGIN_USER, param);
 		}
 		return result;
+	}
+	
+	@RequestMapping(value="/ajaxToggleFavorite", method=RequestMethod.GET)
+	@ResponseBody
+	public int ajaxToggleFavorite(UserPARAM param, HttpSession hs) {
+		int i_user = SecurityUtils.getLoginUserPk(hs);
+		param.setI_user(i_user);
+		
+		return service.ajaxToggleFavorite(param);
 	}
 }

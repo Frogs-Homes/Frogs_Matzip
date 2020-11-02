@@ -23,10 +23,24 @@
 	</insert>
 	
 	<select id="selRest" parameterType="RestPARAM" resultType="RestDMI">
-		SELECT i_rest, nm, addr, lat, lng, i_category, menu_pic, hit, r_dt, m_dt, phone, price_range, open_time, close_time, ctnt, i_district
-		FROM t_rest
+		SELECT A.i_rest, A.nm, A.addr, A.lat, A.lng, A.i_category, A.menu_pic, A.hit, A.r_dt, A.m_dt
+			, A.phone, A.price_range, TIME_FORMAT(A.open_time, '%H:%i') as open_time, TIME_FORMAT(A.close_time, '%H:%i') as close_time, A.ctnt, A.i_district
+			, CASE WHEN B.i_rest IS NULL THEN 0 ELSE 1 END AS is_favorite
+			, COUNT(B.i_rest) as fav_cnt
+			, C.val as food_category
+			, TRUNCATE(AVG(D.grade),1) as avg_grade
+		FROM t_rest A
+		LEFT JOIN t_fav B
+			ON A.i_rest = B.i_rest
+			<if test="i_user > 0">
+				AND B.i_user = #{i_user}
+			</if>
+		LEFT JOIN t_category C
+			ON A.i_category = C.i_category
+		LEFT JOIN t_review D
+			ON A.i_rest = D.i_rest
 		<if test="i_rest > 0">
-			WHERE i_rest = #{i_rest}
+			WHERE A.i_rest = #{i_rest}
 		</if>
 	</select>
 	
@@ -60,11 +74,12 @@
 	<select id ="selFoodmenu" parameterType="RestPARAM" resultType="RestFoodVO">
 		SELECT i_rest, seq, food_pic
 		FROM t_rest_pic
+		WHERE i_rest = #{i_rest}
 	</select>
 	
 	<select id ="selReviewList" parameterType="RestPARAM" resultType="RestDMI">
 		SELECT A.seq, A.i_user, A.i_rest, A.grade, A.ctnt, A.m_dt, B.nm
-		FROM t_review A
+		FROM t_review A 
 		LEFT JOIN t_user B
 		ON A.i_user = B.i_user
 		ORDER BY m_dt DESC

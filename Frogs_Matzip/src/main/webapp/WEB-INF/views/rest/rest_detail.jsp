@@ -5,17 +5,17 @@
 
 
 <!--menuList-->
-<div id="menu_back">
-   <div id="menu_wrap">
-    <c:forEach items="${foodMenuList}" var="item">
-   		<div class="menulist">
-    		<c:if test="${item.food_pic != null && item.food_pic != '' }">
-    			<img src="/res/img/rest/${data.i_rest}/food_pic/${item.food_pic}" class="menu" >
-    		</c:if>
-   		</div>	 
-  	</c:forEach>   
-   </div>
+
+<div id="menu_wrap">
+ <c:forEach items="${foodMenuList}" var="item">
+		<div class="menulist">
+ 		<c:if test="${item.food_pic != null && item.food_pic != '' }">
+ 			<img src="/res/img/rest/${data.i_rest}/food_pic/${item.food_pic}" class="menu" >
+ 		</c:if>
+		</div>	 
+</c:forEach>   
 </div>
+
 
 <!--ctnt-->
 <div id="column_back">
@@ -23,7 +23,7 @@
 		<div id="title_wrap">
             <span id="title">
                 <h1>${data.nm}</h1>
-                <strong id="grade"><span>4.2</span></strong>
+                <strong id="grade"><span>${data.avg_grade}</span></strong>
                 <!-- 관리자용 음식사진등록창 이동 -->
 				<div>
 					<c:if test="${loginUser.admin == '1'}">
@@ -37,15 +37,26 @@
                         <span class="icons_ctnt">리뷰쓰기</span>
                     </div>
                     <div class="favorite">
-                        <span class="material-icons">favorite_border</span>
+                    	<c:choose>
+                    		<c:when test="${loginUser.i_user > 0 }">
+                    			<span id="favorite" class="material-icons" onclick="toggleFavorite()">
+									<c:if test="${data.is_favorite == 1}">favorite</c:if>
+									<c:if test="${data.is_favorite == 0}">favorite_border</c:if>
+								</span>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<span id="favorite" class="material-icons" onclick="loginBtnClick()">favorite_border</span>
+                    		</c:otherwise>
+                    	</c:choose>
+						
                         <span class="icons_ctnt">가고싶다</span>
                     </div>
-                </div>
+            </div>
 		</div>
 
         <div id="user_content_wrap">
                 <span class="material-icons" id="review_write">edit</span><span class="write_cnt">${count.review_cnt}</span>
-                <span class="material-icons">favorite</span><span class="favorite_cnt">441</span>
+                <span class="material-icons">favorite</span><span class="favorite_cnt">${data.fav_cnt}</span>
         </div>
 
         <section id="rest_detail">
@@ -63,7 +74,7 @@
                         </tr>
                         <tr>
                             <th>음식종류</th>
-                            <td>${data.i_category}</td>
+                            <td>${data.food_category}</td>
                         </tr>
                         <tr>
                             <th>가격대</th>
@@ -91,54 +102,56 @@
                 <span>(${count.review_cnt})</span>
             </div>
              <c:forEach items="${reviewList}" var="item">
-	             <div class="review_ctnt_back" id="review_ctnt_back_${item.seq}">
-		             <div id="review_ctnt">
-		                 <div id="user_wrap">
-		                     <div class="profile_img_wrap">
-		                         <img src="/res/img/default_img.png" class="profile_img" alt="">
-		                     </div>
-		                     <div class="user_nm_wrap">
-		                         <div class="user_nm">${item.nm}</div>
-		                     </div>
-		                 </div>
-		                 <div id="user_ctnt_wrap">
-		                     <div class="user_ctnt">
-		                         <div class="day">${item.m_dt}</div>
-		                         <p class="write">${item.ctnt}</p>
-		                     </div>
-		                     <div class="user_like_wrap">
-		                         <div class="user_like">
-		                         	<c:if test="${item.grade == 1}">
-					                    <label for="one"><span class="material-icons">mood_bad</span><span class="icon_ctnt">최악이다</span></label>
-					                    <input type="hidden" name="one" value="1">
-		                         	</c:if>
-		                         	<c:if test="${item.grade == 2}">
-					                    <label for="two"><span class="material-icons">sentiment_very_dissatisfied</span><span class="icon_ctnt">별로다</span></label>
-					                    <input type="hidden" name="two" value="2">
-		                         	</c:if>
-		                         	<c:if test="${item.grade == 3}">
-					                    <label for="three"><span class="material-icons">sentiment_dissatisfied</span><span class="icon_ctnt">보통이다</span></label>
-					                    <input type="hidden" name="three" value="3">
-		                         	</c:if>
-		                         	<c:if test="${item.grade == 4}">
-					                    <label for="four"><span class="material-icons">sentiment_satisfied</span><span class="icon_ctnt">괜찮다</span></label>
-					                    <input type="hidden" name="four"  value="4">
-		                         	</c:if>
-		                         	<c:if test="${item.grade == 5}">
-					                    <label for="five"><span class="material-icons">sentiment_very_satisfied</span><span class="icon_ctnt">맛있다</span></label>
-					                    <input type="hidden" name="five" value="5">
-		                         	</c:if>
-		                         </div>
-		                     </div>
-		                 </div>
-		             </div>
-		             <c:if test="${item.i_user == loginUser.i_user}">
-		       			<div id="user_btn">
-	                        	<button class="review_mod" onclick="reviewUpd(${item.seq}, '${item.ctnt}', ${item.grade})">수정</button>
-	                        	<button class="review_del" onclick="reviewDel(${item.seq})">삭제</button>     
-	                 	</div>
-					</c:if>
-		         </div>
+             	<c:if test="${data.i_rest == item.i_rest}">
+		             <div class="review_ctnt_back" id="review_ctnt_back_${item.seq}">
+			             <div id="review_ctnt">
+			                 <div id="user_wrap">
+			                     <div class="profile_img_wrap">
+			                         <img src="/res/img/default_img.png" class="profile_img" alt="">
+			                     </div>
+			                     <div class="user_nm_wrap">
+			                         <div class="user_nm">${item.nm}</div>
+			                     </div>
+			                 </div>
+			                 <div id="user_ctnt_wrap">
+			                     <div class="user_ctnt">
+			                         <div class="day">${item.m_dt}</div>
+			                         <p class="write">${item.ctnt}</p>
+			                     </div>
+			                     <div class="user_like_wrap">
+			                         <div class="user_like">
+			                         	<c:if test="${item.grade == 1}">
+						                    <label for="one"><span class="material-icons">mood_bad</span><span class="icon_ctnt">최악이다</span></label>
+						                    <input type="hidden" name="one" value="1">
+			                         	</c:if>
+			                         	<c:if test="${item.grade == 2}">
+						                    <label for="two"><span class="material-icons">sentiment_very_dissatisfied</span><span class="icon_ctnt">별로다</span></label>
+						                    <input type="hidden" name="two" value="2">
+			                         	</c:if>
+			                         	<c:if test="${item.grade == 3}">
+						                    <label for="three"><span class="material-icons">sentiment_dissatisfied</span><span class="icon_ctnt">보통이다</span></label>
+						                    <input type="hidden" name="three" value="3">
+			                         	</c:if>
+			                         	<c:if test="${item.grade == 4}">
+						                    <label for="four"><span class="material-icons">sentiment_satisfied</span><span class="icon_ctnt">괜찮다</span></label>
+						                    <input type="hidden" name="four"  value="4">
+			                         	</c:if>
+			                         	<c:if test="${item.grade == 5}">
+						                    <label for="five"><span class="material-icons">sentiment_very_satisfied</span><span class="icon_ctnt">맛있다</span></label>
+						                    <input type="hidden" name="five" value="5">
+			                         	</c:if>
+			                         </div>
+			                     </div>
+			                 </div>
+			             </div>
+			             <c:if test="${item.i_user == loginUser.i_user}">
+			       			<div id="user_btn">
+		                        	<button class="review_mod" onclick="reviewUpd(${item.seq}, '${item.ctnt}', ${item.grade})">수정</button>
+		                        	<button class="review_del" onclick="reviewDel(${item.seq})">삭제</button>     
+		                 	</div>
+						</c:if>
+			         </div>
+			      </c:if>
 		      </c:forEach>
         </section>
     </div>
@@ -292,7 +305,6 @@
         }
         
         /*리뷰수정*/
-        //grade는 값 범위가 1~5 가??0~5입니다아무것도입력안했을때 0 오키도키
         function reviewUpd(seq, ctnt, grade) {
         	//document.querySelectorAll('#grade_icons .material-icons').
         	disableIcons()
@@ -347,6 +359,32 @@
 			})
         }
         
+        /* 좋아요 */
+        function toggleFavorite() {
+        	let parameter = {
+        			params: {
+        				i_rest: ${data.i_rest}
+        			}
+        	}
+        	
+        	var icon = favorite.innerText.trim()
+        	
+        	switch(icon) {
+        	case 'favorite':
+        		parameter.params.fav_type = 'del'
+        		break;
+        	case 'favorite_border':
+        		parameter.params.fav_type = 'ins'
+        		break;
+        	}
+        	
+        	axios.get('/user/ajaxToggleFavorite', parameter).then(function(res) {
+    			if(res.data == 1) {
+    				favorite.innerText = (icon == 'favorite' ? 'favorite_border' : 'favorite')
+    			}
+    		})
+        	
+        }
         
 </script>   
     

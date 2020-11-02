@@ -69,7 +69,8 @@
             <div class="modal_close"><span class="material-icons">clear</span></div>
         </div>
     </div>
-    
+</body>
+
 	
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d88fdcc4a19e51b35f8bf4dc0300b352&libraries=services"></script>
@@ -546,6 +547,5 @@
 	 	})
 	 	// -------------list map js 끝------------------------------------------------------------------------
     </script>
-</body>
 </html>
 

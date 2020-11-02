@@ -72,6 +72,9 @@ public class RestController {
 	
 	@RequestMapping(value="/detail", method = RequestMethod.GET)
 	public String restDeail(RestPARAM param, Model model, HttpSession hs) {
+		int i_user = SecurityUtils.getLoginUserPk(hs);
+		param.setI_user(i_user);
+		
 		RestReviewVO vo = new RestReviewVO();
 		vo.setI_rest(param.getI_rest());
 		

@@ -8,7 +8,10 @@ import com.frogs.matzip.user.model.UserVO;
 
 @Mapper
 public interface UserMapper {
-int insUser(UserVO param);
+	public int insUser(UserVO param);
+	public int insFavorite(UserPARAM param);
 	
-UserDMI selUser(UserPARAM param);
+	public UserDMI selUser(UserPARAM param);
+	
+	public int delFavorite(UserPARAM param);
 }
