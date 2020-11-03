@@ -10,7 +10,7 @@
 		<div id="search_back">
 			<div class="search_wrap">
 				<div id="frm_search">
-					<input type="text" name="search_text" class="search_bar" id="keyword" placeholder="지역, 식당 또는 음식" value="${place}" onKeyPress="chkKeyword(event)">
+					<input type="text" class="search_bar" id="keyword" placeholder="지역, 식당 또는 음식" value="${place}" onKeyPress="chkKeyword(event)">
 					<button type="button" class="search_icon" onclick="getSearchRestList()"><span class="material-icons" >search</span></button>	
 				</div>
 				<hr>

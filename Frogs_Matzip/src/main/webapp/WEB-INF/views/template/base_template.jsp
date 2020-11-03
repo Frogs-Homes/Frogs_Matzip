@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <c:forEach items="${css}" var="item">
-	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css?da=2">
+	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css?dwed=2">
 </c:forEach>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <title>${title}</title>
@@ -282,21 +282,10 @@
  		
         // -------------list map js 시작------------------------------------------------------------------------
         
-        window.addEventListener('scroll', () => {
-			let scrollLocation = document.documentElement.scrollTop; // 현재 스크롤바 위치
-			let windowHeight = window.innerHeight; // 스크린 창
-			let fullHeight = document.body.scrollHeight; //  margin 값은 포함 x
-			
-			if(scrollLocation + windowHeight >= fullHeight){
-				console.log('끝')
-			}
-		})
-        
 	    //chkKeyword
 		function chkKeyword(e) {
 			if(e.keyCode == 13) {
 				getSearchRestList()
-				getBoundRestList()
 			}
 		}
 		
@@ -307,13 +296,11 @@
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = {
 		        center: new kakao.maps.LatLng(35.865280, 128.593418), // 지도의 중심좌표 
-		        level: 3 // 지도의 확대 레벨
+		        level: 4 // 지도의 확대 레벨
 		    };  
 		
 		// 지도를 생성합니다    
 		var map = new kakao.maps.Map(mapContainer, mapOption);
-		
-		var search_text = keyword.value;
 		
 		// ajax - latlng 내 db값 가져오기
 		function getBoundRestList() {
@@ -326,6 +313,7 @@
 			while ( list_back.hasChildNodes() ) { list_back.removeChild( list_back.firstChild ); }
 			
 			let title = '현재';
+			let search_text = keyword.value
 			if(search_text != '') { title = search_text }
 			createTitle(title)
 			
@@ -366,7 +354,7 @@
 			
 			axios.get('/rest/ajaxGetList', {
 				params: {
-					search_text
+					search_text: keyword.value
 				}
 			}).then(function(res) {
 				
@@ -387,9 +375,6 @@
 					marker.setMap(null)
 				})
 				
-				createTitle(search_text)
-				const bounds = new kakao.maps.LatLngBounds();
-				
 				/*
 				res.data.forEach(function(item) {
 					createMarker(item)
@@ -402,17 +387,11 @@
 				//map.setBounds(bounds);
 				
 				 var moveLatLon = new kakao.maps.LatLng(res.data[0].lat, res.data[0].lng);
-				 map.setCenter(moveLatLon);
+				 map.panTo(moveLatLon);
 			})
 		}
 		
 		kakao.maps.event.addListener(map, 'tilesloaded', getBoundRestList)
-		
-		function setBounds() {
-		    // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
-		    // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
-		    map.setBounds(bounds);
-		}
 				
 		// 마커 생성 함수
 		function createMarker(item) {
@@ -455,6 +434,7 @@
 		// 맛집 목록 제목 생성
 		function createTitle(e) {
 			let heading = document.createElement('h2')
+			heading.id = 'place_title'
 			let rest_list_wrap = document.createElement('div')
 			rest_list_wrap.id = 'rest_list_wrap'
 			
