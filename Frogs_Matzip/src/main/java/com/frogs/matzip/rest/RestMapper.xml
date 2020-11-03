@@ -44,8 +44,21 @@
 		</if>
 	</select>
 	
-	<select id="selRecRestList" resultType="RestDMI">
-		SELECT * FROM t_rest
+	<select id="selRecRestList" parameterType="RestPARAM" resultType="RestDMI">
+		SELECT A.i_rest, TRUNCATE(AVG(A.grade),1) as avg_grade
+		, B.nm, SUBSTRING_INDEX(B.addr," ",2) AS addr 
+		, C.food_pic
+		, D.val AS food_category
+		FROM t_review A
+		LEFT JOIN t_rest B
+			ON A.i_rest = B.i_rest
+		LEFT JOIN t_rest_pic C
+			ON A.i_rest = C.i_rest 
+		LEFT JOIN t_category D
+			ON B.i_category = D.i_category
+		GROUP BY i_rest
+		ORDER BY TRUNCATE(AVG(grade),1) DESC
+		LIMIT 4;
 	</select>
 	
 	<select id="selCategoryList" resultType="RestDMI">
