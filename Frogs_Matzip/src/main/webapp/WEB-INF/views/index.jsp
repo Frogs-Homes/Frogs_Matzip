@@ -7,116 +7,22 @@
         <div class="res1_wrap">
             <h2>Best restaurants in Frogs</h2>
             <div id="rest_menu_wrap">
-            	<for:each items="${recRestList}" var="item">
-            		<dl>
-            			<a href="#">
-            				<div class="restaurant">
-            					<img src="/res/img/${item.menu_pic}.jpg" alt="">
-            					<dt class="rest_nm">${item.rest_nm} <span class="rest_score">${item.score}</span></dt>
-            					<dd class="rest_category">${item.category}</dd>
-            					<dd class="address">${item.addr}</dd>
-            				</div>
-            			</a>
-            		</dl>
-            	</for:each>
+            	<ol>
+	            	<c:forEach items="${recRestList}" var="item">
+	                <li>
+	                    <dl><a href="/rest/detail?i_rest=${item.i_rest}">
+	                            <div class="restaurant">
+	                                <img src="/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}" alt="">
+	                                <dt class="rest_nm">${item.nm} <span class="score">${item.avg_grade}</span></dt>
+	            					<dd class="address">${item.addr} - ${item.food_category}</dd>
+	                            </div>
+	                        </a>
+	                    </dl>
+	                </li>
+	                </c:forEach>
+	            </ol>  
             </div>
-            <!-- 
-            <ol>
-                <li>
-                    <dl><a href="#">
-                            <div class="restaurant">
-                                <img src="/res/img/곱창.jpg" alt="">
-                                <dt class="rest_nm">맛집부추곱창</dd>
-                                <dd class="score">평점 4.3</dd>
-                                <dd class="address">방배/반포 - 고기요리</dd>
-                            </div>
-                        </a>
-                    </dl>
-                </li>
-                <li>
-                    <dl><a href="#">
-                        <div class="restaurant">
-                            <img src="/res/img/돼지고기.jpg" alt="">
-                            <dt class="rest_nm">더꽃돈</dt>
-                            <dd class="score">평점 4.3</dd>
-                            <dd class="address">방배/반포 - 고기요리</dd>
-                        </div>
-                    </a>
-                    </dl>
-                </li>
-                <li>
-                    <dl><a href="#">
-                        <div class="restaurant">
-                            <img src="/res/img/파스타.jpg" alt="">
-                            <dt class="rest_nm">마리오파스타</dt>
-                            <dd class="score">평점 4.3</dd>
-                            <dd class="address">방배/반포 - 고기요리</dd>
-                        </div>
-                    </a>
-                    </dl>
-                </li>
-                <li>
-                    <dl><a href="#">
-                        <div class="restaurant">
-                            <img src="/res/img/새우.jpg" alt="">
-                            <dt class="rest_nm">새우22</dt>
-                            <dd class="score">평점 4.3</dd>
-                            <dd class="address">방배/반포 - 고기요리</dd>
-                        </div>
-                    </a>
-                    </dl>
-                </li>
-            </ol>
-        </div>
-        두번째 줄 시작
-        <div class="res2_wrap">
-            <ol>
-                <li>
-                    <dl><a href="#">
-                            <div class="restaurant">
-                                <img src="/res/img/곱창.jpg" alt="">
-                                <dt class="rest_nm">맛집부추곱창</dt>
-                                <dd class="score">평점 4.3</dd>
-                                <dd class="address">방배/반포 - 고기요리</dd>
-                            </div>
-                        </a>
-                    </dl>
-                </li>
-                <li>
-                    <dl><a href="#">
-                        <div class="restaurant">
-                            <img src="/res/img/돼지고기.jpg" alt="">
-                            <dt class="rest_nm">더꽃돈</dt>
-                            <dd class="score">평점 4.3</dd>
-                            <dd class="address">방배/반포 - 고기요리</dd>
-                        </div>
-                    </a>
-                    </dl>
-                </li>
-                <li>
-                    <dl><a href="#">
-                        <div class="restaurant">
-                            <img src="/res/img/파스타.jpg" alt="">
-                            <dt class="rest_nm">마리오파스타</dt>
-                            <dd class="score">평점 4.3</dd>
-                            <dd class="address">방배/반포 - 고기요리</dd>
-                        </div>
-                    </a>
-                    </dl>
-                </li>
-                <li>
-                    <dl><a href="#">
-                        <div class="restaurant">
-                            <img src="/res/img/새우.jpg" alt="">
-                            <dt class="rest_nm">새우22</dt>
-                            <dd class="score">평점 4.3</dd>
-                            <dd class="address">방배/반포 - 고기요리</dd>
-                        </div>
-                    </a>
-                    </dl>
-                </li>
-            </ol>
-             -->
+        
         </div>
      </section>
  </div>

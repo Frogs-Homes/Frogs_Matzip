@@ -66,10 +66,6 @@ public class RestService {
 		return mapper.selRest(param);
 	}
 	
-	public List<RestDMI> selRecRestList() {
-		return mapper.selRecRestList();
-	}
-	
 	public List<RestDMI> selCategoryList() {
 		return mapper.selCategoryList();
 	}
@@ -89,6 +85,10 @@ public class RestService {
 	
 	public List<RestFoodVO> selFoodmenu(RestPARAM param) {
 		return mapper.selFoodmenu(param);
+	}
+	
+	public List<RestDMI> selRecRestList(RestPARAM param) {
+		return mapper.selRecRestList();
 	}
 	
 	public List<RestDMI> selReviewList(RestPARAM param) {

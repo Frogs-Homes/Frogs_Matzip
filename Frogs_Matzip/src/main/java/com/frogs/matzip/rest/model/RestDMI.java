@@ -16,9 +16,16 @@ public class RestDMI extends RestVO {
 	private double avg_grade;
 	private String open_time;
 	private String close_time;
+	private String food_pic;
 	
 	
 	
+	public String getFood_pic() {
+		return food_pic;
+	}
+	public void setFood_pic(String food_pic) {
+		this.food_pic = food_pic;
+	}
 	public String getOpen_time() {
 		return open_time;
 	}
