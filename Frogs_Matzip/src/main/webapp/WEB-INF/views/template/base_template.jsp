@@ -76,5 +76,37 @@
         </div>
     </div>
 </body>
+<script>
+let slider = document.querySelector("#slider")
+let imgs = document.querySelectorAll('dl')
+let prevBtn = document.querySelector('.btnPrev')
+let nextBtn = document.querySelector('.btnNext')
+
+slider.style.marginLeft = "0px";
+
+function sliding() {
+    if (slider.style.marginLeft == "-1200px") {
+        slider.style.marginLeft = "0px"
+    } else {
+        slider.style.marginLeft = (parseInt(slider.style.marginLeft) - 300) + "px";
+    }
+}
+
+prevBtn.addEventListener("click", function () {
+    clearInterval(timer) 
+    if (slider.style.marginLeft == "0px") {
+        slider.style.marginLeft = "-1200px"
+    } else {
+        slider.style.marginLeft = (parseInt(slider.style.marginLeft) + 300) + "px";
+    }
+})
+
+nextBtn.addEventListener("click", function() {
+    clearInterval(timer)  //여기에는 변수가 들어가야함
+    sliding();
+})
+
+let timer = setInterval(sliding, 3000)
+</script>
 </html>
 

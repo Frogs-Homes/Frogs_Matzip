@@ -58,7 +58,7 @@
 			ON B.i_category = D.i_category
 		GROUP BY i_rest
 		ORDER BY TRUNCATE(AVG(grade),1) DESC
-		LIMIT 4;
+		LIMIT 8;
 	</select>
 	
 	<select id="selCategoryList" resultType="RestDMI">

@@ -32,7 +32,7 @@
 							</c:if>
 							<a>로그인필요없는메뉴</a>
 							<a>로그인필요없는메뉴</a>
-							<a>로그인필요없는메뉴1</a>
+							<a>로그인필요없는메뉴</a>
 							<hr>
 							<c:choose>
 								<c:when test="${loginUser == null}">
