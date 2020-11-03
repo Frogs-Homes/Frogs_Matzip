@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div id="list_back">
-	<h2><span id="place_nm"></span> 지역의 맛집 목록</h2>
+	<h2 id="place_title"><span id="place_nm"></span> 지역의 맛집 목록</h2>
     <div id="rest_list_wrap"></div>
     <!-- 
     <c:forEach items="${recRestList}" var="item">

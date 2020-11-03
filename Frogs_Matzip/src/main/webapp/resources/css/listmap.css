@@ -2,8 +2,9 @@
 
 /*list*/
 #container { width: 100%; display: flex; margin-top: 70px; }
-#list_back { width: 350px; height: calc(100vh - 70px); overflow-y: auto; }
-#rest_list_wrap { }
+#list_back { width: 400px; height: calc(100vh - 190px); margin-top: 20px; overflow-y: auto; }
+#place_title { margin-left: 20px; }
+
 .list_wrap { width: 100%; border-bottom: 1px solid #dbdbdb; }
 .list_wrap .list_ctnt_wrap { margin: 20px; position: relative; }
 .list_wrap .list_ctnt_wrap .matzip_list { display: inline-block; width: 150px; height: 150px; border: 1px solid #000; background-size: cover; border-color: white; }
@@ -14,7 +15,7 @@
 .list_wrap .ctnt_wrap p { display: inline-block; margin-top: 4px; color: #9b9b9b;}
 
 /*map*/
-#map { height: calc(100vh - 70px); flex: 1; border-left: 1px solid #DBDBDB; }
+#map { height: calc(100vh - 170px); flex: 1; border-left: 1px solid #DBDBDB; }
 
 /* marker */
 .label {margin-bottom: 96px;}
