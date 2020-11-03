@@ -8,6 +8,7 @@ public class Const {
 	public static final String VIEW = "view";
 	public static final String TITLE = "title";
 	public static final String CSS = "css";
+	public static final String JS = "js";
 	
 	public static final String MSG = "msg";
 	public static final String DATA = "data";

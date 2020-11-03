@@ -13,7 +13,6 @@
 					<input type="text" class="search_bar" id="keyword" placeholder="지역, 식당 또는 음식" value="${place}" onKeyPress="chkKeyword(event)">
 					<button type="button" class="search_icon" onclick="getSearchRestList()"><span class="material-icons" >search</span></button>	
 				</div>
-				<hr>
 				<ul id="placesList"></ul>
 			</div>
 		</div>
