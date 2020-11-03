@@ -8,25 +8,31 @@
 }
 
 #contentWrap { width: 1200px; margin: 0 auto;}
-#best{height: 800px; margin-bottom: 50px;}
-.res1_wrap { height: 388px; padding-top: 100px;}
-.res1_wrap ol { margin-top: 50px;}
-.res2_wrap { margin-top: 100px;}
+#best{height: 800px; margin-bottom: 50px; margin: 0 auto; max-width: 1200px; }
+#best h2 {font-size: 2.5rem; color: #f07a2c; margin-left: 30px; display: block;}
+#best .rest_wrap { height: 388px; padding-top: 100px;}
+#best .rest_wrap #rest_menu_wrap { overflow: hidden; height: 350px; width: 1200px; margin-top: 40px; }
+#best .rest_wrap #rest_menu_wrap #slider { width:2500px; transition: 2s; }
 
-#best { margin: 0 auto; max-width: 1200px; }
-section h2 {font-size: 2.5rem; color: #f07a2c;display: block;}
-section ol li {max-width: 23%; margin-left: 2.6%; float: left;}
-section ol li:first-child { margin-left: 0%;}
+#best .rest_wrap #btnWrap { width: 1200px; text-align: center; }
+#best .rest_wrap #btnWrap .btnPrev { margin-right: 250px;  background: none; border:none;}
+#best .rest_wrap #btnWrap .btnNext {  background: none; border:none;}
+#best .rest_wrap #btnWrap .btnPrev, .btnNext:focus { outline:none;}
+#best .rest_wrap #btnWrap .material-icons { font-size: 50px; color:#9B9B9B;}
+#best .rest_wrap #btnWrap .material-icons:hover { cursor: pointer; color: #757474;}
+
+
+#best ol li {width: 240px; height: 330px; float: left; margin-right: 60px;}
+#best ol li:first-child {margin-left: 30px;}
+#best ol li dl {margin: 0 auto;}
+#best ol li dl img {width: 100%; height: 230px; 
+                    margin-bottom: 10px;  border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;}
 
 .restaurant { width: 100%;  background-color: #fff; border-radius: 10px;
          box-shadow: 0px 0px 10px #a0a0a0; }
-.score { color:#f07a2c; font-size: 20px;} 
-.score ,.rest_nm, .address{ margin-left: 8px;}
-section ol li dl {margin: 0 auto;}
-section ol li dl img {width: 100%; height: 230px; 
-                        margin-bottom: 10px;  border-top-left-radius: 10px;
-                        border-top-right-radius: 10px;}
-
+.restaurant .score { color:#f07a2c; font-size: 20px;} 
+.restaurant .address, .score ,.rest_nm{ margin-left: 8px;}
 .restaurant .rest_nm{font-size: 1.5rem; font-weight: bold; margin-bottom: 8px;}
 .restaurant .address{padding-bottom: 20px; color: #9b9b9b;}
 

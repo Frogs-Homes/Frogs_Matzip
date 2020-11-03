@@ -2,6 +2,8 @@ window.onload = function(){
 
 	// -------------user menu 시작------------------------------------------------------------------------
 	function userMenuBtn() {
+		let list_wrap = document.querySelector('#list_wrap')
+		
 		list_wrap.classList.toggle('show')
 	}
 	// -------------user menu 끝------------------------------------------------------------------------

@@ -4,25 +4,30 @@
 
 <div class="best_wrap">
      <section id="best">
-        <div class="res1_wrap">
+        <div class="rest_wrap">
             <h2>Best restaurants in Frogs</h2>
             <div id="rest_menu_wrap">
-            	<ol>
-	            	<c:forEach items="${recRestList}" var="item">
-	                <li>
-	                    <dl><a href="/rest/detail?i_rest=${item.i_rest}">
-	                            <div class="restaurant">
-	                                <img src="/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}" alt="">
-	                                <dt class="rest_nm">${item.nm} <span class="score">${item.avg_grade}</span></dt>
-	            					<dd class="address">${item.addr} - ${item.food_category}</dd>
-	                            </div>
-	                        </a>
-	                    </dl>
-	                </li>
-	                </c:forEach>
-	            </ol>  
+            	<div id="slider">
+	            	<ol>
+		            	<c:forEach items="${recRestList}" var="item">
+		                <li>
+		                    <dl><a href="/rest/detail?i_rest=${item.i_rest}">
+		                            <div class="restaurant">
+		                                <img src="/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}" alt="">
+		                                <dt class="rest_nm">${item.nm} <span class="score">${item.avg_grade}</span></dt>
+		            					<dd class="address">${item.addr} - ${item.food_category}</dd>
+		                            </div>
+		                        </a>
+		                    </dl>
+		                </li>
+		                </c:forEach>
+		            </ol>  
+		        </div>
             </div>
-        
+            <div id="btnWrap">
+                    <button class="btnPrev"><span class="material-icons">keyboard_arrow_left</span></button>
+                    <button class="btnNext"><span class="material-icons">keyboard_arrow_right</span></button>
+            </div>
         </div>
      </section>
  </div>
