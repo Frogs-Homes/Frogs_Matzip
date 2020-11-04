@@ -29,6 +29,18 @@ public class RestController {
 	@Autowired
 	private RestService service;
 	
+	@RequestMapping(value="/theme", method = RequestMethod.GET)
+	public String restThema(RestPARAM param, Model model) {
+		
+		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","listmap"});
+		model.addAttribute(Const.JS, new String[] {"usermenu", "chksearchrest", "search"});
+		model.addAttribute(Const.TITLE, "테마");
+		model.addAttribute(Const.HEADER, "/template/default_header");
+		model.addAttribute(Const.VIEW, "/rest/rest_theme");
+		
+		return ViewRef.TEMP;
+	}
+	
 	@RequestMapping(value="/listMap", method = RequestMethod.GET)
 	public String listMap(RestPARAM param, Model model) {
 		
