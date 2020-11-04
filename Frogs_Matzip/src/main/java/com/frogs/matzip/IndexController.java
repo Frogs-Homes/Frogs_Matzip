@@ -28,7 +28,7 @@ public class IndexController {
 		model.addAttribute("recRestList", rService.selRecRestList(param));
 		
 		model.addAttribute(Const.CSS, new String[] {"common", "index", "indexheader"});
-		model.addAttribute(Const.JS, new String[] {"search", "usermenu"});
+		model.addAttribute(Const.JS, new String[] {"usermenu", "chksearchrest"});
 		model.addAttribute(Const.TITLE, "FrogsMatzip");
 		model.addAttribute(Const.HEADER, "template/index_header");
 		model.addAttribute(Const.VIEW, "index");
