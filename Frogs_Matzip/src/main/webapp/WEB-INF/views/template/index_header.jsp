@@ -57,7 +57,7 @@
 				<p>대구에서 <span>개꿀~맛</span> 저녁 찾을 땐!</p>
 			</div>
 			<div id="frm_wrap">
-				<form id="frm_search" action="/rest/listMap" method="GET" onsubmit="return chkSearchRest()">
+				<form id="frm_search" action="/rest/listMap" method="GET" onsubmit="return chkSearchRest();">
 					<fieldset>
 						<legend class="hidden">검색창</legend>
 						<input type="text" name="search_text" class="search_bar" id="keyword" placeholder="지역,식당 또는 음식">

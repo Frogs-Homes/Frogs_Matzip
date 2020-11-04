@@ -24,17 +24,18 @@ h2 a span { margin-left: 4px; text-transform: uppercase; font-size: 0.6em; color
 #search_back { height: 100%; width: 70%; display: flex; align-items: center; justify-content: center;}
 #search_back .search_wrap { 
     display: flex; align-items: center;
-    width: 300px; height: 40px;
+    position: relative;
+    width: 400px; height: 40px;
     background-color: #FFF;
     border: 1px solid #DDD;
     border-radius: 24px;
     color: #222222 !important;
 }
 #frm_search { display: contents; }
-#search_back .search_bar { height: 25px; width: 235px; border:none; margin-left: 15px;}
+#search_back .search_bar { height: 25px; width: 85%; border:none; margin-left: 15px;}
 #search_back .search_icon { 
 	display: flex; align-items: center; justify-content: center; width: 30px; height: 29px; 
-	border-radius: 50px;  background-color: rgb(255, 234, 196); margin-left: 12px; 
+	border-radius: 50px; position: absolute; right: 8px;
 	font-size: 27px; border: #DDD; background-color: #f07a2c; color: #fff;
 	box-sizing: border-box; box-shadow: 0 4px 11px rgba(0,0,0,0.2);
 }
@@ -42,7 +43,7 @@ h2 a span { margin-left: 4px; text-transform: uppercase; font-size: 0.6em; color
 /* user menu */
 .lnb { height: 100%; display: flex; align-items: center; }
 
-#lnb_wrap { position: relative; }
+#lnb_wrap { position: relative; width: 210px; }
 #list_wrap { position: absolute; right: 20px; display: none; width: 210px; z-index: 10; background-color: #ffffff;
 			overflow: hidden; border-radius: 20px; cursor: pointer; }
 #list_wrap a { display: block; color: rgb(153, 152, 150);  height: 42px; padding-left: 20px; line-height: 42px; }

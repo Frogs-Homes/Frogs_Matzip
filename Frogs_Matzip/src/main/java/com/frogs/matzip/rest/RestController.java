@@ -33,7 +33,7 @@ public class RestController {
 	public String listMap(RestPARAM param, Model model) {
 		
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","listmap"});
-		model.addAttribute(Const.JS, new String[] {"usermenu", "search"});
+		model.addAttribute(Const.JS, new String[] {"usermenu", "chksearchrest", "search"});
 		model.addAttribute(Const.TITLE, "맛집 리스트");
 		model.addAttribute(Const.HEADER, "/template/default_header");
 		model.addAttribute(Const.VIEW, "/rest/list_map");
@@ -47,7 +47,7 @@ public class RestController {
 		model.addAttribute("districtList", service.selDistrictList());
 		
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restreg"});
-		model.addAttribute(Const.JS, new String[] {"usermenu", "search"});
+		model.addAttribute(Const.JS, new String[] {"usermenu", "chksearchrest", "search"});
 		model.addAttribute(Const.TITLE, "맛집 등록");
 		model.addAttribute(Const.HEADER, "/template/default_header");
 		model.addAttribute(Const.VIEW, "/rest/rest_reg");
@@ -86,7 +86,7 @@ public class RestController {
 		
 		model.addAttribute(Const.DATA, service.selRest(param));
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restdetail"});
-		model.addAttribute(Const.JS, new String[] {"usermenu", "search"});
+		model.addAttribute(Const.JS, new String[] {"usermenu", "chksearchrest", "search"});
 		model.addAttribute(Const.TITLE, "Detail");
 		model.addAttribute(Const.HEADER, "/template/default_header");
 		model.addAttribute(Const.VIEW, "/rest/rest_detail");
@@ -100,7 +100,7 @@ public class RestController {
 		model.addAttribute("data", data);
 		
 		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restregfood"});
-		model.addAttribute(Const.JS, new String[] {"usermenu", "search"});
+		model.addAttribute(Const.JS, new String[] {"usermenu", "chksearchrest", "search"});
 		model.addAttribute(Const.TITLE, "음식사진등록");
 		model.addAttribute(Const.HEADER, "/template/default_header");
 		model.addAttribute(Const.VIEW, "/rest/rest_regFood");
