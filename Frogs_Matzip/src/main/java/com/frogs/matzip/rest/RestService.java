@@ -76,10 +76,12 @@ public class RestService {
 	
 	public List<RestDMI> selRestList(RestPARAM param) {
 		String search_text = param.getSearch_text();
+		System.out.println(search_text);
 		if(search_text != null) {
 			param.setSql_search_text("%"+search_text+"%");
+			System.out.println(param.getSql_search_text());
 		}
-
+		
 		return mapper.selRestList(param);
 	}
 	

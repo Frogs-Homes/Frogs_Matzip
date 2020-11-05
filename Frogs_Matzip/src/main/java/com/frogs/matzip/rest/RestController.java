@@ -30,11 +30,14 @@ public class RestController {
 	private RestService service;
 	
 	@RequestMapping(value="/theme", method = RequestMethod.GET)
-	public String restThema(RestPARAM param, Model model) {
+	public String restTheme(RestPARAM param, Model model) {
 		
-		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","listmap"});
-		model.addAttribute(Const.JS, new String[] {"usermenu", "chksearchrest", "search"});
-		model.addAttribute(Const.TITLE, "테마");
+		model.addAttribute(Const.CATEGORYLIST, service.selCategoryList());
+		model.addAttribute("categoryRestList", service.selCategoryList());
+		
+		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER});
+		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR});
+		model.addAttribute(Const.TITLE, "테마별 맛집 목록");
 		model.addAttribute(Const.HEADER, "/template/default_header");
 		model.addAttribute(Const.VIEW, "/rest/rest_theme");
 		
@@ -44,8 +47,8 @@ public class RestController {
 	@RequestMapping(value="/listMap", method = RequestMethod.GET)
 	public String listMap(RestPARAM param, Model model) {
 		
-		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","listmap"});
-		model.addAttribute(Const.JS, new String[] {"usermenu", "chksearchrest", "search"});
+		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER,Const.LISTMAP});
+		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR, Const.SEARCHMAP});
 		model.addAttribute(Const.TITLE, "맛집 리스트");
 		model.addAttribute(Const.HEADER, "/template/default_header");
 		model.addAttribute(Const.VIEW, "/rest/list_map");
@@ -55,11 +58,11 @@ public class RestController {
 	
 	@RequestMapping(value="/reg", method = RequestMethod.GET)
 	public String restReg(Model model) {
-		model.addAttribute("categoryList", service.selCategoryList());
+		model.addAttribute(Const.CATEGORYLIST, service.selCategoryList());
 		model.addAttribute("districtList", service.selDistrictList());
 		
-		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restreg"});
-		model.addAttribute(Const.JS, new String[] {"usermenu", "chksearchrest", "search"});
+		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER,Const.RESTREG});
+		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR});
 		model.addAttribute(Const.TITLE, "맛집 등록");
 		model.addAttribute(Const.HEADER, "/template/default_header");
 		model.addAttribute(Const.VIEW, "/rest/rest_reg");
@@ -97,9 +100,9 @@ public class RestController {
 		model.addAttribute("count", service.selReviewCount(vo));
 		
 		model.addAttribute(Const.DATA, service.selRest(param));
-		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restdetail"});
-		model.addAttribute(Const.JS, new String[] {"usermenu", "chksearchrest", "search"});
-		model.addAttribute(Const.TITLE, "Detail");
+		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER, Const.RESTDETAIL});
+		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR});
+		model.addAttribute(Const.TITLE, "가게 상세 페이지");
 		model.addAttribute(Const.HEADER, "/template/default_header");
 		model.addAttribute(Const.VIEW, "/rest/rest_detail");
 		return ViewRef.TEMP;
@@ -111,9 +114,9 @@ public class RestController {
 		RestDMI data = service.selRest(param);
 		model.addAttribute("data", data);
 		
-		model.addAttribute(Const.CSS, new String[] {"common", "defaultheader","restregfood"});
-		model.addAttribute(Const.JS, new String[] {"usermenu", "chksearchrest", "search"});
-		model.addAttribute(Const.TITLE, "음식사진등록");
+		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER, Const.RESTREGFOOD});
+		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR});
+		model.addAttribute(Const.TITLE, "음식사진 등록");
 		model.addAttribute(Const.HEADER, "/template/default_header");
 		model.addAttribute(Const.VIEW, "/rest/rest_regFood");
 

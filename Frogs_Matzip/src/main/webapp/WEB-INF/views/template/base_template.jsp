@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <c:forEach items="${css}" var="item">
-	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css?ddddd=2">
+	<link rel="stylesheet" type="text/css" href="/res/css/${item}.css?ddddddddd=2">
 </c:forEach>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 

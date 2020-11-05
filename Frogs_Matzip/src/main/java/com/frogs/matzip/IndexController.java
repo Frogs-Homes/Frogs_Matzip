@@ -24,11 +24,10 @@ public class IndexController {
 			System.out.println(Const.realPath);
 		}
 
-		model.addAttribute("placeList", rService.selRestList(param));
 		model.addAttribute("recRestList", rService.selRecRestList(param));
 		
-		model.addAttribute(Const.CSS, new String[] {"common", "index", "indexheader"});
-		model.addAttribute(Const.JS, new String[] {"usermenu", "chksearchrest"});
+		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.INDEX, Const.INDEXHEADER});	
+		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR});
 		model.addAttribute(Const.TITLE, "FrogsMatzip");
 		model.addAttribute(Const.HEADER, "template/index_header");
 		model.addAttribute(Const.VIEW, "index");
