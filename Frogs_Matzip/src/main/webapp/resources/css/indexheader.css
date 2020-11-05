@@ -14,10 +14,10 @@ h2 a span { margin-left: 4px; text-transform: uppercase; font-size: 0.6em; color
 /* .lnb_wrap li {float: left; margin-left: 9%;} */
 
 /* user menu */
-#list_wrap { position: absolute; top: 47px; display: none; width: 260px; z-index: 10; background-color: #ffffff;
+#list_wrap { position: absolute; top: 47px; display: none; width: 260px; z-index: 10; background-color: #fff;
 			overflow: hidden; border-radius: 20px; cursor: pointer; }
 #list_wrap a { display: block; color: rgb(153, 152, 150); width: 240px; height: 42px; padding-left: 20px; line-height: 42px; }
-#list_wrap a:hover { color: #ffffff; background-color: #f07a2c; }
+#list_wrap a:hover { color: #fff; background-color: #f07a2c; }
 #list_wrap hr { margin: 1px 0; }
 .show { display: block !important; }
 
@@ -30,7 +30,7 @@ h2 a span { margin-left: 4px; text-transform: uppercase; font-size: 0.6em; color
 #title_wrap p span { color: #f07a2c; }
 #frm_search { width: 55%; min-width: 645px; height: 200px; margin: 0 auto; text-align: center; }
 fieldset { border: none; height: 100px; position: relative; }
-.search_bar { border:none; outline:none; display:inline-block; width: 90%; height:55px;  
+.search_bar { border:none; outline: none; display:inline-block; width: 90%; height:55px;  
 			border-radius:27px; padding:0 25px; font-size: 20px; }
 #search_btn {position: absolute; right: 0; width: 100px; height: 55px; border-radius: 27px; background-color: #f07a2c; 
 			color: #fff; font-size: 20px; border: none; cursor: pointer; }

@@ -15,6 +15,13 @@
 				</div>
 				<ul id="placesList">
 					<li>남구</li>
+					<li>달서구</li>
+					<li>달성군</li>
+					<li>동구</li>
+					<li>북구</li>
+					<li>서구</li>
+					<li>수성구</li>
+					<li>중구</li>
 				</ul>
 			</div>
 		</div>
