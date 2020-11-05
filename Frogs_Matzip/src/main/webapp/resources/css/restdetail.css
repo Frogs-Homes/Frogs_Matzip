@@ -1,28 +1,28 @@
 @charset "UTF-8";
 
 /*menuList*/
-#container { width: 100vw;}
-#menu_wrap { height: 315px; display: flex; box-sizing: border-box; box-shadow: 0 4px 11px rgba(0,0,0,0.1); margin-top: 70px; }
+
+#menu_wrap { display: flex; box-sizing: border-box; box-shadow: 0 4px 11px rgba(0,0,0,0.1); margin-top: 70px; }
 .menulist { width: 100%; height: 300px; margin: 5px;}
 .menu {  height: 300px; width: 100%; }
 
 /*ctnt*/
 #column_back { width: 100%; margin-top: 80px;}
-#ctnt_back { width: 1400px; margin: 0 auto; }
+#ctnt_back { width: 100%; margin: 0 auto; }
 #title_wrap { margin: 0 auto !important; width: 70%; display: flex;}
-#title_wrap #title { width: 30%; height: 60px; }
-#title_wrap #title h1 { display: inline-block;}
-#title_wrap #title #grade { font-size: 1.6rem; margin-left: 10px; color: #f07a2c;}
+#title_wrap #title { width: 30%;}
+#title_wrap #title h1 { float: left;}
+#title_wrap #title #grade { font-size: 1.6rem; margin-left: 10px; color: #f07a2c; position:relative; top:8px;}
 
-#title_wrap #rest_action_button { width: 70%; height: 60px; text-align: center; display: flex; justify-content: flex-end}
+#title_wrap #rest_action_button { width: 70%; text-align: center; display: flex; justify-content: flex-end}
 #title_wrap #rest_action_button .material-icons { font-size: 50px; }
-#title_wrap #rest_action_button .edit { width: 60px; height: 60px; font-size: 13px; margin-right: 22px; color: #9B9B9B; }
+#title_wrap #rest_action_button .edit { width: 60px; font-size: 13px; margin-right: 22px; color: #9B9B9B; }
 #title_wrap #rest_action_button .edit:hover {cursor: pointer; color: #f07a2c !important;}
 #title_wrap #rest_action_button .favorite { width: 60px; font-size: 13px; color: #9B9B9B;} 
 #title_wrap #rest_action_button .favorite:hover {cursor: pointer; color: #f07a2c;}
 
 
-#user_content_wrap { width: 70%; height: 25px; margin: 0 auto; border-bottom: 1px solid lightgray; display: flex;}
+#user_content_wrap { width: 70%; margin: 0 auto; border-bottom: 1px solid lightgray; display: flex;}
 #user_content_wrap .material-icons { color: #9B9B9B;}
 #user_content_wrap .write_cnt { margin-right: 20px; }
 
