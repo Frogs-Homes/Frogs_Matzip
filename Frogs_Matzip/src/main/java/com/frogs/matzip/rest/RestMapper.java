@@ -21,7 +21,7 @@ public interface RestMapper {
 	List<RestDMI> selCategoryList();
 	List<RestDMI> selDistrictList();
 	List<RestDMI> selRestList(RestPARAM param);
-	List<RestFoodVO> selFoodmenu(RestPARAM param);
+	List<RestFoodVO> selFoodPicList(RestPARAM param);
 	List<RestDMI> selReviewList(RestPARAM param);
 	RestDMI selReviewCount(RestReviewVO param);
 	

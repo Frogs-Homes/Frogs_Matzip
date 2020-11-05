@@ -33,7 +33,6 @@ public class RestController {
 	public String restTheme(RestPARAM param, Model model) {
 		
 		model.addAttribute(Const.CATEGORYLIST, service.selCategoryList());
-		model.addAttribute("categoryRestList", service.selCategoryList());
 		
 		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER});
 		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR});
@@ -59,7 +58,7 @@ public class RestController {
 	@RequestMapping(value="/reg", method = RequestMethod.GET)
 	public String restReg(Model model) {
 		model.addAttribute(Const.CATEGORYLIST, service.selCategoryList());
-		model.addAttribute("districtList", service.selDistrictList());
+		model.addAttribute(Const.DISTRICTLIST, service.selDistrictList());
 		
 		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER,Const.RESTREG});
 		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR});
@@ -95,7 +94,7 @@ public class RestController {
 		RestReviewVO vo = new RestReviewVO();
 		vo.setI_rest(param.getI_rest());
 		
-		model.addAttribute("foodMenuList", service.selFoodmenu(param));
+		model.addAttribute("foodMenuList", service.selFoodPicList(param));
 		model.addAttribute("reviewList", service.selReviewList(param));
 		model.addAttribute("count", service.selReviewCount(vo));
 		
@@ -112,8 +111,8 @@ public class RestController {
 	@RequestMapping(value="/regFood", method = RequestMethod.GET)
 	public String restRegFood(RestPARAM param, Model model) {
 		RestDMI data = service.selRest(param);
-		model.addAttribute("data", data);
 		
+		model.addAttribute(Const.DATA, data);
 		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER, Const.RESTREGFOOD});
 		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR});
 		model.addAttribute(Const.TITLE, "음식사진 등록");
