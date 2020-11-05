@@ -15,6 +15,7 @@ public class Const {
 	public static final String PLACE = "place";
 	public static final String RESTLIST = "restList";
 	public static final String CATEGORYLIST = "categoryList";
+	public static final String DISTRICTLIST = "districtList";
 	
 	public static final String LOGIN_USER = "loginUser";
 	
