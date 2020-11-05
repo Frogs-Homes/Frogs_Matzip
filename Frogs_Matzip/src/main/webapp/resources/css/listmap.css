@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 /*list*/
-#container { width: 100%; display: flex; margin-top: 70px; }
-#list_back { width: 400px; height: calc(100vh - 190px); margin-top: 20px; overflow-y: auto; }
+.container { width: 100%; display: flex; margin-top: 70px; }
+#list_back { width: 400px;  margin-top: 20px; overflow-y: auto; }
 #place_title { margin-left: 20px; }
 
 .list_wrap { width: 100%; border-bottom: 1px solid #dbdbdb; }

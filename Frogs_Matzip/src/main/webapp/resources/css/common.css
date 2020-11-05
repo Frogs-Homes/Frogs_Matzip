@@ -22,7 +22,7 @@ body { font-family: 'TmoneyRoundWindRegular'; }
 
 .hidden { position: absolute; left: -9999px;}
 .msg { font-weight: bold; color: rgb(245, 106, 106); }
-
+#container { width: 100%; height: 100vh;}
 /* User 버튼 */
 #img_back { height: 100%; display: flex; align-items: center; justify-content: flex-end; margin-right: 20px; z-index: 10; }
 .user_button { width: 83px; height: 42px; display: flex; align-items: center; justify-content: center; border: 1px solid #DDDDDD;  border-radius: 26px;  box-sizing: border-box; 
@@ -112,4 +112,4 @@ h3 {font-size: 2rem;}
 }
 
 /* footer*/
-footer { width: 100vw; height: 100px; background-color: #212121; color: #fff; }
+footer { width: 100%; height: 200px; background-color: #212121; color: #fff; }
