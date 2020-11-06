@@ -33,4 +33,4 @@ fieldset { border: none; position: relative; }
 .search_bar { border:none; outline: none; display:inline-block; width: 90%; height:55px;  
 			border-radius:27px; padding:0 25px; font-size: 20px; }
 #search_btn {position: absolute; right: 0; width: 100px; height: 55px; border-radius: 27px; background-color: #f07a2c; 
-			color: #fff; font-size: 20px; border: none; cursor: pointer; }
+			color: #fff; font-size: 20px; border: none; cursor: pointer; outline:none; }

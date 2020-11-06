@@ -36,7 +36,7 @@
 <div class="thema_container">
     <div class="thema_wrap">
         <h2>FROGS THEMA PICK</h2>
-        <a href="#">About <span class="material-icons">east</span></a>
+        <a href="rest/theme">About <span class="material-icons">east</span></a>
         <div class="con">
             <div class="left">
                 <img src="/res/img/food.jpg" alt="">
