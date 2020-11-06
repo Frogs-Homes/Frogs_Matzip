@@ -70,25 +70,21 @@
 	</select>
 	
 	<select id="selRestList" parameterType="RestPARAM" resultType="RestDMI">
-	 	SELECT A.i_rest, A.nm, A.addr, A.lat, A.lng,
-	 		, TRUNCATE(AVG(B.grade), 1) as avg_grade, count(B.i_rest) as review_cnt
-	 	FROM t_rest A
-	 	LEFT JOIN t_review B
-	 		ON A.i_rest = B.i_rest
-	 	
+	 	SELECT i_rest, nm, addr, lat, lng, i_category, i_district
+	 	FROM t_rest
 	 	<choose>
 	 		<when test="search_text != null">
-	 			WHERE A.nm like #{sql_search_text} or A.addr like #{sql_search_text}
+	 			WHERE nm like #{sql_search_text} or addr like #{sql_search_text}
 	 		</when>
 	 		<otherwise>
-	 			WHERE A.lat BETWEEN #{sw_lat} AND #{ne_lat}
-				AND A.lng BETWEEN #{sw_lng} AND #{ne_lng}
+	 			WHERE lat BETWEEN #{sw_lat} AND #{ne_lat}
+				AND lng BETWEEN #{sw_lng} AND #{ne_lng}
 	 		</otherwise>
 	 	</choose>
-	 	ORDER BY A.i_rest
+	 	ORDER BY i_rest
 	</select>
 	
-	<select id ="selFoodPicList" parameterType="RestPARAM" resultType="RestFoodVO">
+	<select id ="selFoodmenu" parameterType="RestPARAM" resultType="RestFoodVO">
 		SELECT i_rest, seq, food_pic
 		FROM t_rest_pic
 		WHERE i_rest = #{i_rest}
@@ -96,7 +92,7 @@
 	
 	<select id ="selReviewList" parameterType="RestPARAM" resultType="RestDMI">
 		SELECT A.seq, A.i_user, A.i_rest, A.grade, A.ctnt, A.m_dt, B.nm
-		FROM t_review A 
+		FROM t_review A  
 		LEFT JOIN t_user B
 		ON A.i_user = B.i_user
 		ORDER BY m_dt DESC
