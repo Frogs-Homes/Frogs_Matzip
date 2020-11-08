@@ -72,36 +72,29 @@
     </div>
 </body>
 <script>
-let slider = document.querySelector("#slider")
-let imgs = document.querySelectorAll('dl')
-let prevBtn = document.querySelector('.btnPrev')
-let nextBtn = document.querySelector('.btnNext')
+$(document).ready(function(){
+    $('#slider').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    nextArrow:$('.next'),
+    prevArrow:$('.prev'), 
+    pauseOnHover: false,
+    responsive: [{
+        breakpoint: 768,
+        settings: {
+            slidesToShow: 3
+        }
+    }, {
+        breakpoint: 520,
+        settings: {
+            slidesToShow: 3
+        }
+    }]
+    });
+});
 
-slider.style.marginLeft = "0px";
-
-function sliding() {
-    if (slider.style.marginLeft == "-1200px") {
-        slider.style.marginLeft = "0px"
-    } else {
-        slider.style.marginLeft = (parseInt(slider.style.marginLeft) - 300) + "px";
-    }
-}
-
-prevBtn.addEventListener("click", function () {
-    clearInterval(timer) 
-    if (slider.style.marginLeft == "0px") {
-        slider.style.marginLeft = "-1200px"
-    } else {
-        slider.style.marginLeft = (parseInt(slider.style.marginLeft) + 300) + "px";
-    }
-})
-
-nextBtn.addEventListener("click", function() {
-    clearInterval(timer)  //여기에는 변수가 들어가야함
-    sliding();
-})
-
-let timer = setInterval(sliding, 3000)
 </script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d88fdcc4a19e51b35f8bf4dc0300b352&libraries=services"></script>

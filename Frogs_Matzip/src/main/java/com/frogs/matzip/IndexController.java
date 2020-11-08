@@ -26,8 +26,8 @@ public class IndexController {
 
 		model.addAttribute("recRestList", rService.selRecRestList(param));
 		
-		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.INDEX, Const.INDEXHEADER});	
-		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR});
+		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.INDEX, Const.INDEXHEADER, Const.SLICK});	
+		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR, Const.SLICKMIN});
 		model.addAttribute(Const.TITLE, "FrogsMatzip");
 		model.addAttribute(Const.HEADER, "template/index_header");
 		model.addAttribute(Const.VIEW, "index");

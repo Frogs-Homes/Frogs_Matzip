@@ -102,7 +102,7 @@
                 <span>(${count.review_cnt})</span>
             </div>
              <c:forEach items="${reviewList}" var="item">
-             	<c:if test="${data.i_rest == item.i_rest}">
+             	
 		             <div class="review_ctnt_back" id="review_ctnt_back_${item.seq}">
 			             <div id="review_ctnt">
 			                 <div id="user_wrap">
@@ -151,7 +151,6 @@
 		                 	</div>
 						</c:if>
 			         </div>
-			      </c:if>
 		      </c:forEach>
         </section>
     </div>
