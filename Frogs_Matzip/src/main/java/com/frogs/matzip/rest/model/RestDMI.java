@@ -12,7 +12,6 @@ public class RestDMI extends RestVO {
 	private int review_cnt;
 	private int is_favorite;
 	private int fav_cnt;
-	private String food_category;
 	private double avg_grade;
 	private String open_time;
 	private String close_time;
@@ -43,12 +42,6 @@ public class RestDMI extends RestVO {
 	}
 	public void setAvg_grade(double avg_grade) {
 		this.avg_grade = avg_grade;
-	}
-	public String getFood_category() {
-		return food_category;
-	}
-	public void setFood_category(String food_category) {
-		this.food_category = food_category;
 	}
 	public int getFav_cnt() {
 		return fav_cnt;

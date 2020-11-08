@@ -2,7 +2,7 @@
 
 /*list*/
 .container { width: 100%; display: flex; margin-top: 70px; }
-#list_back { width: 400px;  margin-top: 20px; overflow-y: auto; }
+#list_back { width: 400px; height: calc(100vh - 170px); margin-top: 20px; overflow-y: auto; }
 #place_title { margin-left: 20px; }
 
 .list_wrap { width: 100%; border-bottom: 1px solid #dbdbdb; }

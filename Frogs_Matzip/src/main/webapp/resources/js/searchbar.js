@@ -14,6 +14,11 @@ function chkSearchRest() {
 	return true
 }
 
+// 
+function setFocusPlaceList() {
+	
+}
+
 // setPlaceNm
 function setPlaceNm(e) {
 	keyword.value = e.target.innerText

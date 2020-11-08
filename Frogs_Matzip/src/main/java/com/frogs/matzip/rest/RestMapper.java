@@ -13,7 +13,7 @@ import com.frogs.matzip.rest.model.RestVO;
 @Mapper
 public interface RestMapper {
 	int insRest(RestVO param);
-	int insFoodMenu(RestFoodVO param);
+	int insFoodPic(RestFoodVO param);
 	int insReview(RestReviewVO param);
 	
 	RestDMI selRest(RestPARAM param);

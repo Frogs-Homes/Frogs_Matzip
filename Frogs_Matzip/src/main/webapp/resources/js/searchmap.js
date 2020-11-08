@@ -193,10 +193,10 @@ function createRestDiv(item) {
 	var br2 = document.createElement('br')
 	
 	var rest_info = document.createElement('p')
-	rest_info.innerHTML = item.district + ' - ' + item.category_nm
+	rest_info.innerHTML = item.district_val + ' - ' + item.category_val
 	
 	var rest_review = document.createElement('p')
-	rest_review.innerHTML = 'review: ' + item.review
+	rest_review.innerHTML = 'review: ' + item.review_cnt
 	
 	matzip_list.append(food_img)
 	
