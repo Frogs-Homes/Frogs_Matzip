@@ -10,20 +10,16 @@
 #best{ max-width: 1440px; margin-bottom: 50px; margin: 0 auto; }
 #best h2 { font-size: 30px; color: black; display: block;}
 #best .rest_wrap { padding-top: 100px;}
-#best .rest_wrap #rest_menu_wrap { width: 100%; overflow: hidden; margin-top: 40px; }
-#best .rest_wrap #rest_menu_wrap #slider { width: 200%; transition: 2s; }
+#best .rest_wrap #rest_menu_wrap { width: 100%; overflow: hidden;  margin-top: 40px; }
 
 #best .rest_wrap #btnWrap { width: 100%; text-align: center; }
-#best .rest_wrap #btnWrap .btnPrev { margin-right: 250px;  background: none; border:none;}
-#best .rest_wrap #btnWrap .btnNext {  background: none; border:none;}
-#best .rest_wrap #btnWrap .btnPrev, .btnNext:focus { outline:none;}
+#best .rest_wrap #btnWrap .prev { margin-right: 250px;  background: none; border:none;}
+#best .rest_wrap #btnWrap .next {  background: none; border:none;}
+#best .rest_wrap #btnWrap .prev, .next:focus { outline:none;}
 #best .rest_wrap #btnWrap .material-icons { font-size: 50px; color:#9B9B9B;}
 #best .rest_wrap #btnWrap .material-icons:hover { cursor: pointer; color: #757474;}
 
-#best ol li { width: 320px; float: left; margin-right: 32px;}
-#best ol li:first-child { margin-left: 32px;}
-#best ol li dl { margin: 0 auto;}
-#best ol li dl img { width: 100%; margin-bottom: 10px;  border-top-left-radius: 10px; border-top-right-radius: 10px;}
+#best img { width: 100%; margin-bottom: 10px;  border-top-left-radius: 10px; border-top-right-radius: 10px;}
 
 .restaurant { width: 100%;  background-color: #fff; border-radius: 10px;
          box-shadow: 0px 0px 10px #a0a0a0; }

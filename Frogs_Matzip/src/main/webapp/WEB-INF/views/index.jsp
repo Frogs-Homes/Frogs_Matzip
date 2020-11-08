@@ -6,28 +6,25 @@
      <section id="best">
         <div class="rest_wrap">
             <h2>Best restaurants in Frogs</h2>
-            <div id="rest_menu_wrap">
+            <div id="rest_menu_wrap">   
             	<div id="slider">
-	            	<ol>
-		            	<c:forEach items="${recRestList}" var="item">
-		                <li>
-		                    <dl><a href="/rest/detail?i_rest=${item.i_rest}">
-		                            <div class="restaurant">
-		                                <img src="/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}" alt="">
-		                                <dt class="rest_nm">${item.nm} <span class="score">${item.avg_grade}</span></dt>
-		            					<dd class="address">${item.addr} - ${item.category_val}</dd>
-		                            </div>
-		                        </a>
-		                    </dl>
-		                </li>
-		                </c:forEach>
-		            </ol>  
+	            	<c:forEach items="${recRestList}" var="item">
+	                    <a href="/rest/detail?i_rest=${item.i_rest}">
+	                            <div class="restaurant">
+	                                <img src="/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}" alt="">
+	                                <dt class="rest_nm">${item.nm} <span class="score">${item.avg_grade}</span></dt>
+	            					<dd class="address">${item.addr} - ${item.category_val}</dd>
+	                            </div>
+	                        </a>
+	                </c:forEach>     
 		        </div>
+		        
+               <div id="btnWrap">
+                  	<button class="prev"><span class="material-icons">keyboard_arrow_left</span></button>
+          			<button class="next"><span class="material-icons">keyboard_arrow_right</span></button>
+          		</div>
             </div>
-            <div id="btnWrap">
-                    <button class="btnPrev"><span class="material-icons">keyboard_arrow_left</span></button>
-                    <button class="btnNext"><span class="material-icons">keyboard_arrow_right</span></button>
-            </div>
+            
         </div>
      </section>
  </div>
@@ -76,3 +73,6 @@
         </div>
     </div>
 </div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>

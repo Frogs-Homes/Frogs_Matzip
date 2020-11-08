@@ -32,6 +32,8 @@ public class Const {
 	public static final String USERMENU = "usermenu";
 	public static final String SEARCHBAR = "searchbar";
 	public static final String SEARCHMAP = "searchmap";
+	public static final String SLICK = "slick";
+	public static final String SLICKMIN = "slick.min";
 	
 	public static final int SUCCESS = 1;
 	public static final int FAIL = 0;

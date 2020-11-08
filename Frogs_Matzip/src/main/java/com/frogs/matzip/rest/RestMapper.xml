@@ -98,7 +98,7 @@
 	 	ORDER BY TRUNCATE(AVG(B.grade),1) DESC, A.i_rest
 	</select>
 	
-	<select id ="selFoodmenu" parameterType="RestPARAM" resultType="RestFoodVO">
+	<select id ="selFoodPicList" parameterType="RestPARAM" resultType="RestFoodVO">
 		SELECT i_rest, seq, food_pic
 		FROM t_rest_pic
 		WHERE i_rest = #{i_rest}
@@ -109,6 +109,7 @@
 		FROM t_review A  
 		LEFT JOIN t_user B
 		ON A.i_user = B.i_user
+		WHERE A.i_rest = #{i_rest}
 		ORDER BY m_dt DESC
 	</select>
 	
