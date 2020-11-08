@@ -74,7 +74,7 @@
                         </tr>
                         <tr>
                             <th>음식종류</th>
-                            <td>${data.food_category}</td>
+                            <td>${data.category_val}</td>
                         </tr>
                         <tr>
                             <th>가격대</th>

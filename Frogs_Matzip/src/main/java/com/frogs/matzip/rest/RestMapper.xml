@@ -8,7 +8,7 @@
 		(#{nm}, #{addr}, #{lat}, #{lng}, #{i_category}, #{phone}, #{price_range}, #{open_time}, #{close_time}, #{ctnt}, #{i_district})
 	</insert>
 	
-	<insert id="insFoodMenu" parameterType="RestFoodVO">
+	<insert id="insFoodPic" parameterType="RestFoodVO">
 		INSERT INTO t_rest_pic 
 		(i_rest, seq, food_pic)
 		SELECT #{i_rest}, ifnull(max(seq), 0) + 1, #{food_pic}
@@ -27,7 +27,7 @@
 			, A.phone, A.price_range, TIME_FORMAT(A.open_time, '%H:%i') as open_time, TIME_FORMAT(A.close_time, '%H:%i') as close_time, A.ctnt, A.i_district
 			, CASE WHEN B.i_rest IS NULL THEN 0 ELSE 1 END AS is_favorite
 			, COUNT(B.i_rest) as fav_cnt
-			, C.val as food_category
+			, C.val as category_val
 			, TRUNCATE(AVG(D.grade),1) as avg_grade
 		FROM t_rest A
 		LEFT JOIN t_fav B
@@ -48,7 +48,7 @@
 		SELECT A.i_rest, TRUNCATE(AVG(A.grade),1) as avg_grade
 		, B.nm, SUBSTRING_INDEX(B.addr," ",2) AS addr 
 		, C.food_pic
-		, D.val AS food_category
+		, D.val AS category_val
 		FROM t_review A
 		LEFT JOIN t_rest B
 			ON A.i_rest = B.i_rest
@@ -70,18 +70,32 @@
 	</select>
 	
 	<select id="selRestList" parameterType="RestPARAM" resultType="RestDMI">
-	 	SELECT i_rest, nm, addr, lat, lng, i_category, i_district
-	 	FROM t_rest
-	 	<choose>
-	 		<when test="search_text != null">
-	 			WHERE nm like #{sql_search_text} or addr like #{sql_search_text}
-	 		</when>
-	 		<otherwise>
-	 			WHERE lat BETWEEN #{sw_lat} AND #{ne_lat}
-				AND lng BETWEEN #{sw_lng} AND #{ne_lng}
-	 		</otherwise>
-	 	</choose>
-	 	ORDER BY i_rest
+	 	SELECT A.i_rest, A.nm, A.addr, A.lat, A.lng
+	 		, TRUNCATE(AVG(B.grade), 1) as avg_grade, COUNT(DISTINCT B.seq) as review_cnt
+	 		, C.val as category_val, D.food_pic, E.val as district_val, COUNT(DISTINCT F.i_user) as fav_cnt
+	 	FROM t_rest A
+	 	LEFT JOIN t_review B
+	 		ON A.i_rest = B.i_rest
+	 	LEFT JOIN t_category C
+	 		ON A.i_category = C.i_category
+	 	LEFT JOIN t_rest_pic D
+	 		ON A.i_rest = D.i_rest
+	 	LEFT JOIN t_district E
+	 		ON A.i_district = E.i_district
+	 	LEFT JOIN t_fav F
+	 		ON A.i_rest = F.i_rest
+	 	<if test="i_category > 0">
+	 		WHERE A.i_category = #{i_category}
+	 	</if>
+	 	<if test="search_text != null">
+	 		WHERE A.nm like #{sql_search_text} or A.addr like #{sql_search_text}
+	 	</if>
+	 	<if test="sw_lat != 0 || sw_lng != 0">
+	 		WHERE A.lat BETWEEN #{sw_lat} AND #{ne_lat}
+			AND A.lng BETWEEN #{sw_lng} AND #{ne_lng}
+	 	</if>
+	 	GROUP BY i_rest
+	 	ORDER BY TRUNCATE(AVG(B.grade),1) DESC, A.i_rest
 	</select>
 	
 	<select id ="selFoodmenu" parameterType="RestPARAM" resultType="RestFoodVO">

@@ -37,7 +37,7 @@ public class RestService {
 		mapper.updRestMenu(param);
 	}
 	
-	public int insFoodMenu(RestFoodFile param) {
+	public int insFoodPic(RestFoodFile param) {
 		String path = Const.realPath + "/resources/img/rest/" + param.getI_rest() + "/food_pic/"; 
 			
 		List<RestFoodVO> list = new ArrayList();
@@ -52,7 +52,7 @@ public class RestService {
 		}
 		
 		for(RestFoodVO vo : list) {
-			mapper.insFoodMenu(vo);
+			mapper.insFoodPic(vo);
 		}
 		
 		return Const.SUCCESS;

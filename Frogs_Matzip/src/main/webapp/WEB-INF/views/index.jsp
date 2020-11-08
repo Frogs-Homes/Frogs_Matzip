@@ -15,7 +15,7 @@
 		                            <div class="restaurant">
 		                                <img src="/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}" alt="">
 		                                <dt class="rest_nm">${item.nm} <span class="score">${item.avg_grade}</span></dt>
-		            					<dd class="address">${item.addr} - ${item.food_category}</dd>
+		            					<dd class="address">${item.addr} - ${item.category_val}</dd>
 		                            </div>
 		                        </a>
 		                    </dl>

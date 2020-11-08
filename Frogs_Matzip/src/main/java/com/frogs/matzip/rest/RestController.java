@@ -127,7 +127,7 @@ public class RestController {
 		int i_rest = param.getI_rest();
 		int result = Const.SUCCESS;
 		try {
-			service.insFoodMenu(param);
+			service.insFoodPic(param);
 		} catch(Exception e) {
 			result = Const.FAIL;
 		}
