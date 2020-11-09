@@ -33,4 +33,12 @@ public class IndexController {
 		model.addAttribute(Const.VIEW, "index");
 		return ViewRef.TEMP;
 	}
+	
+	@RequestMapping(value="/mypage", method = RequestMethod.GET)
+	public String MyPage(RestPARAM param, HttpServletRequest req, Model model) {
+		
+
+		model.addAttribute(Const.VIEW, "mypage");
+		return ViewRef.TEMP;
+	}
 }
