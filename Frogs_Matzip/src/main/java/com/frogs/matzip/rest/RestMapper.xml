@@ -105,12 +105,14 @@
 	</select>
 	
 	<select id ="selReviewList" parameterType="RestPARAM" resultType="RestDMI">
-		SELECT A.seq, A.i_user, A.i_rest, A.grade, A.ctnt, A.m_dt, B.nm
+		SELECT @rownum:=@rownum+1 AS rnum, A.seq, A.i_user, A.i_rest, A.grade, A.ctnt, A.m_dt, B.nm
 		FROM t_review A  
 		LEFT JOIN t_user B
-		ON A.i_user = B.i_user
+			ON A.i_user = B.i_user
 		WHERE A.i_rest = #{i_rest}
+		AND (@rownum:=#{s_idx})=#{s_idx}
 		ORDER BY m_dt DESC
+		LIMIT #{s_idx}, #{review_cnt};
 	</select>
 	
 	<select id="selReviewCount" parameterType="RestReviewVO" resultType="RestDMI">

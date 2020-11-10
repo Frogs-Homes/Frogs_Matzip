@@ -40,4 +40,8 @@ public class Const {
 	public static final int FAIL = 0;
 	public static final int NO_ID = 2;
 	public static final int NO_PW = 3;
+	
+	public static final int SIDX = 0;
+	public static final int REVIEWCNT = 5;
+	
 }

@@ -156,8 +156,12 @@
 						</c:if>
 			         </div>
 		      </c:forEach>
+
 		      </c:otherwise>
 		      </c:choose>
+		      <div class="more_btn">
+		      		<button onclick="reviewMore(${s_idx+5})">더 보기</button>
+		      </div>
         </section>
     </div>
 </div>  
@@ -362,6 +366,18 @@
 					alert('문제가 발생하였습니다.')
 				}
 			})
+        }
+        
+        var s_idx = ${param.s_idx}
+    	var review_cnt = ${param.review_cnt}
+    	
+        /*리뷰더보기*/
+        function reviewMore(s_idx) {
+        	// 1. 전체 리뷰 개수보다 작은지 체크, ㄴㄴ일 경우 더보기 버튼 안 뜨게 하고 ajax 실행 ㄴㄴ
+        	
+        	// 2. ㅇㅇ 일 경우 ajax로 보내서 값 받아서 뿌리기
+        	
+        	// 3. s_idx ++
         }
         
         /* 좋아요 */
