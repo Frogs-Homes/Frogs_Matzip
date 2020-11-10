@@ -23,7 +23,7 @@
 		<div id="title_wrap">
             <span id="title">
                 <h1>${data.nm}</h1>
-                <strong id="grade"><span>${data.avg_grade}</span></strong>
+                <strong id="grade"><span>${data.avg_grade == 0 ? '' : data.avg_grade}</span></strong>
                 <!-- 관리자용 음식사진등록창 이동 -->
 				<div>
 					<c:if test="${loginUser.admin == '1'}">
@@ -101,6 +101,11 @@
                 <h2>리뷰</h2>
                 <span>(${count.review_cnt})</span>
             </div>
+            <c:choose>
+            <c:when test="${count.review_cnt == '0'}">
+            	<div id="review_null">앗! 아직 작성된 리뷰가 없어요. 지금 ${data.nm}의 첫 리뷰를 등록해 보세요.</div>
+            </c:when>
+            <c:otherwise>
              <c:forEach items="${reviewList}" var="item">
 		             <div class="review_ctnt_back" id="review_ctnt_back_${item.seq}">
 			             <div id="review_ctnt">
@@ -151,6 +156,9 @@
 						</c:if>
 			         </div>
 		      </c:forEach>
+
+		      </c:otherwise>
+		      </c:choose>
 		      <div class="more_btn">
 		      		<button onclick="reviewMore(${s_idx+5})">더 보기</button>
 		      </div>

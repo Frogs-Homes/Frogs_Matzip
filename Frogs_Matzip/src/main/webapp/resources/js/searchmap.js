@@ -155,7 +155,7 @@ function createTitle(title) {
 	let rest_list_wrap = document.createElement('div')
 	rest_list_wrap.id = 'rest_list_wrap'
 	
-	heading.innerHTML = title + ' 지역의 맛집 목록'
+	heading.innerHTML = `${title} 지역의 맛집 목록`
 	
 	list_back.prepend(heading)
 	list_back.append(rest_list_wrap)
@@ -174,7 +174,7 @@ function createRestDiv(item) {
 	
 	var food_img = document.createElement('img')
 	food_img.classList.add('food_img')
-	food_img.setAttribute('src', item.food_pic)
+	food_img.setAttribute('src',`/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}`)
 	food_img.setAttribute('alt', item.nm+'의 음식 사진')
 	
 	var ctnt_wrap = document.createElement('div')
@@ -183,7 +183,7 @@ function createRestDiv(item) {
 	var rest_nm = document.createElement('h3')
 	
 	var rest_nm_a = document.createElement('a')
-	rest_nm_a.setAttribute('href', '/rest/detail?i_rest=' + item.i_rest)
+	rest_nm_a.setAttribute('href', `/rest/detail?i_rest=${item.i_rest}`)
 	rest_nm_a.innerHTML = item.nm
 	
 	var avg_grade = document.createElement('strong')
@@ -193,10 +193,10 @@ function createRestDiv(item) {
 	var br2 = document.createElement('br')
 	
 	var rest_info = document.createElement('p')
-	rest_info.innerHTML = item.district_val + ' - ' + item.category_val
+	rest_info.innerHTML = `${item.district_val} - ${item.category_val}`
 	
 	var rest_review = document.createElement('p')
-	rest_review.innerHTML = 'review: ' + item.review_cnt
+	rest_review.innerHTML = `review: ${item.review_cnt}`
 	
 	matzip_list.append(food_img)
 	
@@ -216,7 +216,7 @@ function createRestDiv(item) {
 }
 
 function moveToDetail(i_rest) {
-	location.href = '/rest/detail?i_rest=' + i_rest
+	location.href = `/rest/detail?i_rest=${i_rest}`
 }
 
 function addEvent(target, type, callback) {

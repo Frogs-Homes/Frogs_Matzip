@@ -10,15 +10,8 @@
 				<li>${item.category_val}</li>
 			</c:forEach>
 		</ul>
+		<input type="hidden" id="ctg_val" value="">
 	</nav>
 </div>
 
-<div id="ctg_list_wrap">
-	<c:forEach items="${categoryList}" var="item">
-		let i_category = ${item.i_category}
-		<div class="ctg_rest_wrap">
-			<div>이미지영역</div>
-			<div>내용영역</div>
-		</div>
-	</c:forEach>
-</div>
+<div id="ctg_list_wrap"></div>

@@ -10,11 +10,12 @@
 #column_back { width: 100%; margin-top: 80px;}
 #ctnt_back { width: 100%; margin: 0 auto; }
 #title_wrap { margin: 0 auto !important; width: 70%; display: flex;}
-#title_wrap #title { width: 30%;}
-#title_wrap #title h1 { float: left;}
-#title_wrap #title #grade { font-size: 1.6rem; margin-left: 10px; color: #f07a2c; position:relative; top:8px;}
+#title_wrap #title { width: 30%; }
+#title_wrap #title h1 { float: left; position: relative; }
+#title_wrap #title #grade { font-size: 1.6rem; margin-left: 10px; color: #f07a2c; }
+#title_wrap #title #grade span { position: absolute; line-height: 50px; }
 
-#title_wrap #rest_action_button { width: 70%; text-align: center; display: flex; justify-content: flex-end}
+#title_wrap #rest_action_button { width: 70%; text-align: center; display: flex; justify-content: flex-end; }
 #title_wrap #rest_action_button .material-icons { font-size: 50px; }
 #title_wrap #rest_action_button .edit { width: 60px; font-size: 13px; margin-right: 22px; color: #9B9B9B; }
 #title_wrap #rest_action_button .edit:hover {cursor: pointer; color: #f07a2c !important;}
@@ -45,6 +46,7 @@ th { width: 20%; text-align: start;}
 #rest_review #review_title h2 { display: inline-block; }
 #rest_review #review_title span { margin-left: 5px;}
 
+#rest_review #review_null { width: 100%; height: 280px; line-height: 250px; text-align: center; }
 #rest_review .review_ctnt_back { width: 100%; border-bottom: 1px solid lightgray; margin-bottom: 20px;}
 #rest_review .review_ctnt_back:hover { background-color: #f7f7f7;}
 

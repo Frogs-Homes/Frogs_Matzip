@@ -34,8 +34,8 @@ public class RestController {
 		
 		model.addAttribute(Const.CATEGORYLIST, service.selCategoryList());
 		
-		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER});
-		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR});
+		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER, Const.RESTTHEME});
+		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR, Const.RESTTHEME});
 		model.addAttribute(Const.TITLE, "테마별 맛집 목록");
 		model.addAttribute(Const.HEADER, "/template/default_header");
 		model.addAttribute(Const.VIEW, "/rest/rest_theme");
