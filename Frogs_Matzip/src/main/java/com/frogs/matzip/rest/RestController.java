@@ -104,7 +104,7 @@ public class RestController {
 		
 		model.addAttribute(Const.DATA, service.selRest(param));
 		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER, Const.RESTDETAIL});
-		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR});
+		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR, Const.RESTDETAIL});
 		model.addAttribute(Const.TITLE, "가게 상세 페이지");
 		model.addAttribute(Const.HEADER, "/template/default_header");
 		model.addAttribute(Const.VIEW, "/rest/rest_detail");

@@ -14,9 +14,8 @@ function chkSearchRest() {
 	return true
 }
 
-// 
-function setFocusPlaceList() {
-	
+function togglePlacesList() {
+	placesList.classList.toggle('show')
 }
 
 // setPlaceNm
