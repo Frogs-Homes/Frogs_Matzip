@@ -16,9 +16,23 @@ public class RestDMI extends RestVO {
 	private String open_time;
 	private String close_time;
 	private String food_pic;
+	private int sIdx;
+	private int reivew_cnt;
 	
 	
 	
+	public int getsIdx() {
+		return sIdx;
+	}
+	public void setsIdx(int sIdx) {
+		this.sIdx = sIdx;
+	}
+	public int getReivew_cnt() {
+		return reivew_cnt;
+	}
+	public void setReivew_cnt(int reivew_cnt) {
+		this.reivew_cnt = reivew_cnt;
+	}
 	public String getFood_pic() {
 		return food_pic;
 	}

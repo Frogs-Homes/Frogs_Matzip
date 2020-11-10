@@ -91,6 +91,10 @@ public class RestController {
 		int i_user = SecurityUtils.getLoginUserPk(hs);
 		param.setI_user(i_user);
 		
+		param.setS_idx(Const.SIDX);
+		param.setE_idx(Const.REVIEWCNT);
+		param.setReview_cnt(Const.REVIEWCNT);
+		
 		RestReviewVO vo = new RestReviewVO();
 		vo.setI_rest(param.getI_rest());
 		
