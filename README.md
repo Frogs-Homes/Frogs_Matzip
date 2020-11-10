@@ -1,6 +1,18 @@
 # Frogs_Matzip
 맛집 프로젝트
 
+201108 한 일
+- AutoSlider 기능 구현
+
+201107 한 일
+- selRestList 조인 걸기 -> 앞단 수정 ㅇ
+
+201105 한 일
+- selRestList 조인 걸기(sql문 수정)
+- 맛집프로젝트 html, css 수정
+- Restcontroller -> foodmenu, food_category 이름 수정
+- 카카오지도 컴퓨터에 불러오지 못하는 문제 해결
+
 201104 한 일
 - 인덱스 카테고리별 식당 부분 디자인
 - Js 파일 window.onload 오류 고치기
