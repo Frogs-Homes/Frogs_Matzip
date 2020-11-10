@@ -60,9 +60,19 @@
 				<form id="frm_search" action="/rest/listMap" method="GET" onsubmit="return chkSearchRest();">
 					<fieldset>
 						<legend class="hidden">검색창</legend>
-						<input type="text" name="search_text" class="search_bar" id="keyword" placeholder="지역,식당 또는 음식">
+						<input type="text" name="search_text" class="search_bar" id="keyword" placeholder="지역,식당 또는 음식" onfocus="togglePlacesList()" onblur="togglePlacesList()">
 						<input type="submit" id="search_btn" value="검색">
 					</fieldset>
+					<ul id="placesList">
+						<li>남구</li>
+						<li>달서구</li>
+						<li>달성군</li>
+						<li>동구</li>
+						<li>북구</li>
+						<li>서구</li>
+						<li>수성구</li>
+						<li>중구</li>
+					</ul>
 				</form>
 			</div>
 		</div>
