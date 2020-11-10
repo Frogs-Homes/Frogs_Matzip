@@ -14,6 +14,30 @@ public class RestPARAM extends RestVO {
 	private String sql_search_text;
 	private int seq;
 	private int i_user;
+	private int s_idx;
+	private int e_idx;
+	private int review_cnt;
+	
+	
+	
+	public int getS_idx() {
+		return s_idx;
+	}
+	public void setS_idx(int s_idx) {
+		this.s_idx = s_idx;
+	}
+	public int getE_idx() {
+		return e_idx;
+	}
+	public void setE_idx(int e_idx) {
+		this.e_idx = e_idx;
+	}
+	public int getReview_cnt() {
+		return review_cnt;
+	}
+	public void setReview_cnt(int reivew_cnt) {
+		this.review_cnt = reivew_cnt;
+	}
 
 	public int getI_user() {
 		return i_user;
