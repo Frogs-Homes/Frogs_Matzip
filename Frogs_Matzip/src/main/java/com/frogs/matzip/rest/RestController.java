@@ -98,9 +98,10 @@ public class RestController {
 		RestReviewVO vo = new RestReviewVO();
 		vo.setI_rest(param.getI_rest());
 		
+		model.addAttribute("param", param);
 		model.addAttribute("foodMenuList", service.selFoodPicList(param));
 		model.addAttribute("reviewList", service.selReviewList(param));
-		model.addAttribute("count", service.selReviewCount(vo));
+		model.addAttribute("count", service.selReviewCount(vo)); //리뷰 총갯수
 		
 		model.addAttribute(Const.DATA, service.selRest(param));
 		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER, Const.RESTDETAIL});
@@ -156,6 +157,14 @@ public class RestController {
 		System.out.println("ne_lng : " + param.getNe_lng());
 		
 		return service.selRestList(param);
+	}
+	
+	@RequestMapping(value="ajaxSelReview", method = RequestMethod.GET)
+	@ResponseBody
+	public List<RestDMI> ajaxSelReview(@RequestBody RestPARAM param, HttpSession hs) { //session과  set get? 
+
+
+		return service.selReviewList(param);
 	}
 	
 	@RequestMapping(value="ajaxInsReview", method = RequestMethod.POST)

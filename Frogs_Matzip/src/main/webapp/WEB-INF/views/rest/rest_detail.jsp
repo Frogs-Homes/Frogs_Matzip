@@ -157,7 +157,7 @@
 			         </div>
 		      </c:forEach>
 				<div class="more_btn">
-					<button onclick="reviewMore(${s_idx+5})">더 보기</button>
+					<button onclick="reviewMore(${param.s_idx+5})">더 보기</button>
 				</div>
 		      </c:otherwise>
 		      </c:choose>
