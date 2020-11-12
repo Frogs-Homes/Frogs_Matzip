@@ -160,8 +160,9 @@ function reviewDel(seq) {
 	})
 }
 
-var s_idx = ${param.s_idx}
-var review_cnt = ${param.review_cnt}
+var s_idx = '${param.s_idx}'
+var review_cnt = '${param.review_cnt}'
+
 
 /*리뷰더보기*/
 function reviewMore(s_idx) {
@@ -170,7 +171,24 @@ function reviewMore(s_idx) {
 	// 2. ㅇㅇ 일 경우 ajax로 보내서 값 받아서 뿌리기
 	
 	// 3. s_idx ++
+	let parameter = {
+			params: {
+				i_rest: ${data.i_rest},
+				s_idx: s_idx,
+				review_cnt: review_cnt
+			}  
+	}
+	
+	axios.get('/rest/ajaxSelReview', parameter).then(function(res) {
+		console.log(res.data)
+		res.data.forEach(function(item){
+			
+		}) 
+	})
+	
 }
+
+
 
 /* 좋아요 */
 function toggleFavorite() {
