@@ -1,6 +1,9 @@
 # Frogs_Matzip
 맛집 프로젝트
 
+201116 한 일
+- placesList 기능 구현
+
 201108 한 일
 - AutoSlider 기능 구현
 
