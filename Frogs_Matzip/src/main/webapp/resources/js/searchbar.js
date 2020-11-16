@@ -14,17 +14,41 @@ function chkSearchRest() {
 	return true
 }
 
-function togglePlacesList() {
-	placesList.classList.toggle('show')
+
+function openPlacesList() {
+	placesList.classList.add('show_placesList');
 }
+
+function closePlacesList(event) {
+	if(event.target == keyword) {
+		return;
+	}
+	placesList.classList.remove('show_placesList');
+}
+
+/*
+function togglePlacesList() {
+	placesList.classList.toggle('show_placesList');
+	console.log(placesList.classList.value);
+}
+*/
 
 // setPlaceNm
 function setPlaceNm(e) {
-	keyword.value = e.target.innerText
+	keyword.value = e.target.innerText;
+	closePlacesList()
 }
 
-let placesListArr = document.querySelectorAll('#placesList li')
-placesListArr.forEach(function(item) {
-	item.addEventListener('click', setPlaceNm)
-})
+function addClickEvent() {
+	let placesListArr = document.querySelectorAll('#placesList li');
+
+	placesListArr.forEach(function(item) {
+		item.addEventListener('click', setPlaceNm)
+	})
+}
+
+addClickEvent();
+
+document.querySelector('body').addEventListener('click', closePlacesList);
+
 // -------------search bar 끝------------------------------------------------------------------------
