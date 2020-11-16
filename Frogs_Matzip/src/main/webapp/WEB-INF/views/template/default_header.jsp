@@ -5,12 +5,12 @@
 <header>
 	<div id="header_back">
 		<div id="logo_wrap">
-			<h2><a id="lnb_logo" href="/index">FrogsMatzip<span>daegu</span></a></h2>
+			<h2><a id="lnb_logo" href="/main">FrogsMatzip<span>daegu</span></a></h2>
 		</div>
 		<div id="search_back">
 			<div class="search_wrap">
 				<div id="frm_search">
-					<input type="text" class="search_bar" id="keyword" placeholder="지역, 식당 또는 음식" value="${place}" onKeyPress="chkKeyword(event)" onfocus="openPlacesList()">
+					<input type="text" class="search_bar" id="keyword" placeholder="지역, 식당 또는 음식" value="${place}" onKeyPress="chkKeyword(event)" onfocus="openPlacesList()" autocomplete="off">
 					<button type="button" class="search_icon" onclick="getSearchRestList()"><span class="material-icons" >search</span></button>	
 				</div>
 				<ul id="placesList">
