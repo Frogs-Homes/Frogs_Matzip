@@ -17,7 +17,7 @@ public class IndexController {
 	@Autowired
 	private RestService rService;
 	
-	@RequestMapping(value="/index", method = RequestMethod.GET)
+	@RequestMapping(value="/main", method = RequestMethod.GET)
 	public String Index(RestPARAM param, HttpServletRequest req, Model model) {
 		if(Const.realPath == null) {
 			Const.realPath = req.getSession().getServletContext().getRealPath("");
@@ -30,7 +30,7 @@ public class IndexController {
 		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR, Const.SLICKMIN});
 		model.addAttribute(Const.TITLE, "FrogsMatzip");
 		model.addAttribute(Const.HEADER, "template/index_header");
-		model.addAttribute(Const.VIEW, "index");
+		model.addAttribute(Const.VIEW, "main");
 		return ViewRef.TEMP;
 	}
 	
