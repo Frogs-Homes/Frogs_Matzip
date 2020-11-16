@@ -172,11 +172,11 @@ function reviewMore(s_idx) {
 	
 	// 3. s_idx ++
 	let parameter = {
-			params: {
-				i_rest: ${data.i_rest},
-				s_idx: s_idx,
-				review_cnt: review_cnt
-			}  
+		params: {
+			i_rest: ${data.i_rest},
+			s_idx: s_idx,
+			review_cnt: review_cnt
+		}  
 	}
 	
 	axios.get('/rest/ajaxSelReview', parameter).then(function(res) {
@@ -186,6 +186,10 @@ function reviewMore(s_idx) {
 		}) 
 	})
 	
+}
+
+function moreReviewClick() {
+	rest_review.innerHTML = `<div class = "review_ctnt_back" id="review_ctnt_back_${item.seq}">`
 }
 
 
