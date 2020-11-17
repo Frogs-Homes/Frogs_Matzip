@@ -63,6 +63,7 @@
 	
 	<select id="selCategoryList" resultType="RestDMI">
 		SELECT i_category, val as category_val FROM t_category
+		ORDER BY i_category
 	</select>
 	
 	<select id="selDistrictList" resultType="RestDMI">

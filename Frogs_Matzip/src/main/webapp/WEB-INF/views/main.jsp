@@ -30,40 +30,40 @@
  </div>
  
  
-<div class="thema_container">
-    <div class="thema_wrap">
+<div class="theme_container">
+    <div class="theme_wrap">
         <h2>FROGS THEMA PICK</h2>
-        <a href="rest/theme">About <span class="material-icons">east</span></a>
+        <a id="theme_about" href="/rest/theme">About <span class="material-icons">east</span></a>
         <div class="con">
             <div class="left">
                 <img src="/res/img/food.jpg" alt="">
             </div>
             <div class="right">
-                <div class="thema1">
-                    <div class="thema_ctnt">
+                <div class="theme1">
+                    <div class="theme_ctnt">
                         <div class="title_wrap">
                             <p class="title">KOREAN FOOD</p><br>
-                            <p class="sub_title">한식    <span class="click">Click</span></p><br><br><br>
+                            <p class="sub_title">한식    <a href="/rest/theme?i_category=${categoryList[0].i_category}"><span class="click">Click</span></p></a><br><br><br>
                             <p class="memo">"한식 맛집은 다모았다!!"</p>
                         </div>
                         <div class="title_img"></div>
                     </div>
                 </div>
-                <div class="thema2">
-                    <div class="thema_ctnt">
+                <div class="theme2">
+                    <div class="theme_ctnt">
                         <div class="title_wrap">
                             <p class="title">Cafe & Dessert</p><br>
-                            <p class="sub_title">카페 디저트    <span class="click">Click</span></p><br><br><br>
+                            <p class="sub_title">카페 디저트    <a href="/rest/theme?i_category=${categoryList[7].i_category}"><span class="click">Click</span></p></a><br><br><br>
                             <p class="memo">"#카페 는 말이야..!"</p>
                         </div>
                         <div class="title_img"></div>
                     </div>
                 </div>
-                <div class="thema3">
-                    <div class="thema_ctnt">
+                <div class="theme3">
+                    <div class="theme_ctnt">
                         <div class="title_wrap">
                             <p class="title">WESTERN FOOD</p><br>
-                            <p class="sub_title">양식    <span class="click">Click</span></p><br><br><br>
+                            <p class="sub_title">양식    <a href="/rest/theme?i_category=${categoryList[3].i_category}"><span class="click">Click</span></p></a><br><br><br>
                             <p class="memo">"언제나 배고픈 당신을 위해!"</p>
                         </div>
                         <div class="title_img"></div>

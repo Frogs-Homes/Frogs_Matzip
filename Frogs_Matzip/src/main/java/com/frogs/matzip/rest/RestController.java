@@ -32,6 +32,7 @@ public class RestController {
 	@RequestMapping(value="/theme", method = RequestMethod.GET)
 	public String restTheme(RestPARAM param, Model model) {
 		
+		model.addAttribute(Const.DATA, param);
 		model.addAttribute(Const.CATEGORYLIST, service.selCategoryList());
 		
 		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER, Const.RESTTHEME});

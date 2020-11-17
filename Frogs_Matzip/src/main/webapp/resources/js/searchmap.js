@@ -172,6 +172,9 @@ function createRestDiv(item) {
 	var matzip_list = document.createElement('div')
 	matzip_list.classList.add('matzip_list')
 	
+	var food_img_a = document.createElement('a')
+	food_img_a.setAttribute('href', `/rest/detail?i_rest=${item.i_rest}`)
+	
 	var food_img = document.createElement('img')
 	food_img.classList.add('food_img')
 	food_img.setAttribute('src',`/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}`)
@@ -198,7 +201,8 @@ function createRestDiv(item) {
 	var rest_review = document.createElement('p')
 	rest_review.innerHTML = `review: ${item.review_cnt}`
 	
-	matzip_list.append(food_img)
+	food_img_a.append(food_img)
+	matzip_list.append(food_img_a)
 	
 	rest_nm.append(rest_nm_a)
 	ctnt_wrap.append(rest_nm)
