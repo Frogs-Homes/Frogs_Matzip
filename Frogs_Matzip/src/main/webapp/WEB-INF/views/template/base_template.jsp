@@ -71,31 +71,33 @@
 	    </footer>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
 <script>
-$(document).ready(function(){
-    $('#slider').slick({
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    nextArrow:$('.next'),
-    prevArrow:$('.prev'), 
-    pauseOnHover: false,
-    responsive: [{
-        breakpoint: 768,
-        settings: {
-            slidesToShow: 3
-        }
-    }, {
-        breakpoint: 520,
-        settings: {
-            slidesToShow: 3
-        }
-    }]
-    });
-});
-
+window.onload = function() {
+	 $('#slider').slick({
+		    slidesToShow: 4,
+		    slidesToScroll: 1,
+		    autoplay: true,
+		    autoplaySpeed: 4000,
+		    nextArrow:$('.next'),
+		    prevArrow:$('.prev'), 
+		    pauseOnHover: false,
+		    responsive: [{
+		        breakpoint: 768,
+		        settings: {
+		            slidesToShow: 3
+		        }
+		    }, {
+		        breakpoint: 520,
+		        settings: {
+		            slidesToShow: 3
+		        }
+		    }]
+	});
+}
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d88fdcc4a19e51b35f8bf4dc0300b352&libraries=services"></script>
 <c:forEach items="${js}" var="item">

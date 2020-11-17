@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
-
 <!--menuList-->
 
 <div id="menu_wrap">
@@ -157,7 +155,7 @@
 			         </div>
 		      </c:forEach>
 				<div class="more_btn">
-					<button onclick="reviewMore(${param.s_idx+5})">더 보기</button>
+					<button onclick="reviewMore(${paramData.i_rest}, ${paramData.s_idx+5}, ${paramData.review_cnt}, ${item.i_user == loginUser.i_user})">더 보기</button>
 				</div>
 		      </c:otherwise>
 		      </c:choose>

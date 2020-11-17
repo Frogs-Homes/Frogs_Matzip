@@ -1,5 +1,5 @@
-var i_user = '${loginUser.i_user}'
-var i_rest = '${data.i_rest}'
+//var i_user = '${loginUser.i_user}'
+//var i_rest = '${data.i_rest}'
 		
  document.querySelector('#review_write').addEventListener('click', function(){
 	if(i_user == "" || i_user == null) {
@@ -161,38 +161,34 @@ function reviewDel(seq) {
 	})
 }
 
-var s_idx = '${param.s_idx}'
-var review_cnt = '${param.review_cnt}'
+//var s_idx = '${param.s_idx}'
+//var review_cnt = '${param.review_cnt}'
 
 
 /*리뷰더보기*/
-function reviewMore(sIdx) {
+function reviewMore(i_rest, s_idx, review_cnt, isLogin) {
 	// 1. 전체 리뷰 개수보다 작은지 체크, ㄴㄴ일 경우 더보기 버튼 안 뜨게 하고 ajax 실행 ㄴㄴ
 	
 	// 2. ㅇㅇ 일 경우 ajax로 보내서 값 받아서 뿌리기
 	
 	// 3. s_idx ++
 	let parameter = {
-		params: {
-			i_rest: i_rest,
-			s_idx: sIdx,
-			review_cnt: review_cnt
-		}  
+		params: { i_rest, s_idx, review_cnt }  
 	}
 	
 	axios.get('/rest/ajaxSelReview', parameter).then(function(res) {
 		console.log(res.data)
 		
 		res.data.forEach(function(item){
-			moreReviewClick(item)
+			moreReviewClick(item, isLogin);
 		}) 
 	})
 	
 }
 
-function moreReviewClick() {
+function moreReviewClick(item, isLogin) {
 	var review_ctnt_back = document.createElement('div')
-	review_ctnt_back.id = 'review_ctnt_back_${item.seq}'
+	review_ctnt_back.id = `review_ctnt_back_${item.seq}`
 	var review_ctnt = document.createElement('div')
 	review_ctnt.id = 'review_ctnt'
 	var user_wrap = document.createElement('div')
@@ -207,17 +203,17 @@ function moreReviewClick() {
 	user_nm_wrap.classList.add('user_nm_wrap')
 	var user_nm = document.createElement('div')
 	user_nm.classList.add('user_nm')
-	user_nm.innerHTML(item.nm)
-	var user_ctnt_wrap = document.createElement('div')
-	user_ctnt_wrap.id = 'user_ctnt_wrap'
-	var user_ctnt = document.createElement('div')
-	user_ctnt.classList.add('user_ctnt')
-	var day = document.createElement('div')
-	day.classList.add('day')
-	user_nm.innerHTML(item.m_dt)
-	var write = document.createElement('p')
+	user_nm.innerHTML = item.nm;
+	var user_ctnt_wrap = document.createElement('div');
+	user_ctnt_wrap.id = 'user_ctnt_wrap';
+	var user_ctnt = document.createElement('div');
+	user_ctnt.classList.add('user_ctnt');
+	var day = document.createElement('div');
+	day.classList.add('day');
+	user_nm.innerHTML = item.m_dt;
+	var write = document.createElement('p');
 	day.classList.add('write')
-	write.innerHTML(item.ctnt)
+	write.innerHTML = item.ctnt;
 	var user_like_wrap = document.createElement('div')
 	user_like_wrap.classList.add('user_like_wrap')
 	var user_like = document.createElement('div')
@@ -244,21 +240,22 @@ function moreReviewClick() {
 						                    <input type="hidden" name="five" value="5">
 			                         	</c:if>`
 	
-	review_ctnt_back.innerHTML = `<c:if test="${item.i_user == loginUser.i_user}">
-									       			<div id="user_btn">
+	if(isLogin) {
+		review_ctnt_back.innerHTML = `<div id="user_btn">
 								                        	<button class="review_mod" onclick="reviewUpd(${item.seq}, '${item.ctnt}', ${item.grade})">수정</button>
 								                        	<button class="review_del" onclick="reviewDel(${item.seq})">삭제</button>     
-								                 	</div>
-												</c:if>`
+								                 	</div>`;	
+	}
+	
 	
 	rest_review.append(review_ctnt_back)
 	user_like_wrap.append(user_like)
 	user_ctnt.append(day)
 	user_ctnt.append(write)
-	user_ctnt_wrap(user_ctnt)
-	user_ctnt_wrap(user_like_wrap)
+	user_ctnt_wrap.append(user_ctnt)
+	user_ctnt_wrap.append(user_like_wrap)
 	profile_img_wrap.append(profile_img)
-	user_nm_wrap(user_nm)
+	user_nm_wrap.append(user_nm)
 	user_wrap.append(profile_img_wrap)
 	user_wrap.append(user_nm_wrap)
 	review_ctnt.append(user_wrap)
