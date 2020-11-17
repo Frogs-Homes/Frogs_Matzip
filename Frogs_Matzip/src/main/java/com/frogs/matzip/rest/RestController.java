@@ -98,7 +98,7 @@ public class RestController {
 		RestReviewVO vo = new RestReviewVO();
 		vo.setI_rest(param.getI_rest());
 		
-		model.addAttribute("param", param);
+		model.addAttribute("paramData", param);
 		model.addAttribute("foodMenuList", service.selFoodPicList(param));
 		model.addAttribute("reviewList", service.selReviewList(param));
 		model.addAttribute("count", service.selReviewCount(vo)); //리뷰 총갯수
@@ -161,7 +161,7 @@ public class RestController {
 	
 	@RequestMapping(value="ajaxSelReview", method = RequestMethod.GET)
 	@ResponseBody
-	public List<RestDMI> ajaxSelReview(@RequestBody RestPARAM param, HttpSession hs) { //session과  set get? 
+	public List<RestDMI> ajaxSelReview(RestPARAM param, HttpSession hs) { //session과  set get? 
 
 
 		return service.selReviewList(param);
