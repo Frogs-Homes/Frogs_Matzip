@@ -105,7 +105,7 @@
 	</select>
 	
 	<select id ="selReviewList" parameterType="RestPARAM" resultType="RestDMI">
-		SELECT @rownum:=@rownum+1 AS rnum, A.seq, A.i_user, A.i_rest, A.grade, A.ctnt, A.m_dt, B.nm
+		SELECT A.seq, A.i_user, A.i_rest, A.grade, A.ctnt, A.m_dt, B.nm
 		FROM t_review A  
 		LEFT JOIN t_user B
 			ON A.i_user = B.i_user

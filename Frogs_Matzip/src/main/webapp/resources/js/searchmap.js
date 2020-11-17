@@ -80,7 +80,7 @@ function getSearchRestList() {
 		// db에 값이 없을 경우 에러메시지 출력 후 기본지도 위치로 재설정, 리스트에는 추천식당 띄우기
 		if(res.data == '' || res.data.length == 0) {
 			alert('검색 결과가 존재하지 않습니다.')
-			location.href = '/index'
+			location.href = '/main'
 			return;
 		}
 		
