@@ -1,13 +1,7 @@
-//var i_user = '${loginUser.i_user}'
+var i_user = '${loginUser.i_user}'
 //var i_rest = '${data.i_rest}'
 		
- document.querySelector('#review_write').addEventListener('click', function(){
-	if(i_user == "" || i_user == null) {
-		loginBtnClick()
-	} else {
-		reviewInsClick()
-	}
-})
+
 
 function modalOn() {
 	document.querySelector('#modal_review_back').style.display = 'block'
@@ -65,7 +59,7 @@ function reviewInsClick() {
   	modalOn()
 }
 
-function reviewIns() {
+function reviewIns(i_rest) {
 	if( review_frm.grade_result.value == 0) {
 		alert('평점을 등록해주세요')
 		return false
@@ -82,9 +76,9 @@ function reviewIns() {
 	
 	// review - ajax
 	let parameter = {
-			'i_rest': '${data.i_rest}', 
-			'grade': review_frm.grade_result.value,
-			'ctnt': review_frm.review_user.value
+			i_rest, 
+			grade: review_frm.grade_result.value,
+			ctnt: review_frm.review_user.value
 	}
 	
 	if(typ == '2') { //수정이면 주소 변경
@@ -189,6 +183,7 @@ function reviewMore(i_rest, s_idx, review_cnt, isLogin) {
 function moreReviewClick(item, isLogin) {
 	var review_ctnt_back = document.createElement('div')
 	review_ctnt_back.id = `review_ctnt_back_${item.seq}`
+	review_ctnt_back.classList.add('review_ctnt_back')
 	var review_ctnt = document.createElement('div')
 	review_ctnt.id = 'review_ctnt'
 	var user_wrap = document.createElement('div')
@@ -203,42 +198,44 @@ function moreReviewClick(item, isLogin) {
 	user_nm_wrap.classList.add('user_nm_wrap')
 	var user_nm = document.createElement('div')
 	user_nm.classList.add('user_nm')
-	user_nm.innerHTML = item.nm;
+	user_nm.innerHTML = `${item.nm}`;
 	var user_ctnt_wrap = document.createElement('div');
 	user_ctnt_wrap.id = 'user_ctnt_wrap';
 	var user_ctnt = document.createElement('div');
 	user_ctnt.classList.add('user_ctnt');
 	var day = document.createElement('div');
 	day.classList.add('day');
-	user_nm.innerHTML = item.m_dt;
+	day.innerHTML = `${item.m_dt}`;
 	var write = document.createElement('p');
-	day.classList.add('write')
-	write.innerHTML = item.ctnt;
+	write.classList.add('write')
+	write.innerHTML = `${item.ctnt}`;
 	var user_like_wrap = document.createElement('div')
 	user_like_wrap.classList.add('user_like_wrap')
 	var user_like = document.createElement('div')
 	user_like.classList.add('user_like')
 	
-	user_like.innerHTML = `<c:if test="${item.grade == 1}">
-						                    <label for="one"><span class="material-icons">mood_bad</span><span class="icon_ctnt">최악이다</span></label>
-						                    <input type="hidden" name="one" value="1">
-			                         	</c:if>
-			                         	<c:if test="${item.grade == 2}">
-						                    <label for="two"><span class="material-icons">sentiment_very_dissatisfied</span><span class="icon_ctnt">별로다</span></label>
-						                    <input type="hidden" name="two" value="2">
-			                         	</c:if>
-			                         	<c:if test="${item.grade == 3}">
-						                    <label for="three"><span class="material-icons">sentiment_dissatisfied</span><span class="icon_ctnt">보통이다</span></label>
-						                    <input type="hidden" name="three" value="3">
-			                         	</c:if>
-			                         	<c:if test="${item.grade == 4}">
-						                    <label for="four"><span class="material-icons">sentiment_satisfied</span><span class="icon_ctnt">괜찮다</span></label>
-						                    <input type="hidden" name="four"  value="4">
-			                         	</c:if>
-			                         	<c:if test="${item.grade == 5}">
-						                    <label for="five"><span class="material-icons">sentiment_very_satisfied</span><span class="icon_ctnt">맛있다</span></label>
-						                    <input type="hidden" name="five" value="5">
-			                         	</c:if>`
+	
+
+	if(item.grade == 1) {
+		user_like.innerHTML = `<label for="one"><span class="material-icons">mood_bad</span><span class="icon_ctnt">최악이다</span></label>
+						                    <input type="hidden" name="one" value="1">`
+	}
+	else if(item.grade == 2) {
+		user_like.innerHTML = `<label for="two"><span class="material-icons">mood_bad</span><span class="icon_ctnt">별로다</span></label>
+						                    <input type="hidden" name="two" value="2">`
+	}
+	else if(item.grade == 3) {
+		user_like.innerHTML = `<label for="three"><span class="material-icons">mood_bad</span><span class="icon_ctnt">보통이다</span></label>
+						                    <input type="hidden" name="three" value="3">`
+	}
+	else if(item.grade == 4) {
+		user_like.innerHTML = `<label for="four"><span class="material-icons">mood_bad</span><span class="icon_ctnt">괜찮다</span></label>
+						                    <input type="hidden" name="four" value="4">`
+	}
+	else if(item.grade == 5) {
+		user_like.innerHTML = `<label for="five"><span class="material-icons">mood_bad</span><span class="icon_ctnt">맛있다</span></label>
+						                    <input type="hidden" name="five" value="5">`
+	}
 	
 	if(isLogin) {
 		review_ctnt_back.innerHTML = `<div id="user_btn">
@@ -267,10 +264,10 @@ function moreReviewClick(item, isLogin) {
 
 
 /* 좋아요 */
-function toggleFavorite() {
+function toggleFavorite(i_rest) {
 	let parameter = {
 			params: {
-				i_rest: i_rest
+				i_rest
 			}
 	}
 	
