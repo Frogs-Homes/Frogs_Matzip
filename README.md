@@ -3,6 +3,9 @@
 
 201116 한 일
 - placesList 기능 구현
+- 웹사이트 호스팅하기
+- Search bar의 autocomplete 끄기
+- 메인헤더 배경 높이 조정
 
 201108 한 일
 - AutoSlider 기능 구현
