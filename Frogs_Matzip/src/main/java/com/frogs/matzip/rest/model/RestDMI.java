@@ -19,8 +19,6 @@ public class RestDMI extends RestVO {
 	private int sIdx;
 	private int reivew_cnt;
 	
-	
-	
 	public int getsIdx() {
 		return sIdx;
 	}
