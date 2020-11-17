@@ -40,10 +40,21 @@ function changeCtg(e) {
 	createCtgList(i_category)
 }
 
-// 각 카테고리제목에 클릭이벤트 걸기
-let ctgValArr = document.querySelectorAll('#ctg_lnb ul label')
-ctgValArr.forEach(function(item) {
-	item.addEventListener('click', changeCtg)
-})
+// 해당 카테고리 제목에 .on 넣기
+function addOnCtg(i_ctg) {
+	removeOnCtg();
+	var cate_parent = document.querySelector('#label_' + i_ctg);
+	cate_parent.classList.add('on');
+	createCtgList(i_ctg);
+}
 
-createCtgList(i_ctg)
+// 모든 카테고리 제목에 .on 빼기
+function removeOnCtg() {
+	let ctgValArr = document.querySelectorAll('#ctg_lnb ul label');
+
+	ctgValArr.forEach(function(item) {
+		item.classList.remove('on')
+	})
+}
+
+addOnCtg(i_ctg)
