@@ -173,7 +173,7 @@ public class RestController {
 	public int ajaxInsReview(@RequestBody RestReviewVO param, HttpSession hs) { //session과  set get? 
 		int i_user = SecurityUtils.getLoginUserPk(hs);
 		if(i_user == 0) {
-			return Const.FAIL;
+			return Const.NO_ID;
 		}
 		param.setI_user(i_user);
 
