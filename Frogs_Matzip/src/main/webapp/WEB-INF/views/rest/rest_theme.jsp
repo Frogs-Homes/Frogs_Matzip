@@ -7,7 +7,7 @@
 	<nav id="ctg_lnb">
 		<ul>
 			<c:forEach items="${categoryList}" var="item">
-				<label for="ctg_${item.i_category}">${item.category_val}</label>
+				<label for="ctg_${item.i_category}" onclick="addOnCtg(${item.i_category})" id="label_${item.i_category}">${item.category_val}</label>
 				<input type="hidden" id="ctg_${item.i_category}" value="${item.i_category}">
 			</c:forEach>
 		</ul>
