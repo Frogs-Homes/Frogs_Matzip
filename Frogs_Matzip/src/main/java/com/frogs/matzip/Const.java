@@ -14,15 +14,16 @@ public class Const {
 	public static final String DATA = "data";
 	public static final String PLACE = "place";
 	public static final String RESTLIST = "restList";
+	public static final String RECRESTLIST = "recRestList";
 	public static final String CATEGORYLIST = "categoryList";
 	public static final String DISTRICTLIST = "districtList";
 	
 	public static final String LOGIN_USER = "loginUser";
 	
 	public static final String COMMON = "common";
-	public static final String INDEXHEADER = "indexheader";
+	public static final String MAINHEADER = "mainheader";
 	public static final String DEFAULTHEADER = "defaultheader";
-	public static final String INDEX = "index";
+	public static final String MAIN = "main";
 	public static final String LISTMAP = "listmap";
 	public static final String RESTREG = "restreg";
 	public static final String RESTDETAIL = "restdetail";

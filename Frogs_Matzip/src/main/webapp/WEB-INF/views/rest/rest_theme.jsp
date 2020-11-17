@@ -7,11 +7,12 @@
 	<nav id="ctg_lnb">
 		<ul>
 			<c:forEach items="${categoryList}" var="item">
-				<li>${item.category_val}</li>
+				<label for="ctg_${item.i_category}">${item.category_val}</label>
+				<input type="hidden" id="ctg_${item.i_category}" value="${item.i_category}">
 			</c:forEach>
 		</ul>
-		<input type="hidden" id="ctg_val" value="">
 	</nav>
 </div>
 
 <div id="ctg_list_wrap"></div>
+<script>var i_ctg = ${param.i_category == null ? 1 : param.i_category}</script>
