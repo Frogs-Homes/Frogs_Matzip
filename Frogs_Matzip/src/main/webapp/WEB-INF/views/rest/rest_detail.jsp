@@ -111,7 +111,7 @@
 	            </div>
 	            <c:choose>
 	            <c:when test="${count.review_cnt == '0'}">
-	            	<div id="review_null">앗! 아직 작성된 리뷰가 없어요. 지금 ${data.nm}의 첫 리뷰를 등록해 보세요.</div>
+	            	<div id="review_null" class="no_drag">앗! 아직 작성된 리뷰가 없어요. 지금 ${data.nm}의 첫 리뷰를 등록해 보세요.</div>
 	            </c:when>
 	            <c:otherwise>
 		             <c:forEach items="${reviewList}" var="item">
@@ -167,9 +167,11 @@
 			      </c:otherwise>
 			      </c:choose>
 	        </section>
-	        <div class="more_btn">
-				<button onclick="reviewMore(${paramData.i_rest}, ${paramData.s_idx+5}, ${paramData.review_cnt}, ${loginUser.i_user})">더 보기</button>
-			</div>
+	        
+	        <div id="more_btn_wrap">
+	        	<!-- <div class="more_btn"><button id="reviewMoreBtn">더 보기</button></div> -->
+	        </div>
+			
 		</div>
     </div>
 </div>  
@@ -211,9 +213,10 @@
         </form>
     <div class="modal_close"><span class="material-icons">clear</span></div>
 </div>
-    
-    
-    
-    
-    
-    
+<script>
+	var i_rest = ${paramData.i_rest}
+	var s_idx = ${paramData.s_idx}
+	var review_cnt = ${paramData.review_cnt} 
+	var i_user = ${loginUser.i_user == null ? 0 : loginUser.i_user} 
+	var review_total = ${count.review_cnt}
+</script>
