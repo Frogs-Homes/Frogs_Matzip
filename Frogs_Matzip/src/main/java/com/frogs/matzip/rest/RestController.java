@@ -163,8 +163,8 @@ public class RestController {
 	@RequestMapping(value="ajaxSelReview", method = RequestMethod.GET)
 	@ResponseBody
 	public List<RestDMI> ajaxSelReview(RestPARAM param, HttpSession hs) { //session과  set get? 
-
-
+		
+		
 		return service.selReviewList(param);
 	}
 	

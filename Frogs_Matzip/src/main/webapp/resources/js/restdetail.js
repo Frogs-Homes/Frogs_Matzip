@@ -1,5 +1,4 @@
-var i_user = '${loginUser.i_user}'
-//var i_rest = '${data.i_rest}'
+
 		
 
 
@@ -155,28 +154,41 @@ function reviewDel(seq) {
 	})
 }
 
-//var s_idx = '${param.s_idx}'
-//var review_cnt = '${param.review_cnt}'
-
 
 /*리뷰더보기*/
 function reviewMore(i_rest, s_idx, review_cnt, loginUser) {
-	// 1. 전체 리뷰 개수보다 작은지 체크, ㄴㄴ일 경우 더보기 버튼 안 뜨게 하고 ajax 실행 ㄴㄴ
+
+	more_btn_wrap.innerHTML = '';
 	
-	// 2. ㅇㅇ 일 경우 ajax로 보내서 값 받아서 뿌리기
 	
-	// 3. s_idx ++
 	let parameter = {
 		params: { i_rest, s_idx, review_cnt }  
 	}
 	
 	axios.get('/rest/ajaxSelReview', parameter).then(function(res) {
 		console.log(res.data)
+		console.log("리스트 갯수 : " + res.data.length)
 		
 		res.data.forEach(function(item){
-			moreReviewClick(item, loginUser);
-		}) 
+			moreReviewClick(item, loginUser);			
+		})
 	})
+	
+	this.s_idx += this.review_cnt
+	
+	addMoreBtn(i_rest, this.s_idx, review_cnt, i_user, review_total)
+}
+
+
+function addMoreBtn(i_rest, s_idx, review_cnt, i_user, review_total) {
+	if(s_idx >= review_total) {
+		return;
+	}
+	
+	// 더보기버튼 추가
+	more_btn_wrap.innerHTML = `<div class="more_btn"><button id="reviewMoreBtn" onclick="reviewMore(${i_rest}, ${s_idx}, ${review_cnt}, ${i_user})">더 보기</button></div>`
+
+	
 	
 }
 
@@ -262,7 +274,6 @@ function moreReviewClick(item, loginUser) {
 }
 
 
-
 /* 좋아요 */
 function toggleFavorite(i_rest) {
 	let parameter = {
@@ -289,3 +300,5 @@ function toggleFavorite(i_rest) {
 	})
 	
 }
+
+
