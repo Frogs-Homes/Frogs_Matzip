@@ -64,17 +64,18 @@ th { width: 20%; text-align: start;}
 #rest_review #review_ctnt #user_ctnt_wrap .user_ctnt .write { flex: 1; line-height: 30px; }
 
 #rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap { flex: 1; text-align: center;}
-#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .user_like { width: 65px; margin: 0 auto;}
-#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .user_like .material-icons { font-size: 55px;}
+#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .user_like { width: 65px; margin: 0 auto 30px;}
+#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .user_like .material-icons { font-size: 55px; color : #ff792a;}
+#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .user_like .icon_ctnt { color : #ff792a;}
+#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .review_mod { border-radius: 20px; cursor:pointer;}
+#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .review_mod:focus { outline: none;}
+#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .review_del { border-radius: 20px; cursor:pointer;}
+#rest_review #review_ctnt #user_ctnt_wrap .user_like_wrap .review_del:focus { outline: none;}
 
-.review_ctnt_back #user_btn { }
-.review_ctnt_back #user_btn .review_mod { border-radius: 20px;}
-.review_ctnt_back #user_btn .review_mod:focus { outline: none;}
-.review_ctnt_back #user_btn .review_del { border-radius: 20px;}
-.review_ctnt_back #user_btn .review_del:focus { outline: none;}
-
+/*더보기 버튼*/
 .more_btn { text-align: center;}
-.more_btn button {border-radius: 20px; font-size: 20px; margin-bottom: 50px; outline:none;}
+.more_btn button {border-radius: 20px; font-size: 20px; margin-bottom: 50px; outline:none; cursor:pointer; background-color:white; color: #f07a2c; font-weight: bold; border-color: #f07a2c;}
+
 /* modal review*/
 #modal_bg {
     display: none;
