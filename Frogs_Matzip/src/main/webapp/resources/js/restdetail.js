@@ -160,7 +160,7 @@ function reviewDel(seq) {
 
 
 /*리뷰더보기*/
-function reviewMore(i_rest, s_idx, review_cnt, isLogin) {
+function reviewMore(i_rest, s_idx, review_cnt, loginUser) {
 	// 1. 전체 리뷰 개수보다 작은지 체크, ㄴㄴ일 경우 더보기 버튼 안 뜨게 하고 ajax 실행 ㄴㄴ
 	
 	// 2. ㅇㅇ 일 경우 ajax로 보내서 값 받아서 뿌리기
@@ -174,13 +174,13 @@ function reviewMore(i_rest, s_idx, review_cnt, isLogin) {
 		console.log(res.data)
 		
 		res.data.forEach(function(item){
-			moreReviewClick(item, isLogin);
+			moreReviewClick(item, loginUser);
 		}) 
 	})
 	
 }
 
-function moreReviewClick(item, isLogin) {
+function moreReviewClick(item, loginUser) {
 	var review_ctnt_back = document.createElement('div')
 	review_ctnt_back.id = `review_ctnt_back_${item.seq}`
 	review_ctnt_back.classList.add('review_ctnt_back')
@@ -213,7 +213,8 @@ function moreReviewClick(item, isLogin) {
 	user_like_wrap.classList.add('user_like_wrap')
 	var user_like = document.createElement('div')
 	user_like.classList.add('user_like')
-	
+	var user_btn = document.createElement('div')
+	user_btn.id = 'user_btn'
 	
 
 	if(item.grade == 1) {
@@ -237,16 +238,15 @@ function moreReviewClick(item, isLogin) {
 						                    <input type="hidden" name="five" value="5">`
 	}
 	
-	if(isLogin) {
-		review_ctnt_back.innerHTML = `<div id="user_btn">
-								                        	<button class="review_mod" onclick="reviewUpd(${item.seq}, '${item.ctnt}', ${item.grade})">수정</button>
-								                        	<button class="review_del" onclick="reviewDel(${item.seq})">삭제</button>     
-								                 	</div>`;	
+	if(loginUser == item.i_user) {
+		user_btn.innerHTML = `<button class="review_mod" onclick="reviewUpd(${item.seq}, '${item.ctnt}', ${item.grade})">수정</button>
+								         <button class="review_del" onclick="reviewDel(${item.seq})">삭제</button>`;	
 	}
 	
 	
 	rest_review.append(review_ctnt_back)
 	user_like_wrap.append(user_like)
+	user_like_wrap.append(user_btn)
 	user_ctnt.append(day)
 	user_ctnt.append(write)
 	user_ctnt_wrap.append(user_ctnt)

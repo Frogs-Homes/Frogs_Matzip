@@ -153,23 +153,22 @@
 								                    <input type="hidden" name="five" value="5">
 					                         	</c:if>
 					                         </div>
+					                         <c:if test="${item.i_user == loginUser.i_user}">
+								       			<div id="user_btn">
+							                        	<button class="review_mod" onclick="reviewUpd(${item.seq}, '${item.ctnt}', ${item.grade})">수정</button>
+							                        	<button class="review_del" onclick="reviewDel(${item.seq})">삭제</button>     
+							                 	</div>
+											 </c:if>
 					                     </div>
 					                 </div>
 					             </div>
-					             <c:if test="${item.i_user == loginUser.i_user}">
-					       			<div id="user_btn">
-				                        	<button class="review_mod" onclick="reviewUpd(${item.seq}, '${item.ctnt}', ${item.grade})">수정</button>
-				                        	<button class="review_del" onclick="reviewDel(${item.seq})">삭제</button>     
-				                 	</div>
-								</c:if>
 					         </div>
-				      </c:forEach>
-			        
+				      </c:forEach>     
 			      </c:otherwise>
 			      </c:choose>
 	        </section>
 	        <div class="more_btn">
-				<button onclick="reviewMore(${paramData.i_rest}, ${paramData.s_idx+5}, ${paramData.review_cnt}, ${item.i_user == loginUser.i_user})">더 보기</button>
+				<button onclick="reviewMore(${paramData.i_rest}, ${paramData.s_idx+5}, ${paramData.review_cnt}, ${loginUser.i_user})">더 보기</button>
 			</div>
 		</div>
     </div>
