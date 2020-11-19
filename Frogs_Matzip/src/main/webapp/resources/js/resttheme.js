@@ -1,6 +1,7 @@
 // 식당 content 생성 함수
 function createCtgRest(item) {
 	var ctg_rest_wrap = document.createElement('div')
+	ctg_rest_wrap.classList.add('ctg_rest_wrap')
 	
 	ctg_rest_wrap.innerHTML = `<div class="rest_pic_wrap">
 									<img src="/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}" alt="${item.nm}의 음식 사진">

@@ -111,7 +111,7 @@
 	            </div>
 	            <c:choose>
 	            <c:when test="${count.review_cnt == '0'}">
-	            	<div id="review_null">앗! 아직 작성된 리뷰가 없어요. 지금 ${data.nm}의 첫 리뷰를 등록해 보세요.</div>
+	            	<div id="review_null" class="no_drag">앗! 아직 작성된 리뷰가 없어요. 지금 ${data.nm}의 첫 리뷰를 등록해 보세요.</div>
 	            </c:when>
 	            <c:otherwise>
 		             <c:forEach items="${reviewList}" var="item">

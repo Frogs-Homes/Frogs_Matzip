@@ -15,7 +15,7 @@
 }
 
 /* 초기화 */
-header, body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, figure, form, fieldset, input, table, th, td { margin: 0; padding: 0; }
+header, body, h1, h2, h3, h4, h5, h6, p, ul, ol, dl, dd, figure, form, fieldset, input, table, th, td, label { margin: 0; padding: 0; }
 li { list-style: none; }
 a { text-decoration: none; color: #333;}
 body { font-family: 'TmoneyRoundWindRegular'; }
