@@ -6,7 +6,7 @@
 	<h2 id="ctg_list_title">카테고리별 맛집 목록</h2>
 	<p>아침부터 저녁까지 대구에서 다~ 대구!</p>
 </div>
-<nav id="ctg_lnb"><ul><c:forEach items="${categoryList}" var="item"><li id="label_${item.i_category}">${item.category_val}</li><input type="hidden" id="ctg_${item.i_category}" value="${item.i_category}"></c:forEach></ul>
+<nav id="ctg_lnb"><ul><c:forEach items="${categoryList}" var="item"><li id="label_${item.i_category}" onclick="changeCtg(event)">${item.category_val}</li><input type="hidden" id="ctg_${item.i_category}" value="${item.i_category}"></c:forEach></ul>
 </nav>
 
 <div id="ctg_list_wrap">

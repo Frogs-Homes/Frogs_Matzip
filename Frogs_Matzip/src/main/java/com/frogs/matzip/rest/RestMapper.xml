@@ -127,7 +127,7 @@
 	</update>
 	
 	<update id="updReview" parameterType="RestReviewVO">
-		UPDATE t_review SET ctnt = #{ctnt}
+		UPDATE t_review SET ctnt = #{ctnt}, grade = #{grade}
 		WHERE i_user = #{i_user}
 		AND seq = #{seq} 
 	</update>

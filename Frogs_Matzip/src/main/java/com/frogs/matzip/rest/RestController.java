@@ -202,7 +202,8 @@ public class RestController {
 		}
 		param.setI_user(i_user);
 		
-		
-		return service.updReview(param);
+		int result = service.updReview(param);
+		System.out.println("바뀐 평점 : " + param.getGrade());
+		return result;
 	}
 }
