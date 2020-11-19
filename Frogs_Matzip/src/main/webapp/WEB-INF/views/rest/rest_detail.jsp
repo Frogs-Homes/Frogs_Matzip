@@ -169,7 +169,7 @@
 	        </section>
 	        
 	        <div id="more_btn_wrap">
-	        	<!-- <div class="more_btn"><button id="reviewMoreBtn">더 보기</button></div> -->
+	        	<div id="moreBtn" class="more_btn"><button id="reviewMoreBtn"  onclick="reviewMore( i_rest, s_idx, review_cnt, i_user)">더 보기</button></div>
 	        </div>
 			
 		</div>

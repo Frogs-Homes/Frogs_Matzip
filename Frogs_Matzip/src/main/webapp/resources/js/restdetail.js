@@ -26,7 +26,7 @@ modalCloseArr.forEach(function(item) {
 
 
 /*modal grade*/
- var gradeIconsArr = document.querySelectorAll('#grade_icons span.material-icons')
+var gradeIconsArr = document.querySelectorAll('#grade_icons span.material-icons')
 
 gradeIconsArr.forEach(function(item) {
     item.addEventListener('click', iconsClick)
@@ -91,6 +91,7 @@ function reviewIns(i_rest) {
 		if(res.data == '1') {
 			alert(msg)
 			location.reload()
+			
 		} else {
 			alert('문제가 발생하였습니다.')
 		}
@@ -103,6 +104,7 @@ function reviewIns(i_rest) {
 function reviewUpd(seq, ctnt, grade) {
 	//document.querySelectorAll('#grade_icons .material-icons').
 	disableIcons()
+
 	
 	var gradeIcon
 	
@@ -129,7 +131,7 @@ function reviewUpd(seq, ctnt, grade) {
 	review_user.value = ctnt
 	review_frm.typ.value = '2'
 	review_frm.seq.value = seq
-	review_frm.grade_result.value = grade
+	review_frm.grade_result.value = grade_result.value
 	submit_btn.value = '수정'
 	modalOn()
 }
@@ -155,12 +157,10 @@ function reviewDel(seq) {
 }
 
 
+window.onload = reviewMore;
 /*리뷰더보기*/
 function reviewMore(i_rest, s_idx, review_cnt, loginUser) {
 
-	more_btn_wrap.innerHTML = '';
-	
-	
 	let parameter = {
 		params: { i_rest, s_idx, review_cnt }  
 	}
@@ -180,13 +180,15 @@ function reviewMore(i_rest, s_idx, review_cnt, loginUser) {
 }
 
 
+
 function addMoreBtn(i_rest, s_idx, review_cnt, i_user, review_total) {
 	if(s_idx >= review_total) {
+		moreBtn.innerHTML = ' ';
 		return;
 	}
 	
 	// 더보기버튼 추가
-	more_btn_wrap.innerHTML = `<div class="more_btn"><button id="reviewMoreBtn" onclick="reviewMore(${i_rest}, ${s_idx}, ${review_cnt}, ${i_user})">더 보기</button></div>`
+	//more_btn_wrap.innerHTML = `<div class="more_btn"><button id="reviewMoreBtn" onclick="reviewMore(${i_rest}, ${s_idx}, ${review_cnt}, ${i_user})">더 보기</button></div>`
 
 	
 	
