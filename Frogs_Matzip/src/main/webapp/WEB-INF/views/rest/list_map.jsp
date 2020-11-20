@@ -7,21 +7,23 @@
 		<h2 id="place_title"><span id="place_nm"></span> 지역의 맛집 목록</h2>
 	    <div id="rest_list_wrap"></div>
 	    <!-- 
-	    <c:forEach items="${recRestList}" var="item">
-		    <div class="list_wrap">
-		        <div class="list_ctnt_wrap">
-		            <div class="matzip_list">
-		                <img src="${item.food_pic}" class="food_img" alt="${item.nm}의 음식 사진">
-		            </div>
-		            <div class="ctnt_wrap">
-		                <h3><a href="#">${item.nm}</a></h3>
-		                <strong>${item.avg_grade}</strong><br>
-		                <p>${item.district}-${item.category_nm}</p><br>
-		                <p>review:${item.review}</p>
-		            </div>
-		        </div>
-		    </div>
-	    </c:forEach>
+	    <div class="list_wrap">
+	    	<div class="list_ctnt_wrap">
+	    		<div class="matzip_list">
+	    			<a href="/rest/detail?i_rest=${item.i_rest}">
+	    				<img src="/res/img/rest/${item.i_rest}/food_pic/${item.food_pic} alt="${item.nm}의 음식 사진">
+	    			</a>
+	    		</div>
+	    		<div class="ctnt_wrap">
+	    			<h3><a href="/rest/detail?i_rest=${item.i_rest}">${item.nm}</a></h3>
+	    			<strong>${item.avg_grade}</strong>
+	    			<br>
+	    			<p>${item.district_val} - ${item.category_val}</p>
+	    			<br>
+	    			<p>review: ${item.review_cnt}</p>
+	    		</div>
+	    	</div>
+	    </div>
 	     -->
 	</div>
 	

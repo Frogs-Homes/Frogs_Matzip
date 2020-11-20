@@ -166,6 +166,34 @@ function createRestDiv(item) {
 	var list_wrap = document.createElement('div')
 	list_wrap.classList.add('list_wrap')
 	
+	var rest_img_src = `/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}`
+	
+	//console.log(item)
+	if(item.food_pic == null) { rest_img_src = '/res/img/default_rest.png' }
+	
+	list_wrap.innerHTML = `<div class="list_wrap">
+						    	<div class="list_ctnt_wrap">
+						    		<div class="matzip_list">
+						    			<a href="/rest/detail?i_rest=${item.i_rest}">
+						    				<img class="food_img" src="${rest_img_src}" alt="${item.nm}의 음식 사진">
+						    			</a>
+						    		</div>
+						    		<div class="ctnt_wrap">
+						    			<h3><a href="/rest/detail?i_rest=${item.i_rest}">${item.nm}</a></h3>
+						    			<strong>${item.avg_grade}</strong>
+						    			<br>
+						    			<p>${item.district_val} - ${item.category_val}</p>
+						    			<br>
+						    			<p>review: ${item.review_cnt}</p>
+						    		</div>
+						    	</div>
+						    </div>`
+	
+	rest_list_wrap.append(list_wrap)
+	/*
+	var list_wrap = document.createElement('div')
+	list_wrap.classList.add('list_wrap')
+	
 	var list_ctnt_wrap = document.createElement('div')
 	list_ctnt_wrap.classList.add('list_ctnt_wrap')
 	
@@ -217,6 +245,7 @@ function createRestDiv(item) {
 	list_wrap.append(list_ctnt_wrap)
 	
 	rest_list_wrap.append(list_wrap)
+	*/
 }
 
 function moveToDetail(i_rest) {
