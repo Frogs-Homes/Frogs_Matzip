@@ -53,6 +53,7 @@ public class UserController {
 	@ResponseBody
 	public int ajaxToggleFavorite(UserPARAM param, HttpSession hs) {
 		int i_user = SecurityUtils.getLoginUserPk(hs);
+		if(i_user == 0) { return Const.FAIL; }
 		param.setI_user(i_user);
 		
 		return service.ajaxToggleFavorite(param);
