@@ -156,8 +156,8 @@ function reviewDel(seq) {
 	})
 }
 
-
-window.onload = reviewMore;
+/*리뷰 최초 한번 실행 */
+reviewMore(i_rest, s_idx, review_cnt, i_user);
 /*리뷰더보기*/
 function reviewMore(i_rest, s_idx, review_cnt, loginUser) {
 
@@ -179,19 +179,11 @@ function reviewMore(i_rest, s_idx, review_cnt, loginUser) {
 	addMoreBtn(i_rest, this.s_idx, review_cnt, i_user, review_total)
 }
 
-
-
 function addMoreBtn(i_rest, s_idx, review_cnt, i_user, review_total) {
 	if(s_idx >= review_total) {
 		moreBtn.innerHTML = ' ';
 		return;
 	}
-	
-	// 더보기버튼 추가
-	//more_btn_wrap.innerHTML = `<div class="more_btn"><button id="reviewMoreBtn" onclick="reviewMore(${i_rest}, ${s_idx}, ${review_cnt}, ${i_user})">더 보기</button></div>`
-
-	
-	
 }
 
 function moreReviewClick(item, loginUser) {
@@ -275,7 +267,6 @@ function moreReviewClick(item, loginUser) {
 
 }
 
-
 /* 좋아요 */
 function toggleFavorite(i_rest) {
 	let parameter = {
@@ -302,5 +293,7 @@ function toggleFavorite(i_rest) {
 	})
 	
 }
+
+
 
 
