@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* 배경 사진 div */
-.main_back { background: url(../img/main.jpg) no-repeat; width: 100%; height: 850px; background-size: cover; box-sizing: border-box;}
+.main_back { background: url(../img/main.jpg) no-repeat; width: 100%; height: 880px; background-size: cover; box-sizing: border-box;}
 
 /* index header */
 #head_wrap {width: 100%; height: 70px; background-color: #ffffff6b; }
