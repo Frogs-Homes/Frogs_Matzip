@@ -3,8 +3,11 @@ function createCtgRest(item) {
 	var ctg_rest_wrap = document.createElement('div')
 	ctg_rest_wrap.classList.add('ctg_rest_wrap')
 	
+	var rest_img_src = `/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}`
+	if(item.food_pic == null) { rest_img_src = '/res/img/default_rest.png' }
+	
 	ctg_rest_wrap.innerHTML = `<div class="rest_pic_wrap">
-									<img src="/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}" alt="${item.nm}의 음식 사진">
+									<img class="food_pic" src="${rest_img_src}" alt="${item.nm}의 음식 사진">
 								</div>
 								<div class="rest_ctnt_wrap>
 									<div class="rest_ctnt_title_wrap">
