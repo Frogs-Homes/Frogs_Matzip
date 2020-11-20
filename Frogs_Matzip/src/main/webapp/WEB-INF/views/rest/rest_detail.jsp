@@ -109,69 +109,16 @@
 	                <h2>리뷰</h2>
 	                <span>(${count.review_cnt})</span>
 	            </div>
-	            <c:choose>
-	            <c:when test="${count.review_cnt == '0'}">
+	            <c:if test="${count.review_cnt == '0'}">
 	            	<div id="review_null" class="no_drag">앗! 아직 작성된 리뷰가 없어요. 지금 ${data.nm}의 첫 리뷰를 등록해 보세요.</div>
-	            </c:when>
-	            <c:otherwise>
-		             <c:forEach items="${reviewList}" var="item">
-				             <div class="review_ctnt_back" id="review_ctnt_back_${item.seq}">
-					             <div id="review_ctnt">
-					                 <div id="user_wrap">
-					                     <div class="profile_img_wrap">
-					                         <img src="/res/img/default_img.png" class="profile_img" alt="">
-					                     </div>
-					                     <div class="user_nm_wrap">
-					                         <div class="user_nm">${item.nm}</div>
-					                     </div>
-					                 </div>
-					                 <div id="user_ctnt_wrap">
-					                     <div class="user_ctnt">
-					                         <div class="day">${item.m_dt}</div>
-					                         <p class="write">${item.ctnt}</p>
-					                     </div>
-					                     <div class="user_like_wrap">
-					                         <div class="user_like">
-					                         	<c:if test="${item.grade == 1}">
-								                    <label for="one"><span class="material-icons">mood_bad</span><span class="icon_ctnt">최악이다</span></label>
-								                    <input type="hidden" name="one" value="1">
-					                         	</c:if>
-					                         	<c:if test="${item.grade == 2}">
-								                    <label for="two"><span class="material-icons">sentiment_very_dissatisfied</span><span class="icon_ctnt">별로다</span></label>
-								                    <input type="hidden" name="two" value="2">
-					                         	</c:if>
-					                         	<c:if test="${item.grade == 3}">
-								                    <label for="three"><span class="material-icons">sentiment_dissatisfied</span><span class="icon_ctnt">보통이다</span></label>
-								                    <input type="hidden" name="three" value="3">
-					                         	</c:if>
-					                         	<c:if test="${item.grade == 4}">
-								                    <label for="four"><span class="material-icons">sentiment_satisfied</span><span class="icon_ctnt">괜찮다</span></label>
-								                    <input type="hidden" name="four"  value="4">
-					                         	</c:if>
-					                         	<c:if test="${item.grade == 5}">
-								                    <label for="five"><span class="material-icons">sentiment_very_satisfied</span><span class="icon_ctnt">맛있다</span></label>
-								                    <input type="hidden" name="five" value="5">
-					                         	</c:if>
-					                         </div>
-					                         <c:if test="${item.i_user == loginUser.i_user}">
-								       			<div id="user_btn">
-							                        	<button class="review_mod" onclick="reviewUpd(${item.seq}, '${item.ctnt}', ${item.grade})">수정</button>
-							                        	<button class="review_del" onclick="reviewDel(${item.seq})">삭제</button>     
-							                 	</div>
-											 </c:if>
-					                     </div>
-					                 </div>
-					             </div>
-					         </div>
-				      </c:forEach>     
-			      </c:otherwise>
-			      </c:choose>
+	            </c:if>
 	        </section>
 	        
-	        <div id="more_btn_wrap">
-	        	<div id="moreBtn" class="more_btn"><button id="reviewMoreBtn"  onclick="reviewMore( i_rest, s_idx, review_cnt, i_user)">더 보기</button></div>
-	        </div>
-			
+	        <c:if test="${ count.review_cnt > paramData.s_idx}">
+		        <div id="more_btn_wrap">
+		        	<div id="moreBtn" class="more_btn"><button id="reviewMoreBtn"  onclick="reviewMore( i_rest, s_idx, review_cnt, i_user)">더 보기</button></div>
+		        </div>
+			</c:if>
 		</div>
     </div>
 </div>  
