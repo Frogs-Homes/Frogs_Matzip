@@ -228,19 +228,19 @@ function moreReviewClick(item, loginUser) {
 						                    <input type="hidden" name="one" value="1">`
 	}
 	else if(item.grade == 2) {
-		user_like.innerHTML = `<label for="two"><span class="material-icons">mood_bad</span><span class="icon_ctnt">별로다</span></label>
+		user_like.innerHTML = `<label for="two"><span class="material-icons">sentiment_very_dissatisfied</span><span class="icon_ctnt">별로다</span></label>
 						                    <input type="hidden" name="two" value="2">`
 	}
 	else if(item.grade == 3) {
-		user_like.innerHTML = `<label for="three"><span class="material-icons">mood_bad</span><span class="icon_ctnt">보통이다</span></label>
+		user_like.innerHTML = `<label for="three"><span class="material-icons">sentiment_dissatisfied</span><span class="icon_ctnt">보통이다</span></label>
 						                    <input type="hidden" name="three" value="3">`
 	}
 	else if(item.grade == 4) {
-		user_like.innerHTML = `<label for="four"><span class="material-icons">mood_bad</span><span class="icon_ctnt">괜찮다</span></label>
+		user_like.innerHTML = `<label for="four"><span class="material-icons">sentiment_satisfied</span><span class="icon_ctnt">괜찮다</span></label>
 						                    <input type="hidden" name="four" value="4">`
 	}
 	else if(item.grade == 5) {
-		user_like.innerHTML = `<label for="five"><span class="material-icons">mood_bad</span><span class="icon_ctnt">맛있다</span></label>
+		user_like.innerHTML = `<label for="five"><span class="material-icons">sentiment_very_satisfied</span><span class="icon_ctnt">맛있다</span></label>
 						                    <input type="hidden" name="five" value="5">`
 	}
 	
