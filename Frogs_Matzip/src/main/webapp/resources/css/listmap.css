@@ -8,7 +8,7 @@
 .list_wrap { width: 100%; border-bottom: 1px solid #dbdbdb; }
 .list_wrap .list_ctnt_wrap { margin: 20px; position: relative; }
 .list_wrap .list_ctnt_wrap .matzip_list { display: inline-block; width: 150px; height: 150px; border: 1px solid #000; background-size: cover; border-color: white; }
-.list_wrap .list_ctnt_wrap .food_img { width: 150px; height: 150px; object-fit: fill; }
+.list_wrap .list_ctnt_wrap .food_img { width: 150px; height: 150px; object-fit: fill; border-radius: 12px; overflow: hidden; }
 .list_wrap .ctnt_wrap { display: inline-block; position: absolute; top: 0; left: 170px; }
 .list_wrap .ctnt_wrap h3 { display: inline-block; font-size: 1.5rem;}
 .list_wrap .ctnt_wrap strong { margin-left: 10px; color: #f07a2c;}

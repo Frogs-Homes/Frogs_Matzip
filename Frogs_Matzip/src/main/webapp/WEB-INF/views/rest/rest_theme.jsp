@@ -28,4 +28,7 @@
 	 -->
 </div>
 
-<script>var i_ctg = ${param.i_category == null ? 1 : param.i_category}</script>
+<script>
+	var i_ctg = ${param.i_category == null ? 1 : param.i_category}
+	var i_user = ${loginUser.i_user == null ? 0 : loginUser.i_user}
+</script>

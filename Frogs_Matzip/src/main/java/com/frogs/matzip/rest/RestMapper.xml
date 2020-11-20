@@ -25,27 +25,22 @@
 	<select id="selRest" parameterType="RestPARAM" resultType="RestDMI">
 		SELECT A.i_rest, A.nm, A.addr, A.lat, A.lng, A.i_category, A.menu_pic, A.hit, A.r_dt, A.m_dt
 			, A.phone, A.price_range, TIME_FORMAT(A.open_time, '%H:%i') as open_time, TIME_FORMAT(A.close_time, '%H:%i') as close_time, A.ctnt, A.i_district
-			, CASE WHEN E.i_rest IS NULL THEN 0 ELSE 1 END AS is_favorite
-			, IFNULL(B.cnt, 0) as fav_cnt
+			, CASE WHEN B.i_rest IS NULL THEN 0 ELSE 1 END AS is_favorite
+			, COUNT(B.i_rest) as fav_cnt
 			, C.val as category_val
 			, TRUNCATE(AVG(D.grade),1) as avg_grade
 		FROM t_rest A
-		LEFT JOIN(
-			SELECT i_rest, i_user, COUNT(i_rest) AS cnt
-			FROM t_fav
-			WHERE i_rest = #{i_rest}
-			GROUP BY i_rest
-		) B
-		ON A.i_rest = B.i_rest
+		LEFT JOIN t_fav B
+			ON A.i_rest = B.i_rest
+			<if test="i_user > 0">
+				AND B.i_user = #{i_user}
+			</if>
 		LEFT JOIN t_category C
 			ON A.i_category = C.i_category
 		LEFT JOIN t_review D
 			ON A.i_rest = D.i_rest
-		LEFT JOIN t_fav E
-			ON A.i_rest = E.i_rest
-			AND E.i_user = #{i_user}
 		<if test="i_rest > 0">
-		WHERE A.i_rest = #{i_rest}
+			WHERE A.i_rest = #{i_rest}
 		</if>
 	</select>
 	
@@ -79,6 +74,7 @@
 	 	SELECT A.i_rest, A.nm, A.addr, A.lat, A.lng
 	 		, TRUNCATE(AVG(B.grade), 1) as avg_grade, COUNT(DISTINCT B.seq) as review_cnt
 	 		, C.val as category_val, D.food_pic, E.val as district_val, COUNT(DISTINCT F.i_user) as fav_cnt
+			, CASE WHEN G.i_user is NULL THEN 0 ELSE 1 END as is_favorite
 	 	FROM t_rest A
 	 	LEFT JOIN t_review B
 	 		ON A.i_rest = B.i_rest
@@ -90,6 +86,9 @@
 	 		ON A.i_district = E.i_district
 	 	LEFT JOIN t_fav F
 	 		ON A.i_rest = F.i_rest
+	 	LEFT JOIN t_fav G
+			ON A.i_rest = G.i_rest
+			AND G.i_user = #{i_user}
 	 	<if test="i_category > 0">
 	 		WHERE A.i_category = #{i_category}
 	 	</if>

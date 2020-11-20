@@ -6,16 +6,25 @@ function createCtgRest(item) {
 	var rest_img_src = `/res/img/rest/${item.i_rest}/food_pic/${item.food_pic}`
 	if(item.food_pic == null) { rest_img_src = '/res/img/default_rest.png' }
 	
+	var is_fav = 'favorite_border'
+	if (item.is_favorite == 1) { is_fav = 'favorite' } 
+	
+	var fav_span = `<span class="favorite material-icons" onclick="toggleFavorite(${item.i_rest}, event)">
+						${is_fav}</span>`
+	if(i_user == 0) { `<span class="favorite material-icons" onclick="loginBtnClick()">${is_fav}</span>` }
+	
 	ctg_rest_wrap.innerHTML = `<div class="rest_pic_wrap">
 									<img class="food_pic" src="${rest_img_src}" alt="${item.nm}의 음식 사진">
 								</div>
-								<div class="rest_ctnt_wrap>
+								<div class="rest_ctnt_wrap">
 									<div class="rest_ctnt_title_wrap">
-										<h3><a href="/rest/detail?i_rest=${item.i_rest}">${item.nm}</a></h3>
-										<strong>${item.avg_grade}</strong><br>
-										<div>가고싶다친구</div>
+										<h3><a href="/rest/detail?i_rest=${item.i_rest}">${item.nm}</a><span>${item.avg_grade}</span></h3>
+										<div class="favorite_wrap">
+					                    	${fav_span}
+					                        <span class="icons_ctnt">가고싶다</span>
+					                    </div>
 									</div>
-							        <p>${item.addr}</p><br>
+							        <p>${item.addr}</p>
 							        <p>review:${item.review_cnt}</p>
 								</div>`
 	
@@ -31,9 +40,13 @@ function createCtgList(i_category) {
 			i_category
 		}
 	}).then(function(res) {
-		res.data.forEach(function(item) {
-			createCtgRest(item)
-		})
+		if(res.data.length == 0) {
+			ctg_list_wrap.innerHTML = '<div id="no_ctg_rest_msg" class="no_drag">아직 이 카테고리에 해당하는 맛집이 없어요ㅠㅠ</div>'
+		}
+		else { res.data.forEach(function(item) {
+				createCtgRest(item)
+			})
+		}
 	})
 }
 
@@ -41,7 +54,9 @@ function createCtgList(i_category) {
 function changeCtg(e) {
 	//console.log(e.target.nextElementSibling.value)
 	let i_category = e.target.nextElementSibling.value;
-	createCtgList(i_category)
+	
+	removeOnCtg()
+	addOnCtg(i_category)
 }
 
 // 해당 카테고리 제목에 .on 넣기
@@ -54,11 +69,45 @@ function addOnCtg(i_ctg) {
 
 // 모든 카테고리 제목에 .on 빼기
 function removeOnCtg() {
-	let ctgValArr = document.querySelectorAll('#ctg_lnb ul label');
+	let ctgValArr = document.querySelectorAll('#ctg_lnb ul li');
 
 	ctgValArr.forEach(function(item) {
 		item.classList.remove('on')
 	})
 }
+
+// 가고싶다 친구 toggle
+function toggleFavorite(i_rest, e) {
+
+	let parameter = {
+			params: {
+				i_rest
+			}
+	}
+	
+	var fav_btn = e.target
+	var icon = e.target.innerHTML.trim()
+	console.log(fav_btn)
+	console.log(icon)
+	
+	switch(icon) {
+	case 'favorite':
+		parameter.params.fav_type = 'del'
+		break;
+	case 'favorite_border':
+		parameter.params.fav_type = 'ins'
+		break;
+	}
+	
+	axios.get('/user/ajaxToggleFavorite', parameter).then(function(res) {
+		if(res.data == '1') {
+			fav_btn.innerHTML = (icon == 'favorite' ? 'favorite_border' : 'favorite')
+		} else {
+			alert('로그인이 필요한 서비스입니다.')
+		}
+	})
+	
+}
+
 
 addOnCtg(i_ctg)
