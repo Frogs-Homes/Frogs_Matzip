@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/*user menu*/
+.container { width: 1440px; margin: 0 auto;}
+.title { margin: 100px auto; text-align: center; color: #f07a2c; font-size: 25px;}
+
+.title h1 .material-icons { font-size: 60px; vertical-align: bottom;}
+.usermenu_back { width: auto; height: 300px; margin: 0 auto; display: flex; align-items: center; justify-content: center; background-color: #d4d4d4; border-radius: 20px;}
+.usermenu_back .usermenu_wrap { width: 600px;}
+.usermenu_back .usermenu_wrap #profile_img { width: 150px; float: left; border-radius: 80px; margin-right: 40px;}
+.usermenu_back .usermenu_wrap .user_nm { margin: 20px 0 20px 0; font-size: 25px; display: inline-block;}
+.usermenu_back .usermenu_wrap .pw_change, .profile_change { width: 190px; height: 45px; font-size: 20px; border-radius: 20px; margin-right: 10px; outline: none;}
+.usermenu_back .usermenu_wrap .pw_change .material-icons { vertical-align: bottom; font-size: 25px; margin-right: 5px;}
+.usermenu_back .usermenu_wrap .profile_change .material-icons { vertical-align: bottom; font-size: 25px; margin-right: 5px;}
+
+/*찜 목록*/
+.fav_list_wrap { width: auto; height: 400px; margin: 40px 0 40px 0; font-size: 30px; border-radius: 20px; box-shadow: 7px 7px 20px #9c9c9c;}
+.fav_list_wrap .fav_list_title { width: auto; height: 70px;  border-bottom: 1px solid; display: flex; align-items: center; background-color: #f07a2c; color: white; border-radius: 20px 20px 0 0;}
+.fav_list_wrap .fav_list_title .material-icons { vertical-align: bottom; font-size: 37px; margin: 0 10px 0 50px;}
+
+/*리뷰 목록*/
+.review_list_wrap { width: auto; height: 400px; margin: 40px 0 40px 0; font-size: 30px; border-radius: 20px; box-shadow: 7px 7px 20px #9c9c9c;}
+.review_list_wrap .review_list_title { width: auto; height: 70px;  border-bottom: 1px solid; display: flex; align-items: center; background-color: #f07a2c; color: white; border-radius: 20px 20px 0 0;}
+.review_list_wrap .review_list_title .material-icons { vertical-align: bottom; font-size: 37px; margin: 0 10px 0 50px;}
