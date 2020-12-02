@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 /*user menu*/
+.container_back { width: 100%; }
 .container { width: 1440px; margin: 0 auto;}
 .title { margin: 100px auto; text-align: center; color: #f07a2c; font-size: 25px;}
 
@@ -14,11 +15,33 @@
 .usermenu_back .usermenu_wrap .profile_change .material-icons { vertical-align: bottom; font-size: 25px; margin-right: 5px;}
 
 /*찜 목록*/
-.fav_list_wrap { width: auto; height: 400px; margin: 40px 0 40px 0; font-size: 30px; border-radius: 20px; box-shadow: 7px 7px 20px #9c9c9c;}
-.fav_list_wrap .fav_list_title { width: auto; height: 70px;  border-bottom: 1px solid; display: flex; align-items: center; background-color: #f07a2c; color: white; border-radius: 20px 20px 0 0;}
-.fav_list_wrap .fav_list_title .material-icons { vertical-align: bottom; font-size: 37px; margin: 0 10px 0 50px;}
+.fav_list_back { width: auto; height: 530px; margin: 40px 0 40px 0; font-size: 30px; border-radius: 20px; box-shadow: 7px 7px 20px #9c9c9c;}
+.fav_list_back .fav_list_title { width: auto; height: 70px;  border-bottom: 1px solid; display: flex; align-items: center; background-color: #f07a2c; color: white; border-radius: 20px 20px 0 0;}
+.fav_list_back .fav_list_title .material-icons { vertical-align: bottom; font-size: 37px; margin: 0 10px 0 50px;}
+.fav_list_back .fav_list_wrap { width: 100%; display: flex; justify-content: center;}
+.fav_list_back .fav_list_wrap .fav_list { display: inline-block; margin: 40px 70px 10px 0px;}
+.fav_list_back .fav_list_wrap .fav_list:last-child { display: inline-block; margin: 40px 0px 10px 0px; }
+.fav_list_back .fav_list_wrap .fav_list .fav_img{ width: 270px; height: 270px; border-radius: 20px;}
+.fav_list_back .fav_list_wrap .fav_list .fav_list_nm { text-align: center;}
+.fav_list_back .fav_list_wrap .fav_list .fav_list_nm span { font-size: 28px; color: #f07a2c; margin-left: 8px;}
+
+/*더보기 버튼*/
+.more_btn_wrap { text-align: center; margin-top: 30px;}
+.more_btn_wrap .more_btn .material-icons { vertical-align: middle; font-size: 30px;}
+.more_btn_wrap .more_btn button { border: none; font-size: 20px; background-color: white; outline: none; cursor: pointer;}
 
 /*리뷰 목록*/
-.review_list_wrap { width: auto; height: 400px; margin: 40px 0 40px 0; font-size: 30px; border-radius: 20px; box-shadow: 7px 7px 20px #9c9c9c;}
-.review_list_wrap .review_list_title { width: auto; height: 70px;  border-bottom: 1px solid; display: flex; align-items: center; background-color: #f07a2c; color: white; border-radius: 20px 20px 0 0;}
-.review_list_wrap .review_list_title .material-icons { vertical-align: bottom; font-size: 37px; margin: 0 10px 0 50px;}
+.review_list_back { width: auto; height: 580px; margin: 40px 0 150px 0; font-size: 30px; border-radius: 20px; box-shadow: 7px 7px 20px #9c9c9c;}
+.review_list_back .review_list_title { width: auto; height: 70px;  border-bottom: 1px solid; display: flex; align-items: center; background-color: #f07a2c; color: white; border-radius: 20px 20px 0 0;}
+.review_list_back .review_list_title .material-icons { vertical-align: bottom; font-size: 37px; margin: 0 10px 0 50px;}
+.review_list_back .review_list_wrap { padding: 30px; display: flex; justify-content: center; }
+.review_list_back .review_list_wrap .review_list { width: 700px; display: flex; border: 1px solid #a2a2a2; display: inline-block; border-radius: 20px;}
+.review_list_back .review_list_wrap .review_list:first-child { margin-right: 20px;}
+.review_list_back .review_list_wrap .review_img { flex: 1; width: 270px; height: 270px; border-radius: 20px; margin: 20px 20px 0;}
+.review_list_back .review_list_wrap .ctnt_wrap { width: auto; flex: 1; display: inline-block; vertical-align: top;}
+.review_list_back .review_list_wrap .ctnt_wrap .list_nm { margin: 30px 0 20px 0;}
+.review_list_back .review_list_wrap .ctnt_wrap .list_nm span { font-size: 30px; color: #f07a2c; margin-left: 8px;} 
+.review_list_back .review_list_wrap .ctnt_wrap .list_ctnt { width: 330px; word-break: break-all; margin-right: 20px; font-size: 20px;}
+
+.review_list_back .review_list_wrap .review_list #user_btn { text-align: end; margin: 0 25px 20px;}
+.review_list_back .review_list_wrap .review_list #user_btn button { border-radius: 20px; border: none; background-color: #f07a2c; outline: none; cursor: pointer; color: white; width: 50px; height: 20px; font-weight: bold;}
