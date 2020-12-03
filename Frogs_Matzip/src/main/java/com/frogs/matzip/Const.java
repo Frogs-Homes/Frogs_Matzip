@@ -29,6 +29,7 @@ public class Const {
 	public static final String RESTDETAIL = "restdetail";
 	public static final String RESTREGFOOD = "restregfood";
 	public static final String RESTTHEME = "resttheme";
+	public static final String MYPAGE = "mypage";
 	
 	
 	public static final String USERMENU = "usermenu";

@@ -4,21 +4,48 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.frogs.matzip.Const;
 import com.frogs.matzip.user.model.UserPARAM;
 import com.frogs.matzip.user.model.UserVO;
 import com.frogs.matzip.SecurityUtils;
+import com.frogs.matzip.ViewRef;
+import com.frogs.matzip.rest.RestService;
+import com.frogs.matzip.rest.model.RestPARAM;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private RestService rservice;
+	
+	@RequestMapping(value="/mypage", method = RequestMethod.GET)
+	public String myPage(Model model) {
+	
+		model.addAttribute(Const.CSS, new String[] {Const.COMMON, Const.DEFAULTHEADER, Const.MYPAGE});
+		model.addAttribute(Const.JS, new String[] {Const.USERMENU, Const.SEARCHBAR});
+		model.addAttribute(Const.TITLE, "마이 페이지");
+		model.addAttribute(Const.HEADER, "/template/default_header");
+		model.addAttribute(Const.VIEW, "/mypage");
+		return ViewRef.TEMP;
+	}
+	
+	@RequestMapping(value="/mypage", method = RequestMethod.POST)
+	public String mypage(RestPARAM param, RedirectAttributes ra) {
+		
+		
+		
+		return "redirect:/rest/reg";
+	}
 	
 	@RequestMapping(value="/logout", method = RequestMethod.GET) 
 	public String logout(HttpSession hs) {
@@ -58,4 +85,5 @@ public class UserController {
 		
 		return service.ajaxToggleFavorite(param);
 	}
+	
 }

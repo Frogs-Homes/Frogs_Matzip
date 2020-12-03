@@ -9,7 +9,7 @@
         </div>
         <div class="usermenu_back">
             <div class="usermenu_wrap">
-                <img src="./img/default_img.png" id="profile_img" alt="기본 프로필">
+                <img src="/res/img/default_img.png" id="profile_img" alt="기본 프로필">
                 <div class="user_nm">박철민 님</div><br>
                 <button class="pw_change"><span class="material-icons">create</span>비밀번호 변경</button>
                 <button class="profile_change"><span class="material-icons">photo_camera</span>프로필 변경</button>
@@ -46,7 +46,7 @@
                     <img src="./img/돼지고기.jpg" class="review_img" alt="">
                     <div class="ctnt_wrap">
                         <div class="list_nm">이모네 돼지국밥<span>3.8</span></div>
-                        <div class="list_ctnt"><span>안녕하세요 ddddddddddddddddddddddddddddddddddddddddddddddgk하하</span></div>
+                        <div class="list_ctnt"><span>안녕하세요하하</span></div>
                     </div>
                     <div id="user_btn">
                         <button class="review_mod">수정</button>

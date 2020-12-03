@@ -40,7 +40,7 @@
 									<a class="join_btn">회원가입</a>
 								</c:when>
 								<c:otherwise>
-									<a>마이페이지</a>
+									<a href="/user/mypage">마이페이지</a>
 									<a>내가 쓴 리뷰</a>
 									<a>가고싶은 식당 목록</a>
 									<a href="/user/logout">로그아웃</a>
